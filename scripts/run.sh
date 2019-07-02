@@ -11,10 +11,10 @@ if ! [ -z "${VIRTUAL_ENV}" ] ; then
     deactivate
 fi
 
-source $DIR/flask/pyenv/bin/activate
+source $DIR/API/pyenv/bin/activate
 
-cd $DIR/flask
-export PYTHONPATH=$DIR/flask:.
+cd $DIR/API
+export PYTHONPATH=$DIR/API
 export FLASK_APP=main.py
 export GOOGLE_APPLICATION_CREDENTIALS=$DIR/config/service_account.json
 export FIREBASE_SERVICE_ACCOUNT=$DIR/config/fb_service_account.json

@@ -11,12 +11,12 @@ if ! [ -z "${VIRTUAL_ENV}" ] ; then
     deactivate
 fi
 
-cd $DIR/flask
+cd $DIR/API
 rm -fr pyenv __pycache__  
 python3.6 -m venv pyenv
 source pyenv/bin/activate
 pip3 install --requirement $DIR/config/requirements.txt
-pip3 install --requirement $DIR/flask/cloud_common/config/requirements.txt 
+pip3 install --requirement $DIR/API/cloud_common/config/requirements.txt 
 
 deactivate
 

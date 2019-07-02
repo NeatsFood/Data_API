@@ -23,19 +23,19 @@ gcloud config list
 
 # To handle the fact that app engine can't deal with git submodules, 
 # make a tempporary copy of all the source and deploy that.
-cd $DIR/flask
-rm -fr tmp_flask
-mkdir tmp_flask
-cp *.yaml $DIR/config/*.json tmp_flask/
-cp -R *.py cloud_common images FCClass blueprints schema tmp_flask/
+cd $DIR/API
+rm -fr tmp
+mkdir tmp
+cp *.yaml $DIR/config/*.json tmp/
+cp -R *.py cloud_common images FCClass blueprints schema tmp/
 
 # Now make a combined (service + cloud_common submodule) reqs.
 # (app engine can't handle includes)
-touch tmp_flask/requirements.txt 
-cat $DIR/config/requirements.txt >> tmp_flask/requirements.txt 
-cat $DIR/flask/cloud_common/config/requirements.txt >> tmp_flask/requirements.txt 
+touch tmp/requirements.txt 
+cat $DIR/config/requirements.txt >> tmp/requirements.txt 
+cat $DIR/API/cloud_common/config/requirements.txt >> tmp/requirements.txt 
 
-cd tmp_flask
+cd tmp
 gcloud app deploy
 
 
