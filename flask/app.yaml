@@ -1,0 +1,31 @@
+service: data_api
+runtime: python
+env: flex
+api_version: 4.0.1
+threadsafe: true
+runtime_config:
+  python_version: 3
+
+env_variables:
+  GOOGLE_APPLICATION_CREDENTIALS: /app/service_account.json
+  FIREBASE_SERVICE_ACCOUNT: /app/fb_service_account.json
+  PYTHONPATH: /app:/env
+  FLASK_APP: /app/main.py
+  GCLOUD_PROJECT: openag-v1
+  GCLOUD_DEV_REG: device-registry
+  GCLOUD_DEV_EVENTS: device-events
+  GCLOUD_REGION: us-east1
+  GCLOUD_ZONE: us-east1-b
+  GCLOUD_NOTIFICATIONS_TOPIC_SUBS: notifications
+  BQ_DATASET: "openag_public_user_data"
+  BQ_TABLE: "vals"
+  CS_BUCKET: "openag-v1-images"
+  CS_UPLOAD_BUCKET: "openag-public-image-uploads"
+
+entrypoint: gunicorn -b :$PORT main:app
+
+handlers:
+- url: /static
+  static_dir: static
+- url: /.*
+  script: main.app

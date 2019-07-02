@@ -1,0 +1,4 @@
+[submodule "flask/cloud_common"]
+	path = flask/cloud_common
+	url = https://github.com/OpenAgricultureFoundation/cloud_common
+	branch = master
