@@ -1,9 +1,12 @@
-from flask import Blueprint, request
 import json
+from flask import Blueprint, request
 
-from .utils.env_variables import datastore_client
-from .utils.response import success_response, error_response
+from cloud_common.cc.google import datastore
 from .utils.auth import get_user_uuid_from_token
+from .utils.response import success_response, error_response
+
+#debugrob:
+#from cloud_common.cc.google import env_vars
 
 get_user_info_bp = Blueprint('get_user_info_bp', __name__)
 
@@ -42,7 +45,7 @@ def get_user_image():
             message="Invalid User: Unauthorized"
         )
 
-    query = datastore_client.query(kind='Users')
+    query = datastore.get_client().query(kind='Users')
     query.add_filter('user_uuid', '=', user_uuid)
     user = list(query.fetch(1))[0]
 

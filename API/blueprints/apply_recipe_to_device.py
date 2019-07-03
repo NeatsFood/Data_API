@@ -1,12 +1,16 @@
-from flask import Blueprint
-from flask import request
-from google.cloud import datastore
 import ast
-from .utils.auth import get_user_uuid_from_token
-from .utils.env_variables import *
-from .utils.response import success_response, error_response
 import uuid
 from datetime import datetime, timedelta
+from flask import Blueprint
+from flask import request
+
+from cloud_common.cc.google import env_vars
+from cloud_common.cc.google import datastore
+#debugrob: 
+#from google.cloud import datastore
+#from .utils.auth import get_user_uuid_from_token
+#from .utils.env_variables import *
+#from .utils.response import success_response, error_response
 
 apply_recipe_to_device_bp = Blueprint('apply_recipe_to_device', __name__)
 

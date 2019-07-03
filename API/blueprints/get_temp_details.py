@@ -2,9 +2,13 @@ from flask import Blueprint
 from flask import Response
 from flask import request
 
-from .utils.env_variables import *
-from .utils.response import success_response, error_response
-from .utils.database import get_temp_and_humidity_history
+from cloud_common.cc.google import env_vars
+from cloud_common.cc.google import datastore
+#debugrob:
+#
+#from .utils.env_variables import *
+#from .utils.response import success_response, error_response
+#from .utils.database import get_temp_and_humidity_history
 
 get_temp_details_bp = Blueprint('get_temp_details_bp',__name__)
 

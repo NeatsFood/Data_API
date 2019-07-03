@@ -1,9 +1,14 @@
+from datetime import timezone
 from flask import Blueprint
 from flask import request
-from .utils.database import get_device_notifications_from_DS
-from .utils.env_variables import *
-from .utils.response import success_response, error_response
-from datetime import timezone
+
+from cloud_common.cc.google import env_vars
+from cloud_common.cc.google import datastore
+#debugrob:
+#
+#from .utils.database import get_device_notifications_from_DS
+#from .utils.env_variables import *
+#from .utils.response import success_response, error_response
 
 get_device_notifications_bp = Blueprint('get_device_notifications_bp',__name__)
 

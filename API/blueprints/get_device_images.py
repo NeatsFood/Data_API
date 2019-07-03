@@ -1,9 +1,12 @@
 from flask import Blueprint, request
 
-from . import utils
-from .utils.env_variables import datastore_client
-from .utils.auth import get_user_uuid_from_token
-from .utils.response import success_response, error_response
+from cloud_common.cc.google import env_vars
+from cloud_common.cc.google import datastore
+#debugrob:
+# from . import utils
+#from .utils.env_variables import datastore_client
+#from .utils.auth import get_user_uuid_from_token
+#from .utils.response import success_response, error_response
 
 get_device_images_bp = Blueprint('get_device_images_bp', __name__)
 

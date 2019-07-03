@@ -1,10 +1,14 @@
-from flask import Blueprint, request
 import json
 import time
+from flask import Blueprint, request
 
-from .utils.env_variables import storage_client, datastore_client
-from .utils.response import success_response, error_response
-from .utils.auth import get_user_uuid_from_token
+from cloud_common.cc.google import env_vars
+from cloud_common.cc.google import datastore
+#debugrob:
+#
+#from .utils.env_variables import storage_client, datastore_client
+#from .utils.response import success_response, error_response
+#from .utils.auth import get_user_uuid_from_token
 
 ALLOWED_EXTENSIONS = set(['jpg', 'jpeg', 'png'])
 def is_allowed(filename):

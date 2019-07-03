@@ -2,12 +2,15 @@ from flask import Blueprint
 from flask import Response
 from flask import request
 
-from .utils.env_variables import *
-from .utils.response import (success_response, error_response,
-                             pre_serialize_device)
-from .utils.auth import get_user_uuid_from_token
-from .utils.common import is_expired
-from . import utils
+from cloud_common.cc.google import env_vars
+from cloud_common.cc.google import datastore
+#debugrob:
+#
+#from .utils.env_variables import *
+#from .utils.response import (success_response, error_response, pre_serialize_device)
+#from .utils.auth import get_user_uuid_from_token
+#from .utils.common import is_expired
+#from . import utils
 
 get_user_devices_bp = Blueprint('get_user_devices_bp',__name__)
 

@@ -1,9 +1,14 @@
 from flask import Blueprint
 from flask import request
-from .utils.auth import get_user_uuid_from_token
-from .utils.env_variables import *
-from .utils.response import success_response, error_response
-from .get_user_devices import get_devices_for_user
+
+from cloud_common.cc.google import env_vars
+from cloud_common.cc.google import datastore
+#debugrob:
+#
+#from .utils.auth import get_user_uuid_from_token
+#from .utils.env_variables import *
+#from .utils.response import success_response, error_response
+#from .get_user_devices import get_devices_for_user
 
 get_recipe_by_uuid_bp = Blueprint('get_recipe_by_uuid_bp', __name__)
 

@@ -1,12 +1,16 @@
+import json
+from datetime import datetime, timezone
 from flask import Blueprint
 from flask import Response
 from flask import request
-import json
-from datetime import datetime, timezone
 
-from .utils.env_variables import datastore_client
-from .utils.response import success_response, error_response
-from .utils.common import is_expired
+from cloud_common.cc.google import env_vars
+from cloud_common.cc.google import datastore
+#debugrob:
+#
+#from .utils.env_variables import datastore_client
+#from .utils.response import success_response, error_response
+#from .utils.common import is_expired
 
 verify_user_session_bp = Blueprint('verify_user_session_bp',__name__)
 

@@ -1,7 +1,11 @@
 from flask import Blueprint
 
-from .utils.env_variables import *
-from .utils.response import success_response
+from cloud_common.cc.google import env_vars
+from cloud_common.cc.google import datastore
+#debugrob:
+#
+#from .utils.env_variables import *
+#from .utils.response import success_response
 
 get_device_types_bp = Blueprint('get_device_types_bp', __name__)
 

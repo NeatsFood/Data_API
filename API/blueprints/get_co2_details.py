@@ -2,9 +2,13 @@ from flask import Blueprint
 from flask import Response
 from flask import request
 
-from .utils.env_variables import *
-from .utils.database import get_co2_history
-from .utils.response import success_response, error_response
+from cloud_common.cc.google import env_vars
+from cloud_common.cc.google import datastore
+#debugrob:
+#
+#from .utils.env_variables import *
+#from .utils.database import get_co2_history
+#from .utils.response import success_response, error_response
 
 get_co2_details_bp = Blueprint('get_co2_details_bp',__name__)
 

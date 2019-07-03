@@ -1,10 +1,15 @@
+import pytz
 from flask import Blueprint
 from flask import request
-import pytz
-from .utils.database import get_device_data_from_DS
-from .utils.env_variables import *
-from .utils.response import success_response
-from datetime import timezone
+
+from cloud_common.cc.google import env_vars
+from cloud_common.cc.google import datastore
+#debugrob:
+#
+#from .utils.database import get_device_data_from_DS
+#from .utils.env_variables import *
+#from .utils.response import success_response
+#from datetime import timezone
 
 get_current_device_status_bp = Blueprint('get_current_device_status_bp',__name__)
 

@@ -1,12 +1,16 @@
+import json
+from datetime import datetime
 from flask import Response
 from flask import request
 from flask import Blueprint, request
-from datetime import datetime
-from .utils.env_variables import datastore_client
 
-from .utils.env_variables import *
-import json
-from .utils.response import success_response
+from cloud_common.cc.google import env_vars
+from cloud_common.cc.google import datastore
+#debugrob:
+#
+#from .utils.env_variables import datastore_client
+#from .utils.env_variables import *
+#from .utils.response import success_response
 
 get_horticulture_daily_logs_bp = Blueprint('get_horticulture_daily_logs_bp',__name__)
 

@@ -1,8 +1,12 @@
 from flask import Blueprint
 from flask import Response
 from flask import request
-from .utils.env_variables import *
-from .utils.response import success_response, error_response
+
+from cloud_common.cc.google import env_vars
+from cloud_common.cc.google import datastore
+#debugrob:
+# from .utils.env_variables import *
+# from .utils.response import success_response, error_response
 
 get_device_peripherals_bp = Blueprint('get_device_peripherals_bp',__name__)
 

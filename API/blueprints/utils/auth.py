@@ -1,10 +1,9 @@
-from .env_variables import *
-from .datastore import get_one
+from cloud_common.cc.google import datastore
 
 def get_user_uuid_from_token(user_token):
     """Verifies session and returns user uuid"""
 
-    session = get_one(
+    session = datastore.get_one_from_DS(
         kind="UserSession", key="session_token", value=user_token
     )
     if not session:

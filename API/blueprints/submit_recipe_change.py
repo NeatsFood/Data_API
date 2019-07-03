@@ -1,14 +1,21 @@
 import uuid
+import ast
+from datetime import timedelta,datetime
 
 from flask import Blueprint
 from flask import Response
 from flask import request
-from google.cloud import datastore
-import ast
-from .utils.env_variables import *
-from .utils.response import success_response, error_response
-from .utils.auth import get_user_uuid_from_token
-from datetime import timedelta,datetime
+
+from cloud_common.cc.google import env_vars
+from cloud_common.cc.google import datastore
+#debugrob:
+#
+#from google.cloud import datastore
+#from .utils.env_variables import *
+#from .utils.response import success_response, error_response
+#from .utils.auth import get_user_uuid_from_token
+
+
 submit_recipe_change_bp = Blueprint('submit_recipe_change_bp',__name__)
 
 def get_existing_recipes(recipe_key):

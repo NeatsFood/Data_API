@@ -1,10 +1,15 @@
 import json
-from flask import Blueprint, request
-from datetime import datetime
 import pytz
-from .utils.env_variables import datastore_client
-from .utils.response import success_response, error_response
-from .utils.auth import get_user_uuid_from_token
+from datetime import datetime
+from flask import Blueprint, request
+
+from cloud_common.cc.google import env_vars
+from cloud_common.cc.google import datastore
+#debugrob:
+#
+#from .utils.env_variables import datastore_client
+#from .utils.response import success_response, error_response
+#from .utils.auth import get_user_uuid_from_token
 
 get_current_recipe_info_bp = Blueprint('get_current_recipe_info_bp', __name__)
 

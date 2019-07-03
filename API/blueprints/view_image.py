@@ -1,7 +1,11 @@
 import base64
 import json, os
-from .utils.env_variables import storage_client
 from flask import Blueprint, render_template, Request, Response
+
+from cloud_common.cc.google import env_vars
+from cloud_common.cc.google import datastore
+#debugrob:
+# from .utils.env_variables import storage_client
 
 
 GOOGLE_CLOUD_STORAGE = "openag-v1-images"
