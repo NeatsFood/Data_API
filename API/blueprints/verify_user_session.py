@@ -4,13 +4,10 @@ from flask import Blueprint
 from flask import Response
 from flask import request
 
-from cloud_common.cc.google import env_vars
 from cloud_common.cc.google import datastore
-#debugrob:
-#
-#from .utils.env_variables import datastore_client
-#from .utils.response import success_response, error_response
-#from .utils.common import is_expired
+from .utils.response import success_response, error_response
+from .utils.common import is_expired
+
 
 verify_user_session_bp = Blueprint('verify_user_session_bp',__name__)
 
@@ -23,7 +20,7 @@ def verify_user_session():
     """
     received_form_response = json.loads(request.data.decode('utf-8'))
     user_token = received_form_response.get("user_token", None)
-    query_session = datastore_client.query(kind="UserSession")
+    query_session = datastore.get_client().query(kind="UserSession")
     query_session.add_filter('session_token', '=', user_token)
     query_session_result = list(query_session.fetch())
     expired = True

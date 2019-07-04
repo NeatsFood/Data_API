@@ -1,13 +1,12 @@
 import json
 from flask import Blueprint, request
 
+from FCClass.user import User
 from cloud_common.cc.google import env_vars
 from cloud_common.cc.google import datastore
-#debugrob:
-#
-#from .utils.env_variables import datastore_client
-#from .utils.response import success_response, error_response
-#from .utils.auth import get_user_uuid_from_token
+from .utils.response import success_response, error_response
+from .utils.auth import get_user_uuid_from_token
+
 
 save_user_profile_bp = Blueprint('save_user_profile_bp', __name__)
 
@@ -32,22 +31,24 @@ def save_user_profile_changes():
             message="Invalid User: Unauthorized"
         )
 
-    query = datastore_client.query(kind='Users')
+    query = datastore.get_client().query(kind='Users')
     query.add_filter('user_uuid', '=', user_uuid)
     user = list(query.fetch(1))[0]
 
     # This checks if inputs are empty strings as well.
-    user['email_address'] = get_non_empty(received_form_response,
-                                          'email_address',
-                                          user['email_address'])
-    user['username'] = get_non_empty(received_form_response,
-                                     'username',
-                                     user['username'])
-    user['organization'] = get_non_empty(received_form_response,
-                                         'organization',
-                                         user['organization'])
+    email_address = get_non_empty(received_form_response,
+                                  'email_address',
+                                  user['email_address'])
+    username = get_non_empty(received_form_response,
+                             'username',
+                             user['username'])
+    org = get_non_empty(received_form_response,
+                        'organization',
+                        user['organization'])
 
-    datastore_client.put(user)
+    if not datastore.update_user(user_uuid, username, email_address, org):
+        return error_response("nope")
+
     return success_response(
         profile_image=user.get('profile_image'),
         username=user.get('username'),
@@ -60,4 +61,4 @@ def get_non_empty(form_input, key, default):
     value = form_input.get(key, default)
     if not value:
         value = default
-    return default
+    return value

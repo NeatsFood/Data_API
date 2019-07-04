@@ -7,7 +7,6 @@ from pyisemail import is_email
 from FCClass.user import User
 from FCClass.user_session import UserSession
 from .utils.response import success_response, error_response
-
 from cloud_common.cc.google import datastore
 
 
@@ -46,7 +45,6 @@ def signup():
 
     if user_uuid:
         return success_response()
-
     else:
         return error_response(
             message="User creation failed."

@@ -1,20 +1,18 @@
+import json
+from datetime import datetime
 from flask import Blueprint
 from flask import Response
 from flask import request
 
-from cloud_common.cc.google import env_vars
 from cloud_common.cc.google import datastore
-#debugrob:
-#
-#from google.cloud import datastore
-#from .utils.env_variables import *
-#from .utils.response import success_response, error_response
-#from .utils.auth import get_user_uuid_from_token
+from cloud_common.cc.google import iot
+from .utils.response import success_response, error_response
+from .utils.auth import get_user_uuid_from_token
+
 
 register_bp = Blueprint('register_bp',__name__)
 
 # ------------------------------------------------------------------------------
-# api.update_status('Test status')
 @register_bp.route('/api/register/', methods=['GET', 'POST'])
 def register():
     """TODO: Fill in Documentation
@@ -30,6 +28,7 @@ def register():
     device_reg_no = received_form_response.get("device_reg_no", None)
     device_notes = received_form_response.get("device_notes", None)
     device_type = received_form_response.get("device_type", None)
+    testing = received_form_response.get("testing")
     time_stamp = datetime.now()
 
     if user_token is None or device_reg_no is None:
@@ -46,11 +45,14 @@ def register():
             message="Invalid User: Unauthorized"
         )
 
+    if testing: # our pytest is hitting this API, so don't create the user
+        return success_response()
+
     # Create a google IoT device registry entry for this device.
     # The method returns the device ID we need for IoT communications.
     try:
         device_uuid, device_software_version = \
-                create_iot_device_registry_entry(device_reg_no,
+                iot.create_iot_device_registry_entry(device_reg_no,
                                                  device_name,
                                                  device_notes,
                                                  device_type,
@@ -69,9 +71,8 @@ def register():
             message="Could not register this IoT device."
         )
 
-    # Add the user to the users kind of entity
-    key = datastore_client.key('Devices')
-    # Indexes every other column except the description
+    # Add the device to the Devices datastore collection
+    key = datastore.get_client().key('Devices')
     device_reg_task = datastore.Entity(key, exclude_from_indexes=[])
 
     device_reg_task.update({
@@ -85,7 +86,7 @@ def register():
         'device_software_version': device_software_version
     })
 
-    datastore_client.put(device_reg_task)
+    datastore.get_client().put(device_reg_task)
 
     if device_reg_task.key:
         return success_response()

@@ -1,16 +1,13 @@
+import json
 from flask import Blueprint
 from flask import Response
 from flask import request
 
-from cloud_common.cc.google import env_vars
 from cloud_common.cc.google import datastore
-#debugrob:
-#
-#from .utils.env_variables import *
-#from .utils.response import (success_response, error_response, pre_serialize_device)
-#from .utils.auth import get_user_uuid_from_token
-#from .utils.common import is_expired
-#from . import utils
+from .utils.response import (success_response, error_response, pre_serialize_device)
+from .utils.common import is_expired
+from .utils.auth import get_user_uuid_from_token
+
 
 get_user_devices_bp = Blueprint('get_user_devices_bp',__name__)
 
@@ -91,7 +88,7 @@ def get_user_devices():
     )
 
 def get_devices_for_user(user_uuid):
-    query = datastore_client.query(kind='Devices')
+    query = datastore.get_client().query(kind='Devices')
     query.add_filter('user_uuid', '=', user_uuid)
     query_results = list(query.fetch())
 
@@ -117,7 +114,7 @@ def get_access_code_devices_for_user(user_uuid):
 
     devices = []
     for code in access_codes:
-        code_entity = utils.datastore.get_one(
+        code_entity = datastore.get_one_from_DS(
             kind="UserAccessCodes", key='code', value=code
         )
 
@@ -129,7 +126,7 @@ def get_access_code_devices_for_user(user_uuid):
     return devices
 
 def get_acccess_codes(user_uuid):
-    user = utils.datastore.get_one(
+    user = datastore.get_one_from_DS(
         kind='Users', key='user_uuid', value=user_uuid
     )
 
@@ -143,7 +140,7 @@ def get_devices_from_code_entity(code_entity):
     # set it to an empty array
     permissions = json.loads(code_entity.get('code_permissions', '[]'))
     for entry in permissions:
-        device = utils.datastore.get_one(
+        device = datastore.get_one_from_DS(
             kind='Devices', key='device_uuid', value=entry['device_uuid']
         )
         if not device:
@@ -157,7 +154,7 @@ def get_devices_from_code_entity(code_entity):
 
 def get_device_type_peripherals(device_type):
     peripherals = ""
-    device_type_query = datastore_client.query(kind="DeviceType")
+    device_type_query = datastore.get_client().query(kind="DeviceType")
     device_type_query.add_filter("name","=",device_type)
     device_type_results = list(device_type_query.fetch())
     if len(device_type_results) > 0:

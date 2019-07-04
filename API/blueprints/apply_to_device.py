@@ -1,16 +1,16 @@
 import uuid
-from datetime import timedelta
+import json
+from datetime import timedelta, datetime
 from flask import Blueprint
 from flask import Response
 from flask import request
 
-from cloud_common.cc.google import env_vars
 from cloud_common.cc.google import datastore
-#debugrob: fix
-#from google.cloud import datastore
-#from .utils.env_variables import *
-#from .utils.response import success_response, error_response
-#from .utils.auth import get_user_uuid_from_token
+from cloud_common.cc.google import iot
+from .utils.response import success_response, error_response
+from .utils.auth import get_user_uuid_from_token
+from .utils.common import convert_UI_recipe_to_commands
+
 
 apply_to_device_bp = Blueprint('apply_to_device_bp',__name__)
 
@@ -27,46 +27,51 @@ def apply_to_device():
     :<json string device_uuid: UUID of device to apply recipe to
     :<json string recipe_uuid: UUID of recipe to run
     """
-    received_form_response = json.loads(request.data.decode('utf-8'))
+    try:
+        received_form_response = json.loads(request.data.decode('utf-8'))
 
-    device_uuid = received_form_response.get("device_uuid", None)
-    recipe_uuid = received_form_response.get("recipe_uuid", None)
-    user_token = received_form_response.get("user_token", None)
-    date_applied = datetime.now()
+        device_uuid = received_form_response.get("device_uuid", None)
+        recipe_uuid = received_form_response.get("recipe_uuid", None)
+        user_token = received_form_response.get("user_token", None)
+        date_applied = datetime.now()
 
-    # Using the session token get the user_uuid associated with it
-    user_uuid = get_user_uuid_from_token(user_token)
-    if user_uuid is None:
-        return error_response(
-            message="Invalid User: Unauthorized"
-        )
+        # Using the session token get the user_uuid associated with it
+        user_uuid = get_user_uuid_from_token(user_token)
+        if user_uuid is None:
+            return error_response(message="Invalid User: Unauthorized")
 
-    # handle device SW version to recipe version here. can be None
-    version = ''  # default of no version for older brains
-    sw_ver = get_device_software_version(device_uuid)
-    if sw_ver is not None and len(sw_ver) > 0:
-        version = f'_v{sw_ver}'  # appended to recipe json property name
+        # handle device SW version to recipe version here. can be None
+        version = ''  # default of no version for older brains
+        sw_ver = datastore.get_device_software_version(device_uuid)
+        if sw_ver is not None and len(sw_ver) > 0:
+            version = f'_v{sw_ver}'  # appended to recipe json property name
 
-    recipe_dict = {}
-    query = datastore_client.query(kind='Recipes')
-    query.add_filter("recipe_uuid", "=", recipe_uuid)
-    results = list(query.fetch())
-    if len(results) > 0:
-        # base recipe (unversioned or for all clients)
-        recipe_dict = json.loads(recipe_results[0]['recipe'])
+        recipe_dict = {}
+        query = datastore.get_client().query(kind='Recipes')
+        query.add_filter("recipe_uuid", "=", recipe_uuid)
+        results = list(query.fetch())
+        if len(results) > 0:
+            # base recipe (unversioned or for all clients)
+            recipe_dict = json.loads(results[0]['recipe'])
 
-        # see if there is a client version specific json property
-        recipe_property = f'recipe{version}'
-        versioned_recipe_str = recipe_results[0].get(recipe_property, None)
-        if versioned_recipe_str is not None:
-            recipe_dict = json.loads(versioned_recipe_str)
+            # see if there is a client version specific json property
+            recipe_property = f'recipe{version}'
+            versioned_recipe_str = results[0].get(recipe_property, None)
+            if versioned_recipe_str is not None:
+                recipe_dict = json.loads(versioned_recipe_str)
+        else:
+            return error_response(message="Nope!")
 
-    # send the recipe to the device
-    commands_list = convert_UI_recipe_to_commands(recipe_uuid, recipe_dict)
-    send_recipe_to_device_via_IoT(iot_client, device_uuid, commands_list)
+        # send the recipe to the device
+        commands_list = convert_UI_recipe_to_commands(recipe_uuid, recipe_dict)
+        iot.send_recipe_to_device_via_IoT(device_uuid, commands_list)
+        return success_response()
+    except:
+        return error_response(message="Nope!")
 
+    """debugrob, don't save this, it is not used
     # Add the user to the users kind of entity
-    key = datastore_client.key('DeviceHistory')
+    key = datastore.get_client().key('DeviceHistory')
 
     # Indexes every other column except the description
     apply_to_device_task = datastore.Entity(key, exclude_from_indexes=[])
@@ -88,9 +93,7 @@ def apply_to_device():
         'recipe_state':str(recipe_dict)
     })
 
-
-
-    datastore_client.put(apply_to_device_task)
+    datastore.get_client().put(apply_to_device_task)
     if apply_to_device_task.key:
         return success_response()
 
@@ -98,3 +101,6 @@ def apply_to_device():
         return error_response(
             message="Sorry something failed. Womp womp!"
         )
+    """
+
+

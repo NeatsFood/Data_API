@@ -4,9 +4,9 @@ from datetime import datetime, timedelta
 from flask import Blueprint
 from flask import request
 
-from cloud_common.cc.google import env_vars
 from cloud_common.cc.google import datastore
 #debugrob: 
+#from cloud_common.cc.google import env_vars
 #from google.cloud import datastore
 #from .utils.auth import get_user_uuid_from_token
 #from .utils.env_variables import *
@@ -51,7 +51,7 @@ def apply_recipe_to_device():
 
     # handle device SW version to recipe version here. can be None
     version = ''  # default of no version for older brains
-    sw_ver = get_device_software_version(device_uuid)
+    sw_ver = datastore.get_device_software_version(device_uuid)
     if sw_ver is not None and len(sw_ver) > 0:
         version = f'_v{sw_ver}'  # appended to recipe json property name
 
