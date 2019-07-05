@@ -1,15 +1,14 @@
-import uuid
+import uuid, json
+from datetime import datetime
 from flask import Blueprint
 from flask import Response
 from flask import request
 
-from cloud_common.cc.google import env_vars
+from google.cloud import datastore as gcds
 from cloud_common.cc.google import datastore
+from .utils.response import success_response, error_response
+from .utils.auth import get_user_uuid_from_token
 #debugrob: 
-# from google.cloud import datastore
-#from .utils.env_variables import *
-#from .utils.response import success_response, error_response
-#from .utils.auth import get_user_uuid_from_token
 
 daily_horticulture_measurements_bp = Blueprint('daily_horticulture_measurements_bp', __name__)
 
@@ -49,9 +48,9 @@ def save_recipe():
         )
 
     # Add the user to the users kind of entity
-    key = datastore_client.key('DailyHorticultureLog')
+    key = datastore.get_client().key('DailyHorticultureLog')
     # Indexes every other column except the description
-    horticulture_task = datastore.Entity(key, exclude_from_indexes=[])
+    horticulture_task = gcds.Entity(key, exclude_from_indexes=[])
 
     horticulture_task.update({
         "device_uuid": device_uuid,
@@ -66,12 +65,9 @@ def save_recipe():
         "submitted_at": datetime.now(),
     })
 
-    datastore_client.put(horticulture_task)
+    datastore.get_client().put(horticulture_task)
 
     if horticulture_task.key:
         return success_response()
-
     else:
-        return error_response(
-            message="Sorry something failed. Womp womp!"
-        )
+        return error_response()

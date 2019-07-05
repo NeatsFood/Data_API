@@ -3,14 +3,11 @@ from datetime import datetime
 
 from flask import Blueprint, request
 
-from cloud_common.cc.google import env_vars
 from cloud_common.cc.google import datastore
-#debugrob:
-#
-#from google.cloud import datastore
-#from .utils.auth import get_user_uuid_from_token
-#from .utils.env_variables import datastore_client
-#from .utils.response import (success_response, error_response)
+from google.cloud import datastore as gcds
+from .utils.auth import get_user_uuid_from_token
+from .utils.response import (success_response, error_response)
+
 
 submit_horticulture_measurements_bp = Blueprint('submit_horticulture_measurements', __name__)
 
@@ -26,20 +23,20 @@ def submit_access_code():
     device_uuid = received_form_response.get('device_uuid')
 
     user_uuid = get_user_uuid_from_token(user_token)
-    if user_uuid is None:
+    if user_uuid is None or device_uuid is None:
         return error_response(
             message='Invalid User: Unauthorized.'
         )
 
-
-
-    leaves_count = received_form_response.get("leaves_count","")
-    plant_height = received_form_response.get("plant_height","")
+    leaves_count = received_form_response.get("leaves_count")
+    plant_height = received_form_response.get("plant_height")
+    if leaves_count is None or plant_height is None:
+        return error_response()
 
     # Add the user to the users kind of entity
-    key = datastore_client.key('HorticultureMeasurements')
+    key = datastore.get_client().key('HorticultureMeasurements')
     # Indexes every other column except the description
-    horitculture_reg_task = datastore.Entity(key, exclude_from_indexes=[])
+    horitculture_reg_task = gcds.Entity(key, exclude_from_indexes=[])
 
     horitculture_reg_task.update({
         'device_uuid': device_uuid,
@@ -50,10 +47,10 @@ def submit_access_code():
         "modified_at":datetime.now()
     })
 
-    datastore_client.put(horitculture_reg_task)
+    datastore.get_client().put(horitculture_reg_task)
 
     return success_response(
-        message="The given access code is now associated with your account."
+        message="Measurements saved."
     )
 
 

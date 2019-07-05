@@ -1,17 +1,14 @@
+import json
 from flask import Blueprint
 from flask import request
 
-from cloud_common.cc.google import env_vars
 from cloud_common.cc.google import datastore
-#debugrob:
-#
-#from .utils.auth import get_user_uuid_from_token
-#from .utils.env_variables import *
-#from .utils.response import success_response, error_response
-#from .get_user_devices import get_devices_for_user
+from .utils.auth import get_user_uuid_from_token
+from .utils.response import success_response, error_response
+from .get_user_devices import get_devices_for_user
+
 
 get_recipe_by_uuid_bp = Blueprint('get_recipe_by_uuid_bp', __name__)
-
 
 @get_recipe_by_uuid_bp.route('/api/get_recipe_by_uuid/', methods=['GET', 'POST'])
 def get_recipe_by_uuid():
@@ -38,7 +35,7 @@ def get_recipe_by_uuid():
     devices = get_devices_for_user(user_uuid)
 
     # Get queried recipe
-    recipes_query = datastore_client.query(kind='Recipes')
+    recipes_query = datastore.get_client().query(kind='Recipes')
     recipes_query.add_filter("recipe_uuid","=",recipe_uuid)
     recipes_query_results = list(recipes_query.fetch())
     results_array = []
@@ -48,7 +45,7 @@ def get_recipe_by_uuid():
 
         # Get Peripherals needed for this device type
         peripherals = []
-        device_type_query = datastore_client.query(kind='DeviceType')
+        device_type_query = datastore.get_client().query(kind='DeviceType')
         device_type_results = list(device_type_query.fetch())
         device_type_results_array = []
         for device_type_result in device_type_results:
@@ -63,7 +60,7 @@ def get_recipe_by_uuid():
             peripherals_array = peripherals_string.split(",")
             for peripheral in peripherals_array:
 
-                peripherals_query = datastore_client.query(kind='Peripherals')
+                peripherals_query = datastore.get_client().query(kind='Peripherals')
                 peripherals_query.add_filter('uuid', '=', str(peripheral))
                 peripheraldetails = list(peripherals_query.fetch())
 

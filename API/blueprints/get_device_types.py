@@ -1,14 +1,10 @@
 from flask import Blueprint
 
-from cloud_common.cc.google import env_vars
 from cloud_common.cc.google import datastore
-#debugrob:
-#
-#from .utils.env_variables import *
-#from .utils.response import success_response
+from .utils.response import success_response
+
 
 get_device_types_bp = Blueprint('get_device_types_bp', __name__)
-
 
 @get_device_types_bp.route('/api/get_device_types/', methods=['GET', 'POST'])
 def get_device_types():
@@ -30,7 +26,7 @@ def get_device_types():
         }
 
     """
-    query = datastore_client.query(kind='DeviceType')
+    query = datastore.get_client().query(kind='DeviceType')
     query_result = list(query.fetch())
     results = list(query_result)
 

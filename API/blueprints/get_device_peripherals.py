@@ -1,12 +1,11 @@
+import json
 from flask import Blueprint
 from flask import Response
 from flask import request
 
-from cloud_common.cc.google import env_vars
 from cloud_common.cc.google import datastore
-#debugrob:
-# from .utils.env_variables import *
-# from .utils.response import success_response, error_response
+from .utils.response import success_response, error_response
+
 
 get_device_peripherals_bp = Blueprint('get_device_peripherals_bp',__name__)
 
@@ -40,20 +39,24 @@ def get_device_peripherals():
     peripherals_array = peripherals_string.split(",")
 
     for peripheral in peripherals_array:
-        print(str(peripheral))
-        query = datastore_client.query(kind='Peripherals')
+        if len(peripheral) == 0:
+            return error_response()
+
+        query = datastore.get_client().query(kind='Peripherals')
         query.add_filter('uuid', '=', str(peripheral))
         peripheraldetails = list(query.fetch())
 
-        if len(peripheraldetails) > 0:
-            peripheral_detail_json = {
-                "name":peripheraldetails[0]["name"],
-                "sensor_name":peripheraldetails[0]["sensor_name"],
-                "type":peripheraldetails[0]["type"],
-                "color":"#"+peripheraldetails[0]["color"],
-                "inputs": peripheraldetails[0]["inputs"]
-            }
-            peripheral_details.append(peripheral_detail_json)
+        if len(peripheraldetails) == 0:
+            return error_response()
+
+        peripheral_detail_json = {
+            "name":peripheraldetails[0]["name"],
+            "sensor_name":peripheraldetails[0]["sensor_name"],
+            "type":peripheraldetails[0]["type"],
+            "color":"#"+peripheraldetails[0]["color"],
+            "inputs": peripheraldetails[0]["inputs"]
+        }
+        peripheral_details.append(peripheral_detail_json)
 
     return success_response(
         results=peripheral_details

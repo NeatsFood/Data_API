@@ -8,7 +8,7 @@
 # e.g. this is how you run the test_verify_user_session_works test,
 # which requires a valid session token, so you run the test_login_works first:
 #
-# ./scripts/test.sh tests/test_API.py::test_login_works tests/test_API.py::test_verify_user_session_works
+# ./scripts/test.sh tests/test_01_user_authenticate.py::test_login_works tests/test_02_get_user_devices.py::test_get_user_devices_works
 
 
 # Get the path to parent directory of this script.

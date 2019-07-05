@@ -4,13 +4,9 @@ from flask import Response
 from flask import request
 from flask import Blueprint, request
 
-from cloud_common.cc.google import env_vars
 from cloud_common.cc.google import datastore
-#debugrob:
-#
-#from .utils.env_variables import datastore_client
-#from .utils.env_variables import *
-#from .utils.response import success_response
+from .utils.response import success_response, error_response
+
 
 get_horticulture_daily_logs_bp = Blueprint('get_horticulture_daily_logs_bp',__name__)
 
@@ -44,12 +40,12 @@ def get_horticulture_daily_logs():
 
     """
     received_form_response = json.loads(request.data.decode('utf-8'))
-    device_uuid = received_form_response.get("device_uuid", None)
+    device_uuid = received_form_response.get("device_uuid")
 
     if device_uuid is None:
-        device_uuid = 'None'
+        return error_response()
 
-    query = datastore_client.query(kind='DailyHorticultureLog')
+    query = datastore.get_client().query(kind='DailyHorticultureLog')
     query.add_filter('device_uuid', '=', device_uuid)
     query_result = list(query.fetch())
     if len(query_result) == 0:

@@ -1,14 +1,12 @@
-from datetime import timezone
+import json
 from flask import Blueprint
 from flask import request
 
 from cloud_common.cc.google import env_vars
 from cloud_common.cc.google import datastore
-#debugrob:
-#
-#from .utils.database import get_device_notifications_from_DS
-#from .utils.env_variables import *
-#from .utils.response import success_response, error_response
+from cloud_common.cc.notifications.notification_data import NotificationData
+from .utils.response import success_response, error_response
+
 
 get_device_notifications_bp = Blueprint('get_device_notifications_bp',__name__)
 
@@ -26,7 +24,8 @@ def get_current_device_status():
     if device_uuid is None:
         return error_response()
 
-    notifications = get_device_notifications_from_DS(device_uuid)
+    nd = NotificationData()
+    notifications = nd.get_unacknowledged(device_uuid)
 
     result_json = {
         "notifications": notifications

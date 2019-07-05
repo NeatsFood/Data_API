@@ -14,8 +14,7 @@ env_variables:
   GCLOUD_PROJECT: openag-v1
   GCLOUD_DEV_REG: device-registry
   GCLOUD_DEV_EVENTS: device-events
-  GCLOUD_REGION: us-east1
-  GCLOUD_ZONE: us-east1-b
+  GCLOUD_REGION: us-central1
   GCLOUD_NOTIFICATIONS_TOPIC_SUBS: notifications
   BQ_DATASET: "openag_public_user_data"
   BQ_TABLE: "vals"

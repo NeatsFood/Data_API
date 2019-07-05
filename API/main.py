@@ -3,7 +3,6 @@ from flask_cors import CORS
 
 from blueprints import (
     apply_to_device, 
-    apply_recipe_to_device,
     get_current_recipe, 
     get_co2_details,
     get_current_stats, 
@@ -54,7 +53,6 @@ app.register_blueprint(upload_images.upload_images_bp)
 app.register_blueprint(get_user_info.get_user_info_bp)
 app.register_blueprint(get_device_images.get_device_images_bp)
 app.register_blueprint(get_current_recipe.get_current_recipe_bp)
-app.register_blueprint(apply_recipe_to_device.apply_recipe_to_device_bp)
 app.register_blueprint(save_user_profile_changes.save_user_profile_bp)
 app.register_blueprint(get_current_device_status.get_current_device_status_bp)
 app.register_blueprint(submit_horticulture_measurements.submit_horticulture_measurements_bp)
