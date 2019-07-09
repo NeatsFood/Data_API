@@ -19,7 +19,7 @@ def client():
     print(f'{__name__} client fixture')
     with main.app.app_context():
         # do more setup with the context?
-        main.init_db()
+        #main.init_db()
     """
     yield client
 

@@ -8,7 +8,18 @@ For these tests to all pass, we require:
 # Returns the result of the POST.
 def do_post(client, post_data_dict, URL):
     rv = client.post(URL, json=post_data_dict, follow_redirects=True)
-    print(f'{URL} result={rv.get_json()}')
+    print(f'{URL} POST result={rv.get_json()}')
     return rv.get_json()
+
+def do_form_post(client, post_data_dict, URL):
+    rv = client.post(URL, data=post_data_dict, follow_redirects=True,
+            content_type='multipart/form-data')
+    print(f'{URL} FORM POST result={rv.get_json()}')
+    return rv.get_json()
+
+def do_get(client, URL):
+    rv = client.get(URL, follow_redirects=True)
+    print(f'{URL} GET result={rv}')
+    return rv
 
 

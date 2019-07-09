@@ -5,6 +5,7 @@ from flask import Blueprint
 from flask import Response
 from flask import request
 
+from google.cloud import datastore as gcds
 from cloud_common.cc.google import datastore
 from cloud_common.cc.google import iot
 from .utils.response import success_response, error_response
@@ -15,7 +16,7 @@ from .utils.common import convert_UI_recipe_to_commands
 apply_to_device_bp = Blueprint('apply_to_device_bp',__name__)
 
 # ------------------------------------------------------------------------------
-# Save the device history.
+# Send a recipe to a device, and save the recipe state.
 @apply_to_device_bp.route('/api/apply_to_device/', methods=['GET', 'POST'])
 def apply_to_device():
     """Runs a recipe on a device.
@@ -33,12 +34,11 @@ def apply_to_device():
         device_uuid = received_form_response.get("device_uuid", None)
         recipe_uuid = received_form_response.get("recipe_uuid", None)
         user_token = received_form_response.get("user_token", None)
-        date_applied = datetime.now()
 
         # Using the session token get the user_uuid associated with it
         user_uuid = get_user_uuid_from_token(user_token)
-        if user_uuid is None:
-            return error_response(message="Invalid User: Unauthorized")
+        if user_uuid is None or device_uuid is None or recipe_uuid is None:
+            return error_response(message="Missing fields")
 
         # handle device SW version to recipe version here. can be None
         version = ''  # default of no version for older brains
@@ -65,42 +65,30 @@ def apply_to_device():
         # send the recipe to the device
         commands_list = convert_UI_recipe_to_commands(recipe_uuid, recipe_dict)
         iot.send_recipe_to_device_via_IoT(device_uuid, commands_list)
+
+        # TODO: should get this from the new DeviceData.runs list.
+
+        # Save the current state of the recipe that was started.
+        key = datastore.get_client().key('DeviceHistory')
+        apply_to_device_task = gcds.Entity(key, 
+                exclude_from_indexes=['recipe_state'])
+        recipe_session_token = str(uuid.uuid4())
+        date_applied = datetime.now()
+        apply_to_device_task.update({
+            'recipe_session_token': recipe_session_token,
+            'device_uuid': device_uuid,
+            'recipe_uuid': recipe_uuid,
+            'date_applied': date_applied,
+            'date_expires': date_applied + timedelta(days=100),
+            'user_uuid': user_uuid,
+            'recipe_state':str(recipe_dict)
+        })
+        datastore.get_client().put(apply_to_device_task)
+
         return success_response()
-    except:
-        return error_response(message="Nope!")
+    except(Exception) as e:
+        print(f'Error in apply_to_device {e}')
+        return error_response(message='Fail')
 
-    """debugrob, don't save this, it is not used
-    # Add the user to the users kind of entity
-    key = datastore.get_client().key('DeviceHistory')
-
-    # Indexes every other column except the description
-    apply_to_device_task = datastore.Entity(key, exclude_from_indexes=[])
-
-    if device_uuid is None or recipe_uuid is None or user_token is None:
-        return error_response(
-            message="Please make sure you have added values for all the fields"
-        )
-
-    recipe_session_token = str(uuid.uuid4())
-    apply_to_device_task.update({
-        'recipe_session_token': recipe_session_token,
-    # Used to track the recipe applied to the device and modifications made to it.
-        'device_uuid': device_uuid,
-        'recipe_uuid': recipe_uuid,
-        'date_applied': date_applied,
-        'date_expires': date_applied + timedelta(days=3000),
-        'user_uuid': user_uuid,
-        'recipe_state':str(recipe_dict)
-    })
-
-    datastore.get_client().put(apply_to_device_task)
-    if apply_to_device_task.key:
-        return success_response()
-
-    else:
-        return error_response(
-            message="Sorry something failed. Womp womp!"
-        )
-    """
 
 

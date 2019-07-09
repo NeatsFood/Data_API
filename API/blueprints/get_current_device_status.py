@@ -1,15 +1,12 @@
+import json
 import pytz
+from datetime import datetime
 from flask import Blueprint
 from flask import request
 
-from cloud_common.cc.google import env_vars
 from cloud_common.cc.google import datastore
-#debugrob:
-#
-#from .utils.database import get_device_data_from_DS
-#from .utils.env_variables import *
-#from .utils.response import success_response
-#from datetime import timezone
+from .utils.response import success_response, error_response
+
 
 get_current_device_status_bp = Blueprint('get_current_device_status_bp',__name__)
 
@@ -32,10 +29,13 @@ def get_current_device_status():
     device_uuid = received_form_response.get("device_uuid", None)
 
     if device_uuid is None:
+        return error_response()
         device_uuid = 'None'
 
-    device_data = get_device_data_from_DS(device_uuid)
-    query = datastore_client.query(kind='DeviceHistory',
+    device_data = datastore.get_device_data_from_DS(device_uuid)
+
+    # TODO: should get this from the new DeviceData.runs list.
+    query = datastore.get_client().query(kind='DeviceHistory',
                                    order=['-date_applied'])
     query.add_filter('device_uuid', '=', device_uuid)
     query_result = list(query.fetch(1))
@@ -45,7 +45,7 @@ def get_current_device_status():
         )
 
     current_recipe = query_result[0]
-    days,runtime = get_runtime_description(current_recipe['date_applied'])
+    days, runtime = get_runtime_description(current_recipe['date_applied'])
 
     result_json = {
         "progress":0.0,

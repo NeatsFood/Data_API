@@ -1,12 +1,9 @@
 from flask import Blueprint, request
 
-from cloud_common.cc.google import env_vars
 from cloud_common.cc.google import datastore
-#debugrob:
-# from . import utils
-#from .utils.env_variables import datastore_client
-#from .utils.auth import get_user_uuid_from_token
-#from .utils.response import success_response, error_response
+from .utils.auth import get_user_uuid_from_token
+from .utils.response import success_response, error_response
+
 
 get_device_images_bp = Blueprint('get_device_images_bp', __name__)
 
@@ -37,7 +34,7 @@ def get_device_images():
     # Sort by date descending and take the first 50
     # This is equivalent to taking the most recent 50 images
     # Then, reverse the order so it's chronological
-    image_query = datastore_client.query(kind="Images",
+    image_query = datastore.get_client().query(kind="Images",
                                          order=['-creation_date'])
     image_query.add_filter('device_uuid', '=', device_uuid)
     images = list(image_query.fetch(100))[::-1]

@@ -8,10 +8,9 @@ from google.cloud import datastore as gcds
 from cloud_common.cc.google import datastore
 from .utils.response import success_response, error_response
 from .utils.auth import get_user_uuid_from_token
-#debugrob: 
+
 
 daily_horticulture_measurements_bp = Blueprint('daily_horticulture_measurements_bp', __name__)
-
 
 @daily_horticulture_measurements_bp.route('/api/daily_horticulture_measurements/', methods=['GET', 'POST'])
 def save_recipe():

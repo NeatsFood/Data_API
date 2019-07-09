@@ -5,8 +5,6 @@ from cloud_common.cc.google import datastore
 from .utils.auth import get_user_uuid_from_token
 from .utils.response import success_response, error_response
 
-#debugrob:
-#from cloud_common.cc.google import env_vars
 
 get_user_info_bp = Blueprint('get_user_info_bp', __name__)
 

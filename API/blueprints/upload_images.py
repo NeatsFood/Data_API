@@ -2,13 +2,11 @@ import json
 import time
 from flask import Blueprint, request
 
-from cloud_common.cc.google import env_vars
 from cloud_common.cc.google import datastore
-#debugrob:
-#
-#from .utils.env_variables import storage_client, datastore_client
-#from .utils.response import success_response, error_response
-#from .utils.auth import get_user_uuid_from_token
+from cloud_common.cc.google import storage
+from .utils.response import success_response, error_response
+from .utils.auth import get_user_uuid_from_token
+
 
 ALLOWED_EXTENSIONS = set(['jpg', 'jpeg', 'png'])
 def is_allowed(filename):
@@ -70,16 +68,19 @@ def upload_images():
     )
 
 def upload_file(file_stream, filename, content_type, bucket):
-    bucket = storage_client.bucket(bucket)
+    bucket = storage.storage_client.bucket(bucket)
     blob = bucket.blob(filename)
     blob.upload_from_string(file_stream, content_type=content_type)
     blob.make_public()
     return blob.public_url
 
 def set_profile_picture(user_uuid, picture_url):
-    query = datastore_client.query(kind='Users')
+    query = datastore.get_client().query(kind='Users')
     query.add_filter('user_uuid', '=', user_uuid)
     user = list(query.fetch(1))[0]
 
     user['profile_image'] = picture_url
-    datastore_client.put(user)
+    datastore.get_client().put(user)
+
+
+

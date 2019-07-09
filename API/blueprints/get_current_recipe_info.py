@@ -3,13 +3,10 @@ import pytz
 from datetime import datetime
 from flask import Blueprint, request
 
-from cloud_common.cc.google import env_vars
 from cloud_common.cc.google import datastore
-#debugrob:
-#
-#from .utils.env_variables import datastore_client
-#from .utils.response import success_response, error_response
-#from .utils.auth import get_user_uuid_from_token
+from .utils.response import success_response, error_response
+from .utils.auth import get_user_uuid_from_token
+
 
 get_current_recipe_info_bp = Blueprint('get_current_recipe_info_bp', __name__)
 
@@ -38,7 +35,8 @@ def get_current_recipe_info():
             message='Invalid token. Unauthorized.'
         )
 
-    query = datastore_client.query(kind='DeviceHistory',
+    # TODO: should get this from the new DeviceData.runs list.
+    query = datastore.get_client().query(kind='DeviceHistory',
                                    order=['-date_applied'])
     query.add_filter('device_uuid', '=', device_uuid)
     query_result = list(query.fetch(1))
@@ -54,8 +52,7 @@ def get_current_recipe_info():
 
     if plant_type is None:
         return error_response(
-            message='Error. Server data corruped. Queried recipe doesn\'t'
-                    ' exist.'
+            message='DeviceHistory is invalid.'
         )
 
     return success_response(
@@ -64,6 +61,7 @@ def get_current_recipe_info():
         plant_type=plant_type,
         recipe_uuid=current_recipe['recipe_uuid']
     )
+
 
 def get_runtime_description(date_applied):
     """Returns recipe runtime in human readable form"""
@@ -109,7 +107,7 @@ def number_noun_agreement(number, word):
     return ''
 
 def get_recipe_plant_type(recipe_uuid):
-    recipe_query = datastore_client.query(kind='Recipes')
+    recipe_query = datastore.get_client().query(kind='Recipes')
     recipe_query.add_filter('recipe_uuid', '=', recipe_uuid)
     result = list(recipe_query.fetch(1))
     if not result:

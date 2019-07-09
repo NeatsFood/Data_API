@@ -1,14 +1,11 @@
+import json
 from flask import Blueprint
 from flask import request
 
-from cloud_common.cc.google import env_vars
 from cloud_common.cc.google import datastore
-#debugrob:
-#
-#from .utils.auth import get_user_uuid_from_token
-#from .utils.env_variables import *
-#from .utils.response import success_response, error_response
-#from . import utils
+from .utils.response import success_response, error_response
+from .utils.auth import get_user_uuid_from_token
+
 
 get_all_recipes_bp = Blueprint('get_all_recipes', __name__)
 
@@ -76,7 +73,7 @@ def get_all_recipes():
         )
 
     #Get all user devices
-    query = datastore_client.query(kind='Devices')
+    query = datastore.get_client().query(kind='Devices')
     query.add_filter('user_uuid', '=', user_uuid)
     query_result = list(query.fetch())
     results = list(query_result)
@@ -100,11 +97,11 @@ def get_all_recipes():
             devices_array.append(result_json)
 
 
-    recipe_query = datastore_client.query(kind='Recipes')
+    recipe_query = datastore.get_client().query(kind='Recipes')
     query_result = list(recipe_query.fetch())
     results = list(query_result)
 
-    user = utils.datastore.get_one(
+    user = datastore.get_one_from_DS(
         kind='Users', key='user_uuid', value=user_uuid
     )
     saved_recipes = user.get('saved_recipes', [])

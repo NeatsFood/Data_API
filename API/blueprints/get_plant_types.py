@@ -1,11 +1,8 @@
 from flask import Blueprint
 
-from cloud_common.cc.google import env_vars
 from cloud_common.cc.google import datastore
-#debugrob:
-#
-#from .utils.env_variables import *
-#from .utils.response import success_response
+from .utils.response import success_response
+
 
 get_plant_types_bp = Blueprint('get_plant_types_bp', __name__)
 
@@ -35,7 +32,7 @@ def get_plant_types():
         }
 
     """
-    query = datastore_client.query(kind='Plants')
+    query = datastore.get_client().query(kind='Plants')
     query_result = list(query.fetch())
     results = list(query_result)
 

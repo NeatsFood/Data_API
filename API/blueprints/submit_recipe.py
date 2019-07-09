@@ -1,17 +1,17 @@
 import ast
 import uuid
+import json
 from datetime import datetime, timedelta
 from flask import Blueprint
 from flask import request
 
-from cloud_common.cc.google import env_vars
+from google.cloud import datastore as gcds
 from cloud_common.cc.google import datastore
-#debugrob:
-#
-#from google.cloud import datastore
-#from .utils.auth import get_user_uuid_from_token
-#from .utils.env_variables import *
-#from .utils.response import success_response, error_response
+from cloud_common.cc.google import iot
+from .utils.common import convert_UI_recipe_to_commands
+from .utils.auth import get_user_uuid_from_token
+from .utils.response import success_response, error_response
+
 
 submit_recipe_bp = Blueprint('submit_recipe', __name__)
 
@@ -59,10 +59,17 @@ def submit_recipe():
     device_uuid = received_form_response.get("device_uuid", "")
     image_url = received_form_response.get("image_url", "")
 
-    user_details_query = datastore_client.query(kind='Users')
+    if device_uuid is None or user_token is None:
+        return error_response(
+            message="Please make sure you have added values for all the fields"
+        )
 
-    key = datastore_client.key('Recipes')
-    recipe_reg_task = datastore.Entity(key, exclude_from_indexes=["recipe"])
+    #debugrob: this whole thing is fragile, it should be replaced with my new form based editor that is in the sciUI now - it uses a json schema to validate the recipe.
+
+    user_details_query = datastore.get_client().query(kind='Users')
+
+    key = datastore.get_client().key('Recipes')
+    recipe_reg_task = gcds.Entity(key, exclude_from_indexes=["recipe"])
 
     # debugrob, this is also used in submit_recipe_change.py, put in common class!
     # Get user uuid associated with this sesssion token
@@ -79,8 +86,8 @@ def submit_recipe():
         user_name = user_results[0]["username"]
         email_address = user_results[0]["email_address"]
 
-    query = datastore_client.query(kind='RecipeFormat')
-    query.add_filter("device_type", '=', recipe_state.get("device_type_caret", ""))
+    query = datastore.get_client().query(kind='RecipeFormat')
+    query.add_filter("device_type", '=', "PFC_EDU")
     query_result = list(query.fetch())
     recipe_format = {}
     if len(query_result) > 0:
@@ -196,19 +203,11 @@ def submit_recipe():
         "format": query_result[0]["format_name"],
         "image_url": image_url
     })
+    datastore.get_client().put(recipe_reg_task)
 
-    datastore_client.put(recipe_reg_task)
-
-    # Add the user to the users kind of entity
-    key = datastore_client.key('DeviceHistory')
-
-    # Indexes every other column except the description
-    apply_to_device_task = datastore.Entity(key, exclude_from_indexes=['recipe_state'])
-
-    if device_uuid is None or current_recipe_uuid is None or user_token is None:
-        return error_response(
-            message="Please make sure you have added values for all the fields"
-        )
+    # TODO: should get this from the new DeviceData.runs list.
+    key = datastore.get_client().key('DeviceHistory')
+    apply_to_device_task = gcds.Entity(key, exclude_from_indexes=['recipe_state'])
 
     date_applied = datetime.now()
     apply_to_device_task.update({
@@ -221,12 +220,12 @@ def submit_recipe():
         "recipe_state": str(recipe_format)
     })
 
-    datastore_client.put(apply_to_device_task)
+    datastore.get_client().put(apply_to_device_task)
 
     # convert the values in the dict into what the Jbrain expects
     commands_list = convert_UI_recipe_to_commands(current_recipe_uuid, 
             recipe_format)
-    send_recipe_to_device_via_IoT(iot_client, device_uuid, commands_list)
+    iot.send_recipe_to_device_via_IoT(device_uuid, commands_list)
 
     return success_response(
         message="Successfully applied"

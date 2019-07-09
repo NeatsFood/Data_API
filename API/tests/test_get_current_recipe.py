@@ -4,19 +4,17 @@ from global_vars import global_vars # global vars used in tests
 import common
 
 
-"""
 #------------------------------------------------------------------------------
-# test debugrob blueprint
-def test_debugrob_works(client):
-    data = {"user_token": global_vars.user_token}   # for user testman
-    URL = '/api/debugrob/'
+# test get_current_recipe blueprint
+def test_get_current_recipe_works(client):
+    data = {"selected_device_uuid": global_vars.ACE4_device_uuid}   
+    URL = '/api/get_current_recipe/'
     rv = common.do_post(client, data, URL)
     assert 200 == rv['response_code']
 
-def test_debugrob_fails(client):
+def test_get_current_recipe_fails(client):
     data = {} # no data so it should fail
-    URL = '/api/debugrob/'
+    URL = '/api/get_current_recipe/'
     rv = common.do_post(client, data, URL)
     assert 500 == rv['response_code']
 
-"""
