@@ -15,3 +15,7 @@ make clean html
 
 # this is ugly!
 #make clean markdown
+
+echo ""
+echo "After you are happy with how the HTML docs look, please use your browser to save them to a PDF file and check it into the top level docs directory."
+echo "Then update the top level README.md to reference the latest PDF."
