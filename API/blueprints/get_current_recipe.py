@@ -10,12 +10,14 @@ from .utils.response import success_response, error_response
 
 get_current_recipe_bp = Blueprint('get_current_recipe', __name__)
 
-@get_current_recipe_bp.route('/api/get_current_recipe/', methods=['GET', 'POST'])
+@get_current_recipe_bp.route('/api/get_current_recipe/', methods=['POST'])
 def get_current_recipe():
-    """Get device status
+    """Get current recipe running on device.
 
-        .. :quickref: Recipe; Get current recipe on device
+        .. :quickref: Recipe; Get current recipe
 
+    :reqheader Accept: application/json
+    :<json string user_token: User Token returned from the /login API.
     :<json string selected_device_uuid: UUID of device
 
     **Example Response**:
@@ -72,7 +74,12 @@ def get_current_recipe():
 
     """
     received_form_response = json.loads(request.data.decode('utf-8'))
+    user_token = received_form_response.get("user_token")
     device_uuid = received_form_response.get("selected_device_uuid", None)
+    if user_token is None or device_uuid is None:
+        return error_response(
+            message="Access denied."
+        )
 
     # TODO: should get this from the new DeviceData.runs list.
     query = datastore.get_client().query(kind='DeviceHistory',

@@ -10,13 +10,14 @@ from cloud_common.cc.google.database import get_temp_and_humidity_history
 get_temp_details_bp = Blueprint('get_temp_details_bp',__name__)
 
 # ------------------------------------------------------------------------------
-@get_temp_details_bp.route('/api/get_temp_details/', methods=['GET', 'POST'])
+@get_temp_details_bp.route('/api/get_temp_details/', methods=['POST'])
 def get_temp_details():
-    """Get historical temperature (and humidity) data.
+    """Get historical temperature (and humidity) time series data.
 
-        .. :quickref: Sensor Data; Temp/RH time series data.
+        .. :quickref: Sensor Data; Temp/RH data
 
         :reqheader Accept: application/json
+        :<json string user_token: User Token returned from the /login API.
         :<json string selected_device_uuid: Device UUID to get the Temp/RH data for
 
         **Example response**:
@@ -35,12 +36,14 @@ def get_temp_details():
                 "response_code": 200
               }
 
-        """
+    """
     received_form_response = json.loads(request.data.decode('utf-8'))
+    user_token = received_form_response.get("user_token")
     device_uuid = received_form_response.get("selected_device_uuid", None)
-
-    if device_uuid is None:
-        return error_response(message='missing args')
+    if user_token is None or device_uuid is None:
+        return error_response(
+            message="Access denied."
+        )
 
     result_json = get_temp_and_humidity_history(device_uuid)
     return success_response(

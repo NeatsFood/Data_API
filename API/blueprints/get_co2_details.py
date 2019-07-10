@@ -11,13 +11,14 @@ from .utils.response import success_response, error_response
 get_co2_details_bp = Blueprint('get_co2_details_bp',__name__)
 
 #------------------------------------------------------------------------------
-@get_co2_details_bp.route('/api/get_co2_details/', methods=['GET', 'POST'])
+@get_co2_details_bp.route('/api/get_co2_details/', methods=['POST'])
 def get_co2_details():
-    """Get historical CO2 data.
+    """Return a time series of historical co2 data.
 
-    .. :quickref: Sensor Data; If there is co2 data in the 'datastore' return that, otherwise get the last 30 days from BigQuery.
+    .. :quickref: Sensor Data; CO2 data
 
     :reqheader Accept: application/json
+    :<json string user_token: User Token returned from the /login API.
     :<json string selected_device_uuid: Device UUID to get the CO2 data for
 
     **Example response**:
@@ -34,10 +35,12 @@ def get_co2_details():
 
     """
     received_form_response = json.loads(request.data.decode('utf-8'))
+    user_token = received_form_response.get("user_token")
     device_uuid = received_form_response.get("selected_device_uuid", None)
-
-    if device_uuid is None:
-        return error_response(message="missing arguments")
+    if device_uuid is None or user_token is None:
+        return error_response(
+            message="Access denied."
+        )
 
     results = get_co2_history( device_uuid )
 

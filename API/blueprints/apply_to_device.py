@@ -17,16 +17,25 @@ apply_to_device_bp = Blueprint('apply_to_device_bp',__name__)
 
 # ------------------------------------------------------------------------------
 # Send a recipe to a device, and save the recipe state.
-@apply_to_device_bp.route('/api/apply_to_device/', methods=['GET', 'POST'])
+@apply_to_device_bp.route('/api/apply_to_device/', methods=['POST'])
 def apply_to_device():
-    """Runs a recipe on a device.
+    """Run a recipe on a device.
 
-    .. :quickref: Recipe; Apply a recipe to a device by UUID
+    .. :quickref: Recipe; Run recipe, run
 
     :reqheader Accept: application/json
-    :<json string user_token: User Token
+    :<json string user_token: User Token returned from the /login API.
     :<json string device_uuid: UUID of device to apply recipe to
     :<json string recipe_uuid: UUID of recipe to run
+
+    **Example response**:
+
+        .. sourcecode:: json
+
+          {
+            "response_code": 200
+          }
+
     """
     try:
         received_form_response = json.loads(request.data.decode('utf-8'))

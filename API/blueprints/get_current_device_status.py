@@ -18,19 +18,37 @@ def convert_timedelta(duration):
     return hours, minutes, seconds
 
 #------------------------------------------------------------------------------
-@get_current_device_status_bp.route('/api/get_current_device_status/', methods=['GET', 'POST'])
+@get_current_device_status_bp.route('/api/get_current_device_status/', methods=['POST'])
 def get_current_device_status():
-    """Get device status
+    """Get the current status of a device.
 
-    .. :quickref: Device; Get current device status
+    .. :quickref: Device; Get device status
+
+    :reqheader Accept: application/json
+    :<json string user_token: User Token returned from the /login API.
+    :<json string device_uuid: UUID of device to apply recipe to
+
+    **Example response**:
+
+        .. sourcecode:: json
+
+          {
+            "progress": 0.0,
+            "age_in_days": 0,
+            "wifi_status": "N/A for this device",
+            "current_temp": "N/A for this device",
+            "runtime": 0,
+            "response_code": 200
+          }
 
     """
     received_form_response = json.loads(request.data.decode('utf-8'))
+    user_token = received_form_response.get("user_token")
     device_uuid = received_form_response.get("device_uuid", None)
-
-    if device_uuid is None:
-        return error_response()
-        device_uuid = 'None'
+    if user_token is None or device_uuid is None:
+        return error_response(
+            message="Access denied."
+        )
 
     device_data = datastore.get_device_data_from_DS(device_uuid)
 
@@ -48,10 +66,11 @@ def get_current_device_status():
     days, runtime = get_runtime_description(current_recipe['date_applied'])
 
     result_json = {
-        "progress":0.0,
-        "age_in_days":0,
-        "wifi_status":"N/A for this device",
-        "current_temp":"N/A for this device"
+        "progress": 0.0,
+        "age_in_days": 0,
+        "wifi_status": "N/A for this device",
+        "current_temp": "N/A for this device",
+        "runtime": 0
     }
     if device_data is not None:
         timestamp = device_data.get("timestamp") # .decode()

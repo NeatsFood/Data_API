@@ -7,7 +7,8 @@ import common
 #------------------------------------------------------------------------------
 # test get_current_recipe blueprint
 def test_get_current_recipe_works(client):
-    data = {"selected_device_uuid": global_vars.ACE4_device_uuid}   
+    data = {"selected_device_uuid": global_vars.ACE4_device_uuid,
+            "user_token": global_vars.user_token}   
     URL = '/api/get_current_recipe/'
     rv = common.do_post(client, data, URL)
     assert 200 == rv['response_code']

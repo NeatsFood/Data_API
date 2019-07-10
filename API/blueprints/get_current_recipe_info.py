@@ -13,12 +13,25 @@ get_current_recipe_info_bp = Blueprint('get_current_recipe_info_bp', __name__)
 @get_current_recipe_info_bp.route('/api/get_current_recipe_info/',
                             methods=['POST'])
 def get_current_recipe_info():
-    """Get recipe info
+    """Get status of the current recipe running on device.
 
-        .. :quickref: Recipe; Get status of the current recipe on device
+        .. :quickref: Recipe; Status
 
-    :<json string user_token: User Token
+    :reqheader Accept: application/json
+    :<json string user_token: User Token returned from the /login API.
     :<json string selected_device_uuid: UUID of device
+
+    **Example response**:
+
+        .. sourcecode:: json
+
+          {
+            "expired": "True",
+            "runtime": 4,
+            "plant_type": "Basil",
+            "recipe_uuid": "uuid",
+            "response_code": 200 
+          }
     """
     data = request.get_json()
     user_token = data.get('user_token')

@@ -13,12 +13,26 @@ from .utils.auth import get_user_uuid_from_token
 register_bp = Blueprint('register_bp',__name__)
 
 # ------------------------------------------------------------------------------
-@register_bp.route('/api/register/', methods=['GET', 'POST'])
+@register_bp.route('/api/register/', methods=['POST'])
 def register():
-    """TODO: Fill in Documentation
+    """Register a Food Computer and associate it with a user account.
 
-    .. :quickref: UNDOCUMENTED;
+    .. :quickref: Device; Register device
 
+    :reqheader Accept: application/json
+    :<json string user_token: User Token, to associate this device with
+    :<json string device_name: User specified name for the device ('mine!')
+    :<json string device_reg_no: Key from the device registration process
+    :<json string device_notes: User specified notes about the device ('blue')
+    :<json string device_type: PFC_EDU, FS, etc.
+
+    **Example response**:
+
+        .. sourcecode:: json
+
+          {
+            "response_code": 200 
+          }
     """
     received_form_response = json.loads(request.data.decode('utf-8'))
     print('register API received_form_response={}'.format(received_form_response))
@@ -93,5 +107,5 @@ def register():
 
     else:
         return error_response(
-            message="Sorry something failed. Womp womp!"
+            message="Sorry there was an error."
         )

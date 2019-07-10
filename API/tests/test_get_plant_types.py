@@ -7,7 +7,7 @@ import common
 #------------------------------------------------------------------------------
 # test get_plant_types blueprint
 def test_get_plant_types_works(client):
-    data = {}
+    data = {"user_token": global_vars.user_token}
     URL = '/api/get_plant_types/'
     rv = common.do_post(client, data, URL)
     assert 200 == rv['response_code']

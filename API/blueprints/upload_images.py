@@ -25,10 +25,24 @@ GOOGLE_CLOUD_STORAGE_BUCKETS = {
 }
 @upload_images_bp.route('/api/upload_images/', methods=['POST'])
 def upload_images():
-    """TODO: Fill in Documentation
+    """Upload an image for use in the user profile and recipe.
 
-    .. :quickref: UNDOCUMENTED;
+    .. :quickref: Utility; Upload an image
 
+    :reqheader Accept: multipart/form-data
+    :<json string file: Form posted base64 encoded binary file
+    :<json string type: 'user' or 'recipe'
+    :<json string user_token: User Token returned from the /login API.
+
+    **Example response**:
+
+        .. sourcecode:: json
+
+          {
+            "url": "public URL of the uploaded image",
+            "message": "done",
+            "response_code": 200
+          }
     """
     image = request.files.get('file')
     if not image:

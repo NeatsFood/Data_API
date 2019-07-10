@@ -46,12 +46,25 @@ def get_existing_recipes(recipe_key):
 
 # ------------------------------------------------------------------------------
 # Handle Change to a recipe running on a device
-@submit_recipe_change_bp.route('/api/submit_recipe_change/', methods=['GET', 'POST'])
+@submit_recipe_change_bp.route('/api/submit_recipe_change/', methods=['POST'])
 def submit_recipe_change():
-    """TODO: Fill in Documentation
+    """Convert the users recipe selections into a properly formatted recipe to be saved and sent to the specified device.  Not currently used.
 
-    .. :quickref: UNDOCUMENTED;
+    .. :quickref: Recipe; Save recipe
 
+    :reqheader Accept: application/json
+    :<json string user_token: User's Token.
+    :<json string device_uuid: User's device.
+    :<json string recipe_state: JSON recipe options.
+
+    **Example response**:
+
+        .. sourcecode:: json
+
+          {
+            "message": "yay",
+            "response_code": 200
+          }
     """
     received_form_response = json.loads(request.data.decode('utf-8'))
     recipe_state = received_form_response.get("recipe_state", {})

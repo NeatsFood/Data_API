@@ -7,7 +7,7 @@ import common
 # test get_user_devices blueprint
 
 def test_get_user_devices_works(client):
-    data = { "user_token": global_vars.user_token } 
+    data = {"user_token": global_vars.user_token} 
     URL = '/api/get_user_devices/'
     rv = common.do_post(client, data, URL)
     assert 200 == rv['response_code']

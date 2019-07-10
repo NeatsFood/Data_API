@@ -12,11 +12,25 @@ from .utils.response import (success_response, error_response)
 submit_horticulture_measurements_bp = Blueprint('submit_horticulture_measurements', __name__)
 
 @submit_horticulture_measurements_bp.route('/api/submit_horticulture_measurements/', methods=['POST'])
-def submit_access_code():
-    """TODO: Fill in Documentation
+def submit_horticulture_measurements():
+    """Save horticulture measurements from a device.
 
-    .. :quickref: UNDOCUMENTED;
+    .. :quickref: Horticulture; Save horticulture measurements
 
+    :reqheader Accept: application/json
+    :<json string user_token: User Token returned from the /login API.
+    :<json string device_uuid: Device UUID in which plant was measured
+    :<json string leaves_count: Leaf count
+    :<json string plant_height: Plant height in cm
+
+    **Example response**:
+
+        .. sourcecode:: json
+
+          {
+            "message": "Measurements saved.",
+            "response_code": 200
+          }
     """
     received_form_response = json.loads(request.data.decode('utf-8'))
     user_token = received_form_response.get('user_token')

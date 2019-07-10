@@ -12,10 +12,27 @@ save_user_profile_bp = Blueprint('save_user_profile_bp', __name__)
 
 @save_user_profile_bp.route('/api/save_user_profile_changes/', methods=['POST'])
 def save_user_profile_changes():
-    """TODO: Fill in Documentation
+    """Update the users' profile information.
 
-    .. :quickref: UNDOCUMENTED;
+    .. :quickref: User; Update profile 
 
+    :reqheader Accept: application/json
+    :<json string user_token: User Token returned from the /login API.
+    :<json string email_address: Users email address
+    :<json string username: Users username (and login name)
+    :<json string organization: The organizaion the user is associated with
+
+    **Example response**:
+
+        .. sourcecode:: json
+
+          {
+            "profile_image": "previously saved profile image",
+            "username": "saved name",
+            "email_address": "saved email address",
+            "organization": "saved organization",
+            "response_code": 200
+          }
     """
     received_form_response = request.get_json()
 

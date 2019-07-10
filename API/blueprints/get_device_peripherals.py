@@ -9,12 +9,14 @@ from .utils.response import success_response, error_response
 
 get_device_peripherals_bp = Blueprint('get_device_peripherals_bp',__name__)
 
-@get_device_peripherals_bp.route('/api/get_device_peripherals/',methods=['GET', 'POST'])
+@get_device_peripherals_bp.route('/api/get_device_peripherals/',methods=['POST'])
 def get_device_peripherals():
-    """Get peripherals for device
+    """Get peripherals. Used for recipe editor.
 
-    .. :quickref: Device; Get peripherals. Is this used?!
+    .. :quickref: Recipe; Get peripherals
 
+    :reqheader Accept: application/json
+    :<json string user_token: User Token returned from the /login API.
     :<json string selected_peripherals: Comma separated list of peripheral UUIDs
 
     **Example Response**:
@@ -27,15 +29,20 @@ def get_device_peripherals():
             "sensor_name": "Sensor Name",
             "type": "Sensor Type",
             "color": "#FFAA00",
-            "inputs": "inputs?"
+            "inputs": "inputs"
           }]
         }
 
     """
     received_form_response = json.loads(request.data.decode('utf-8'))
-    peripherals_string = received_form_response.get("selected_peripherals","")
-    peripheral_details = []
+    user_token = received_form_response.get("user_token")
+    peripherals_string = received_form_response.get("selected_peripherals")
+    if user_token is None or peripherals_string is None:
+        return error_response(
+            message="Access denied."
+        )
 
+    peripheral_details = []
     peripherals_array = peripherals_string.split(",")
 
     for peripheral in peripherals_array:

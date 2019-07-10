@@ -12,13 +12,14 @@ from .utils.auth import get_user_uuid_from_token
 
 daily_horticulture_measurements_bp = Blueprint('daily_horticulture_measurements_bp', __name__)
 
-@daily_horticulture_measurements_bp.route('/api/daily_horticulture_measurements/', methods=['GET', 'POST'])
-def save_recipe():
-    """save daily horticulture log.
+@daily_horticulture_measurements_bp.route('/api/daily_horticulture_measurements/', methods=['POST'])
+def save_horticulture_measurements():
+    """Save horitculture measurements for a device.
 
-    .. :quickref: Horticulture logs; Save horitculture measurements for a device
+    .. :quickref: Horticulture; Save horitculture measurements
 
     :reqheader Accept: application/json
+    :<json string user_token: User Token returned from the /login API.
     :<json string device_uuid: Device UUID
     :<json string plant_height: plant_height
     :<json string leaf_count: leaf_count
@@ -29,9 +30,18 @@ def save_recipe():
     :<json string horticulture_notes: horticulture_notes
     :<json string submission_name: submission_name
 
+    **Example response**:
+
+        .. sourcecode:: json
+
+          {
+            "response_code": 200
+          }
+
     """
     received_form_json = json.loads(request.data.decode('utf-8'))
-    device_uuid = received_form_json.get("device_uuid", None)
+    user_token = received_form_json.get("user_token")
+    device_uuid = received_form_json.get("device_uuid")
     plant_height = received_form_json.get("plant_height", "")
     leaf_count = received_form_json.get("leaf_count", "")
     leaf_colors = received_form_json.get("leaf_colors", "")
@@ -40,10 +50,10 @@ def save_recipe():
     root_colors = received_form_json.get("root_colors", "")
     horticulture_notes = received_form_json.get("horticulture_notes", "")
     submission_name = received_form_json.get("submission_name", "")
-    print(received_form_json)
+    #print(received_form_json)
     if device_uuid is None:
         return error_response(
-            message="Please make sure you have added values for all the fields"
+            message="Access denied."
         )
 
     # Add the user to the users kind of entity

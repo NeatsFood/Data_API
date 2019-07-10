@@ -13,6 +13,14 @@ viewimage_bp = Blueprint('viewimage_bp', __name__)
 
 @viewimage_bp.route("/viewImage/<imageData>", methods=['GET'])
 def viewimage(imageData):
+    """Generate a small image page for tweeting.  Returns HTML.
+
+    .. :quickref: Utility; Generate tweet
+
+    :reqheader Accept: application/json
+    :<json string i: Image URL to show in the tweet.
+    :<json string t: Text to display in the tweet.
+    """
     imageDataString = base64.b64decode(imageData)
     imageObject = json.loads(imageDataString.decode('utf-8'))
     filename = imageObject['i'].split('/')[-1]

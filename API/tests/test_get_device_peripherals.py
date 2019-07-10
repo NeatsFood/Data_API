@@ -9,6 +9,12 @@ import common
 
 #------------------------------------------------------------------------------
 # test get_device_peripherals blueprint
+def test_get_device_peripherals_should_fail(client):
+    data = {"user_token": global_vars.user_token} 
+    URL = '/api/get_device_peripherals/'
+    rv = common.do_post(client, data, URL)
+    assert 500 == rv['response_code']
+
 def test_get_device_peripherals_no_peripherals(client):
     data = {} # no data 
     URL = '/api/get_device_peripherals/'
@@ -16,7 +22,8 @@ def test_get_device_peripherals_no_peripherals(client):
     assert 500 == rv['response_code']
 
 def test_get_device_peripherals_fails(client):
-    data = {"selected_peripherals": "bad_peripheral_uuid"} # bad data 
+    data = {"selected_peripherals": "bad_peripheral_uuid", # bad data 
+            "user_token": global_vars.user_token}
     URL = '/api/get_device_peripherals/'
     rv = common.do_post(client, data, URL)
     assert 500 == rv['response_code']

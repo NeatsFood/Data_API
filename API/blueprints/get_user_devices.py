@@ -11,13 +11,14 @@ from .utils.auth import get_user_uuid_from_token
 
 get_user_devices_bp = Blueprint('get_user_devices_bp',__name__)
 
-@get_user_devices_bp.route('/api/get_user_devices/', methods=['GET', 'POST'])
+@get_user_devices_bp.route('/api/get_user_devices/', methods=['POST'])
 def get_user_devices():
-    """Get Devices associated with a user
+    """Get all devices associated with a user account.
 
     .. :quickref: User; Get user's devices
 
-    :<json string user_token: User Token
+    :reqheader Accept: multipart/form-data
+    :<json string user_token: User Token returned from the /login API.
 
     **Example Response**:
 

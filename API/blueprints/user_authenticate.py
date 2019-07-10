@@ -12,12 +12,25 @@ from cloud_common.cc.google import datastore
 
 user_authenticate = Blueprint('user_authenticate', __name__)
 
-@user_authenticate.route('/api/signup/', methods=['GET', 'POST'])
+@user_authenticate.route('/api/signup/', methods=['POST'])
 def signup():
-    """TODO: Fill in Documentation
+    """Create a user account.
 
-    .. :quickref: UNDOCUMENTED;
+    .. :quickref: Authentication; Create account
 
+    :reqheader Accept: application/json
+    :<json string username: Users login name
+    :<json string email_address: Users email address
+    :<json string password: Users password
+    :<json string organization: Users organization (self chosen)
+
+    **Example response**:
+
+        .. sourcecode:: json
+
+          {
+            "response_code": 200
+          }
     """
     received_form_response = json.loads(request.data.decode('utf-8'))
     username = received_form_response.get("username")
@@ -51,12 +64,27 @@ def signup():
         )
 
 
-@user_authenticate.route('/login/', methods=['GET', 'POST'])
+@user_authenticate.route('/login/', methods=['POST'])
 def login():
-    """TODO: Fill in Documentation
+    """Log a user into this API, returns a session token.
 
-    .. :quickref: UNDOCUMENTED;
+    .. :quickref: Authentication; Log in
 
+    :reqheader Accept: application/json
+    :<json string username: Users username (from the /api/signup API call)
+    :<json string password: Users password (from the /api/signup API call)
+
+    **Example response**:
+
+        .. sourcecode:: json
+
+          {
+            "user_uuid": "Users UUID from the registration process",
+            "user_token": "token string",
+            "is_admin": False
+            "message": "Login Successful"
+            "response_code": 200
+          }
     """
     received_form_response = json.loads(request.data.decode('utf-8'))
 

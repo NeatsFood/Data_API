@@ -11,10 +11,20 @@ get_device_images_bp = Blueprint('get_device_images_bp', __name__)
 def get_device_images():
     """Returns all images associated with device.
 
-    .. :quickref: Sensor Data; Get all images associated with a device
+    .. :quickref: Sensor Data; Image list
 
-    :form user_token: User Token
-    :form device_uuid: Device UUID
+    :reqheader Accept: application/json
+    :<json string user_token: User Token returned from the /login API.
+    :<json string device_uuid: Device UUID
+
+    **Example response**:
+
+        .. sourcecode:: json
+
+          {
+            "image_urls": ["URL1", "URL2"],
+            "response_code": 200 
+          }
     """
     parameters = request.get_json()
 

@@ -7,7 +7,8 @@ import common
 #------------------------------------------------------------------------------
 # test get_device_notifications blueprint
 def test_get_device_notifications_works(client):
-    data = {"device_uuid": global_vars.device_uuid}   
+    data = {"device_uuid": global_vars.device_uuid,   
+            "user_token": global_vars.user_token}
     URL = '/api/get_device_notifications/'
     rv = common.do_post(client, data, URL)
     assert 200 == rv['response_code']

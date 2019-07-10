@@ -10,12 +10,24 @@ from .get_user_devices import get_devices_for_user
 
 get_recipe_by_uuid_bp = Blueprint('get_recipe_by_uuid_bp', __name__)
 
-@get_recipe_by_uuid_bp.route('/api/get_recipe_by_uuid/', methods=['GET', 'POST'])
+@get_recipe_by_uuid_bp.route('/api/get_recipe_by_uuid/', methods=['POST'])
 def get_recipe_by_uuid():
-    """TODO: Fill in Documentation
+    """Return all the details about this recipe and a users devices.  Used to build an editor to modify this recipe.  Not currently used.
 
-    .. :quickref: UNDOCUMENTED;
+    .. :quickref: Recipe; Recipe details 
 
+    :reqheader Accept: application/json
+    :<json string user_token: User Token returned from the /login API.
+    :<json string recipe_uuid: Recipe UUID to look up
+
+    **Example response**:
+
+        .. sourcecode:: json
+
+          {
+            "lots and lots of data": "not described until we implement the new recipe editor",
+            "response_code": 200
+          }
     """
     received_form_response = request.get_json()
     user_token = received_form_response.get("user_token")
@@ -47,15 +59,7 @@ def get_recipe_by_uuid():
         peripherals = []
         device_type_query = datastore.get_client().query(kind='DeviceType')
         device_type_results = list(device_type_query.fetch())
-        device_type_results_array = []
         for device_type_result in device_type_results:
-            device_type_json = {
-                'peripherals': device_type_result['peripherals'],
-                'device_type_id': device_type_result['id'],
-                'name': device_type_result['name']
-            }
-
-            device_type_results_array.append(device_type_json)
             peripherals_string = device_type_result['peripherals']
             peripherals_array = peripherals_string.split(",")
             for peripheral in peripherals_array:

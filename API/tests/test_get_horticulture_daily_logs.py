@@ -7,7 +7,8 @@ import common
 #------------------------------------------------------------------------------
 # test get_horticulture_daily_logs blueprint
 def test_get_horticulture_daily_logs_works(client):
-    data = {"device_uuid": global_vars.device_uuid}   
+    data = {"device_uuid": global_vars.device_uuid,
+            "user_token": global_vars.user_token}
     URL = '/api/get_horticulture_daily_logs/'
     rv = common.do_post(client, data, URL)
     assert 200 == rv['response_code']

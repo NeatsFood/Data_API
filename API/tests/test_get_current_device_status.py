@@ -7,7 +7,8 @@ import common
 #------------------------------------------------------------------------------
 # test get_current_device_status blueprint
 def test_get_current_device_status_works(client):
-    data = {"device_uuid": global_vars.device_uuid}  
+    data = {"device_uuid": global_vars.device_uuid,  
+            "user_token": global_vars.user_token}
     URL = '/api/get_current_device_status/'
     rv = common.do_post(client, data, URL)
     assert 200 == rv['response_code']

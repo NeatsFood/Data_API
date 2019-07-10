@@ -1,16 +1,20 @@
 from flask import Blueprint
+from flask import request
 
 from cloud_common.cc.google import datastore
-from .utils.response import success_response
+from .utils.response import success_response, error_response
 
 
 get_device_types_bp = Blueprint('get_device_types_bp', __name__)
 
-@get_device_types_bp.route('/api/get_device_types/', methods=['GET', 'POST'])
+@get_device_types_bp.route('/api/get_device_types/', methods=['POST'])
 def get_device_types():
-    """Get a JSON list of device types
+    """Get a list of all device types.
 
-    .. :quickref: Utility; Get a list of device types
+    .. :quickref: Utility; Device types
+
+    :reqheader Accept: application/json
+    :<json string user_token: User Token returned from the /login API.
 
     **Example Response**:
 
@@ -19,13 +23,20 @@ def get_device_types():
         {
           "results": [{
               "name": "EDU",
-              "device_type_id": "SOME UUID?",
-              "peripherals": ["UUID?", "UUID?", "UUID?"]
+              "device_type_id": "Type-UUID",
+              "peripherals": ["P1-UUID", "P2-UUID", "P3-UUID"]
             }],
           "response_code": 200
         }
 
     """
+    received_form_response = request.get_json()
+    user_token = received_form_response.get("user_token")
+    if user_token is None:
+        return error_response(
+            message="Access denied."
+        )
+
     query = datastore.get_client().query(kind='DeviceType')
     query_result = list(query.fetch())
     results = list(query_result)

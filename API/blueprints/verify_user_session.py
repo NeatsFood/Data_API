@@ -11,12 +11,23 @@ from .utils.common import is_expired
 
 verify_user_session_bp = Blueprint('verify_user_session_bp',__name__)
 
-@verify_user_session_bp.route('/api/verify_user_session/', methods=['GET', 'POST'])
+@verify_user_session_bp.route('/api/verify_user_session/', methods=['POST'])
 def verify_user_session():
-    """TODO: Fill in Documentation
+    """Verify the user's session token is still valid.
+    .. :quickref: Authentication; Verify user's session
 
-    .. :quickref: UNDOCUMENTED;
+    :reqheader Accept: application/json
+    :<json string user_token: User Token returned from the /login API.
 
+    **Example response**:
+
+        .. sourcecode:: json
+
+          {
+            "message": "Successful",
+            "is_expired": "True",
+            "response_code": 200
+          }
     """
     received_form_response = json.loads(request.data.decode('utf-8'))
     user_token = received_form_response.get("user_token", None)

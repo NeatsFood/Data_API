@@ -11,11 +11,14 @@ from .utils.response import success_response, error_response
 get_current_stats_bp = Blueprint('get_current_stats_bp',__name__)
 
 #------------------------------------------------------------------------------
-@get_current_stats_bp.route('/api/get_current_stats/', methods=['GET', 'POST'])
+@get_current_stats_bp.route('/api/get_current_stats/', methods=['POST'])
 def get_current_stats():
-    """Get current device status
-    .. :quickref: Sensor Data; Get the current sensor readings
+    """Get the current sensor readings.
 
+    .. :quickref: Sensor Data; Current readings
+
+    :reqheader Accept: application/json
+    :<json string user_token: User Token returned from the /login API.
     :<json string selected_device_uuid: UUID of device
 
     **Example Response**:
@@ -36,10 +39,12 @@ def get_current_stats():
 
     """
     received_form_response = json.loads(request.data.decode('utf-8'))
+    user_token = received_form_response.get("user_token")
     device_uuid = received_form_response.get("selected_device_uuid", None)
-
-    if device_uuid is None:
-        return error_response(message="missing args")
+    if user_token is None or device_uuid is None:
+        return error_response(
+            message="Access denied."
+        )
 
     result_json = {}
     result_json["current_co2"] = database.get_current_CO2_value(device_uuid)

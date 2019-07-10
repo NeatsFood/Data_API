@@ -10,14 +10,14 @@ from .utils.auth import get_user_uuid_from_token
 get_all_recipes_bp = Blueprint('get_all_recipes', __name__)
 
 
-@get_all_recipes_bp.route('/api/get_all_recipes/', methods=['GET', 'POST'])
+@get_all_recipes_bp.route('/api/get_all_recipes/', methods=['POST'])
 def get_all_recipes():
-    """Retrieve all recipes for a user
+    """Retrieve all recipes for a user account.
 
-    .. :quickref: Recipe; Get all recipes for a user
+    .. :quickref: Recipe; Get all recipes 
 
     :reqheader Accept: application/json
-    :<json string user_token: User Token
+    :<json string user_token: User Token returned from the /login API.
 
     **Example response**:
 

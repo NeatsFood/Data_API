@@ -10,11 +10,12 @@ get_user_info_bp = Blueprint('get_user_info_bp', __name__)
 
 @get_user_info_bp.route('/api/get_user_info/', methods=['POST'])
 def get_user_image():
-    """Get user info
+    """Get user profile information.
 
-    .. :quickref: User; Get user profile information
+    .. :quickref: User; User profile
 
-    :<json string user_token: User Token
+    :reqheader Accept: application/json
+    :<json string user_token: User Token returned from the /login API.
 
     **Example Response**:
 

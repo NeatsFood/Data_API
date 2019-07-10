@@ -14,6 +14,7 @@ def test_ack_device_notification_works(client):
     ID = nd.add(global_vars.device_uuid, "running pytest")
     
     data = {"device_uuid": global_vars.device_uuid,
+            "user_token": global_vars.user_token,
             "ID": ID} # the ID of the notification we just created
     URL = '/api/ack_device_notification/'
     rv = common.do_post(client, data, URL)

@@ -54,205 +54,121 @@
 </tr>
 </thead>
 <tbody>
-<tr class="row-even"><td><p>Device</p></td>
-<td><p><a class="reference external" href="#get--api-get_current_device_status-">GET /api/get_current_device_status/</a></p></td>
-<td><p>Get current device status</p></td>
-</tr>
-<tr class="row-odd"><td></td>
-<td><p><a class="reference external" href="#post--api-get_current_device_status-">POST /api/get_current_device_status/</a></p></td>
-<td></td>
-</tr>
-<tr class="row-even"><td></td>
-<td><p><a class="reference external" href="#get--api-get_device_notifications-">GET /api/get_device_notifications/</a></p></td>
-<td><p>Get current device notifications</p></td>
-</tr>
-<tr class="row-odd"><td></td>
-<td><p><a class="reference external" href="#post--api-get_device_notifications-">POST /api/get_device_notifications/</a></p></td>
-<td></td>
-</tr>
-<tr class="row-even"><td></td>
-<td><p><a class="reference external" href="#get--api-ack_device_notification-">GET /api/ack_device_notification/</a></p></td>
-<td></td>
-</tr>
-<tr class="row-odd"><td></td>
-<td><p><a class="reference external" href="#post--api-ack_device_notification-">POST /api/ack_device_notification/</a></p></td>
-<td></td>
-</tr>
-<tr class="row-even"><td></td>
-<td><p><a class="reference external" href="#get--api-get_device_peripherals-">GET /api/get_device_peripherals/</a></p></td>
-<td><p>Get peripherals. Is this used?!</p></td>
-</tr>
-<tr class="row-odd"><td></td>
-<td><p><a class="reference external" href="#post--api-get_device_peripherals-">POST /api/get_device_peripherals/</a></p></td>
-<td></td>
-</tr>
-<tr class="row-even"><td><p>Horticulture logs</p></td>
-<td><p><a class="reference external" href="#get--api-daily_horticulture_measurements-">GET /api/daily_horticulture_measurements/</a></p></td>
-<td><p>Save horitculture measurements for a device</p></td>
-</tr>
-<tr class="row-odd"><td></td>
-<td><p><a class="reference external" href="#post--api-daily_horticulture_measurements-">POST /api/daily_horticulture_measurements/</a></p></td>
-<td></td>
-</tr>
-<tr class="row-even"><td></td>
-<td><p><a class="reference external" href="#get--api-get_horticulture_daily_logs-">GET /api/get_horticulture_daily_logs/</a></p></td>
-<td><p>Get horitculture measurements for a device</p></td>
-</tr>
-<tr class="row-odd"><td></td>
-<td><p><a class="reference external" href="#post--api-get_horticulture_daily_logs-">POST /api/get_horticulture_daily_logs/</a></p></td>
-<td></td>
-</tr>
-<tr class="row-even"><td><p>Recipe</p></td>
-<td><p><a class="reference external" href="#post--api-get_current_recipe_info-">POST /api/get_current_recipe_info/</a></p></td>
-<td><p>Get status of the current recipe on device</p></td>
-</tr>
-<tr class="row-odd"><td></td>
-<td><p><a class="reference external" href="#get--api-get_current_recipe-">GET /api/get_current_recipe/</a></p></td>
-<td><p>Get current recipe on device</p></td>
-</tr>
-<tr class="row-even"><td></td>
-<td><p><a class="reference external" href="#post--api-get_current_recipe-">POST /api/get_current_recipe/</a></p></td>
-<td></td>
-</tr>
-<tr class="row-odd"><td></td>
-<td><p><a class="reference external" href="#get--api-apply_to_device-">GET /api/apply_to_device/</a></p></td>
-<td><p>Apply a recipe to a device by UUID</p></td>
-</tr>
-<tr class="row-even"><td></td>
-<td><p><a class="reference external" href="#post--api-apply_to_device-">POST /api/apply_to_device/</a></p></td>
-<td></td>
-</tr>
-<tr class="row-odd"><td></td>
-<td><p><a class="reference external" href="#get--api-get_all_recipes-">GET /api/get_all_recipes/</a></p></td>
-<td><p>Get all recipes for a user</p></td>
-</tr>
-<tr class="row-even"><td></td>
-<td><p><a class="reference external" href="#post--api-get_all_recipes-">POST /api/get_all_recipes/</a></p></td>
-<td></td>
-</tr>
-<tr class="row-odd"><td><p>Sensor Data</p></td>
-<td><p><a class="reference external" href="#get--api-get_current_stats-">GET /api/get_current_stats/</a></p></td>
-<td><p>Get the current sensor readings</p></td>
-</tr>
-<tr class="row-even"><td></td>
-<td><p><a class="reference external" href="#post--api-get_current_stats-">POST /api/get_current_stats/</a></p></td>
-<td></td>
-</tr>
-<tr class="row-odd"><td></td>
-<td><p><a class="reference external" href="#post--api-get_device_images-">POST /api/get_device_images/</a></p></td>
-<td><p>Get all images associated with a device</p></td>
-</tr>
-<tr class="row-even"><td></td>
-<td><p><a class="reference external" href="#get--api-get_temp_details-">GET /api/get_temp_details/</a></p></td>
-<td><p>Temp/RH time series data.</p></td>
-</tr>
-<tr class="row-odd"><td></td>
-<td><p><a class="reference external" href="#post--api-get_temp_details-">POST /api/get_temp_details/</a></p></td>
-<td></td>
-</tr>
-<tr class="row-even"><td></td>
-<td><p><a class="reference external" href="#get--api-get_co2_details-">GET /api/get_co2_details/</a></p></td>
-<td><p>If there is co2 data in the ‘datastore’ return that, otherwise get the last 30 days from BigQuery.</p></td>
-</tr>
-<tr class="row-odd"><td></td>
-<td><p><a class="reference external" href="#post--api-get_co2_details-">POST /api/get_co2_details/</a></p></td>
-<td></td>
-</tr>
-<tr class="row-even"><td><p>UNDOCUMENTED</p></td>
-<td><p><a class="reference external" href="#post--api-submit_horticulture_measurements-">POST /api/submit_horticulture_measurements/</a></p></td>
-<td></td>
-</tr>
-<tr class="row-odd"><td></td>
-<td><p><a class="reference external" href="#post--api-save_user_profile_changes-">POST /api/save_user_profile_changes/</a></p></td>
-<td></td>
-</tr>
-<tr class="row-even"><td></td>
-<td><p><a class="reference external" href="#get--api-submit_recipe_change-">GET /api/submit_recipe_change/</a></p></td>
-<td></td>
-</tr>
-<tr class="row-odd"><td></td>
-<td><p><a class="reference external" href="#post--api-submit_recipe_change-">POST /api/submit_recipe_change/</a></p></td>
-<td></td>
-</tr>
-<tr class="row-even"><td></td>
-<td><p><a class="reference external" href="#get--api-verify_user_session-">GET /api/verify_user_session/</a></p></td>
-<td></td>
-</tr>
-<tr class="row-odd"><td></td>
+<tr class="row-even"><td><p>Authentication</p></td>
 <td><p><a class="reference external" href="#post--api-verify_user_session-">POST /api/verify_user_session/</a></p></td>
-<td></td>
-</tr>
-<tr class="row-even"><td></td>
-<td><p><a class="reference external" href="#get--api-get_recipe_by_uuid-">GET /api/get_recipe_by_uuid/</a></p></td>
-<td></td>
+<td><p>Verify user’s session</p></td>
 </tr>
 <tr class="row-odd"><td></td>
-<td><p><a class="reference external" href="#post--api-get_recipe_by_uuid-">POST /api/get_recipe_by_uuid/</a></p></td>
-<td></td>
-</tr>
-<tr class="row-even"><td></td>
-<td><p><a class="reference external" href="#get--api-submit_recipe-">GET /api/submit_recipe/</a></p></td>
-<td></td>
-</tr>
-<tr class="row-odd"><td></td>
-<td><p><a class="reference external" href="#post--api-submit_recipe-">POST /api/submit_recipe/</a></p></td>
-<td></td>
-</tr>
-<tr class="row-even"><td></td>
-<td><p><a class="reference external" href="#post--api-upload_images-">POST /api/upload_images/</a></p></td>
-<td></td>
-</tr>
-<tr class="row-odd"><td></td>
-<td><p><a class="reference external" href="#get--api-register-">GET /api/register/</a></p></td>
-<td></td>
-</tr>
-<tr class="row-even"><td></td>
-<td><p><a class="reference external" href="#post--api-register-">POST /api/register/</a></p></td>
-<td></td>
-</tr>
-<tr class="row-odd"><td></td>
-<td><p><a class="reference external" href="#get--api-signup-">GET /api/signup/</a></p></td>
-<td></td>
-</tr>
-<tr class="row-even"><td></td>
 <td><p><a class="reference external" href="#post--api-signup-">POST /api/signup/</a></p></td>
-<td></td>
-</tr>
-<tr class="row-odd"><td></td>
-<td><p><a class="reference external" href="#get--login-">GET /login/</a></p></td>
-<td></td>
+<td><p>Create account</p></td>
 </tr>
 <tr class="row-even"><td></td>
 <td><p><a class="reference external" href="#post--login-">POST /login/</a></p></td>
-<td></td>
+<td><p>Log in</p></td>
 </tr>
-<tr class="row-odd"><td><p>User</p></td>
-<td><p><a class="reference external" href="#get--api-get_user_devices-">GET /api/get_user_devices/</a></p></td>
+<tr class="row-odd"><td><p>Device</p></td>
+<td><p><a class="reference external" href="#post--api-get_current_device_status-">POST /api/get_current_device_status/</a></p></td>
+<td><p>Get device status</p></td>
+</tr>
+<tr class="row-even"><td></td>
+<td><p><a class="reference external" href="#post--api-get_device_notifications-">POST /api/get_device_notifications/</a></p></td>
+<td><p>Device notifications</p></td>
+</tr>
+<tr class="row-odd"><td></td>
+<td><p><a class="reference external" href="#post--api-ack_device_notification-">POST /api/ack_device_notification/</a></p></td>
+<td><p>ACK a notification</p></td>
+</tr>
+<tr class="row-even"><td></td>
+<td><p><a class="reference external" href="#post--api-register-">POST /api/register/</a></p></td>
+<td><p>Register device</p></td>
+</tr>
+<tr class="row-odd"><td><p>Horticulture</p></td>
+<td><p><a class="reference external" href="#post--api-submit_horticulture_measurements-">POST /api/submit_horticulture_measurements/</a></p></td>
+<td><p>Save horticulture measurements</p></td>
+</tr>
+<tr class="row-even"><td></td>
+<td><p><a class="reference external" href="#post--api-daily_horticulture_measurements-">POST /api/daily_horticulture_measurements/</a></p></td>
+<td><p>Save horitculture measurements</p></td>
+</tr>
+<tr class="row-odd"><td></td>
+<td><p><a class="reference external" href="#post--api-get_horticulture_daily_logs-">POST /api/get_horticulture_daily_logs/</a></p></td>
+<td><p>Get horitculture measurements</p></td>
+</tr>
+<tr class="row-even"><td><p>Recipe</p></td>
+<td><p><a class="reference external" href="#post--api-get_current_recipe_info-">POST /api/get_current_recipe_info/</a></p></td>
+<td><p>Status</p></td>
+</tr>
+<tr class="row-odd"><td></td>
+<td><p><a class="reference external" href="#post--api-get_device_peripherals-">POST /api/get_device_peripherals/</a></p></td>
+<td><p>Get peripherals</p></td>
+</tr>
+<tr class="row-even"><td></td>
+<td><p><a class="reference external" href="#post--api-submit_recipe_change-">POST /api/submit_recipe_change/</a></p></td>
+<td><p>Save recipe</p></td>
+</tr>
+<tr class="row-odd"><td></td>
+<td><p><a class="reference external" href="#post--api-get_recipe_by_uuid-">POST /api/get_recipe_by_uuid/</a></p></td>
+<td><p>Recipe details</p></td>
+</tr>
+<tr class="row-even"><td></td>
+<td><p><a class="reference external" href="#post--api-get_current_recipe-">POST /api/get_current_recipe/</a></p></td>
+<td><p>Get current recipe</p></td>
+</tr>
+<tr class="row-odd"><td></td>
+<td><p><a class="reference external" href="#post--api-apply_to_device-">POST /api/apply_to_device/</a></p></td>
+<td><p>Run recipe, run</p></td>
+</tr>
+<tr class="row-even"><td></td>
+<td><p><a class="reference external" href="#post--api-get_all_recipes-">POST /api/get_all_recipes/</a></p></td>
+<td><p>Get all recipes</p></td>
+</tr>
+<tr class="row-odd"><td></td>
+<td><p><a class="reference external" href="#post--api-submit_recipe-">POST /api/submit_recipe/</a></p></td>
+<td><p>Save recipe</p></td>
+</tr>
+<tr class="row-even"><td><p>Sensor Data</p></td>
+<td><p><a class="reference external" href="#post--api-get_current_stats-">POST /api/get_current_stats/</a></p></td>
+<td><p>Current readings</p></td>
+</tr>
+<tr class="row-odd"><td></td>
+<td><p><a class="reference external" href="#post--api-get_device_images-">POST /api/get_device_images/</a></p></td>
+<td><p>Image list</p></td>
+</tr>
+<tr class="row-even"><td></td>
+<td><p><a class="reference external" href="#post--api-get_temp_details-">POST /api/get_temp_details/</a></p></td>
+<td><p>Temp/RH data</p></td>
+</tr>
+<tr class="row-odd"><td></td>
+<td><p><a class="reference external" href="#post--api-get_co2_details-">POST /api/get_co2_details/</a></p></td>
+<td><p>CO2 data</p></td>
+</tr>
+<tr class="row-even"><td><p>User</p></td>
+<td><p><a class="reference external" href="#post--api-save_user_profile_changes-">POST /api/save_user_profile_changes/</a></p></td>
+<td><p>Update profile</p></td>
+</tr>
+<tr class="row-odd"><td></td>
+<td><p><a class="reference external" href="#post--api-get_user_devices-">POST /api/get_user_devices/</a></p></td>
 <td><p>Get user’s devices</p></td>
 </tr>
 <tr class="row-even"><td></td>
-<td><p><a class="reference external" href="#post--api-get_user_devices-">POST /api/get_user_devices/</a></p></td>
-<td></td>
-</tr>
-<tr class="row-odd"><td></td>
 <td><p><a class="reference external" href="#post--api-get_user_info-">POST /api/get_user_info/</a></p></td>
-<td><p>Get user profile information</p></td>
+<td><p>User profile</p></td>
 </tr>
-<tr class="row-even"><td><p>Utility</p></td>
-<td><p><a class="reference external" href="#get--api-get_device_types-">GET /api/get_device_types/</a></p></td>
-<td><p>Get a list of device types</p></td>
-</tr>
-<tr class="row-odd"><td></td>
+<tr class="row-odd"><td><p>Utility</p></td>
 <td><p><a class="reference external" href="#post--api-get_device_types-">POST /api/get_device_types/</a></p></td>
-<td></td>
+<td><p>Device types</p></td>
 </tr>
 <tr class="row-even"><td></td>
-<td><p><a class="reference external" href="#get--api-get_plant_types-">GET /api/get_plant_types/</a></p></td>
-<td><p>Get known plant types from datastore</p></td>
+<td><p><a class="reference external" href="#post--api-get_plant_types-">POST /api/get_plant_types/</a></p></td>
+<td><p>Plant types</p></td>
 </tr>
 <tr class="row-odd"><td></td>
-<td><p><a class="reference external" href="#post--api-get_plant_types-">POST /api/get_plant_types/</a></p></td>
-<td></td>
+<td><p><a class="reference external" href="#post--api-upload_images-">POST /api/upload_images/</a></p></td>
+<td><p>Upload an image</p></td>
+</tr>
+<tr class="row-even"><td></td>
+<td><p><a class="reference external" href="#get--viewImage-(imageData)">GET /viewImage/(imageData)</a></p></td>
+<td><p>Generate tweet</p></td>
 </tr>
 </tbody>
 </table>
@@ -262,13 +178,7 @@
 <dl class="post">
 <dt id="post--api-submit_horticulture_measurements-">
 <code class="sig-name descname">POST </code><code class="sig-name descname">/api/submit_horticulture_measurements/</code><a class="headerlink" href="#post--api-submit_horticulture_measurements-" title="Permalink to this definition">¶</a></dt>
-<dd><p>TODO: Fill in Documentation</p>
-</dd></dl>
-
-<dl class="get">
-<dt id="get--api-daily_horticulture_measurements-">
-<code class="sig-name descname">GET </code><code class="sig-name descname">/api/daily_horticulture_measurements/</code><a class="headerlink" href="#get--api-daily_horticulture_measurements-" title="Permalink to this definition">¶</a></dt>
-<dd><p>save daily horticulture log.</p>
+<dd><p>Save horticulture measurements from a device.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Request Headers</dt>
 <dd class="field-odd"><ul class="simple">
@@ -277,75 +187,52 @@
 </dd>
 <dt class="field-even">Request JSON Object</dt>
 <dd class="field-even"><ul class="simple">
-<li><p><strong>device_uuid</strong> (<em>string</em>) – Device UUID</p></li>
-<li><p><strong>plant_height</strong> (<em>string</em>) – plant_height</p></li>
-<li><p><strong>leaf_count</strong> (<em>string</em>) – leaf_count</p></li>
-<li><p><strong>leaf_colors</strong> (<em>string</em>) – leaf_colors</p></li>
-<li><p><strong>leaf_withering</strong> (<em>string</em>) – leaf_withering</p></li>
-<li><p><strong>flavors</strong> (<em>string</em>) – flavors</p></li>
-<li><p><strong>root_colors</strong> (<em>string</em>) – root_colors</p></li>
-<li><p><strong>horticulture_notes</strong> (<em>string</em>) – horticulture_notes</p></li>
-<li><p><strong>submission_name</strong> (<em>string</em>) – submission_name</p></li>
-</ul>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="post">
-<dt id="post--api-daily_horticulture_measurements-">
-<code class="sig-name descname">POST </code><code class="sig-name descname">/api/daily_horticulture_measurements/</code><a class="headerlink" href="#post--api-daily_horticulture_measurements-" title="Permalink to this definition">¶</a></dt>
-<dd><p>save daily horticulture log.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Request Headers</dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><a class="reference external" href="https://tools.ietf.org/html/rfc7231#section-5.3.2">Accept</a> – application/json</p></li>
-</ul>
-</dd>
-<dt class="field-even">Request JSON Object</dt>
-<dd class="field-even"><ul class="simple">
-<li><p><strong>device_uuid</strong> (<em>string</em>) – Device UUID</p></li>
-<li><p><strong>plant_height</strong> (<em>string</em>) – plant_height</p></li>
-<li><p><strong>leaf_count</strong> (<em>string</em>) – leaf_count</p></li>
-<li><p><strong>leaf_colors</strong> (<em>string</em>) – leaf_colors</p></li>
-<li><p><strong>leaf_withering</strong> (<em>string</em>) – leaf_withering</p></li>
-<li><p><strong>flavors</strong> (<em>string</em>) – flavors</p></li>
-<li><p><strong>root_colors</strong> (<em>string</em>) – root_colors</p></li>
-<li><p><strong>horticulture_notes</strong> (<em>string</em>) – horticulture_notes</p></li>
-<li><p><strong>submission_name</strong> (<em>string</em>) – submission_name</p></li>
-</ul>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="get">
-<dt id="get--api-get_horticulture_daily_logs-">
-<code class="sig-name descname">GET </code><code class="sig-name descname">/api/get_horticulture_daily_logs/</code><a class="headerlink" href="#get--api-get_horticulture_daily_logs-" title="Permalink to this definition">¶</a></dt>
-<dd><p>get the daily horticulture log.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Request Headers</dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><a class="reference external" href="https://tools.ietf.org/html/rfc7231#section-5.3.2">Accept</a> – application/json</p></li>
-</ul>
-</dd>
-<dt class="field-even">Request JSON Object</dt>
-<dd class="field-even"><ul class="simple">
-<li><p><strong>device_uuid</strong> (<em>string</em>) – Device UUID</p></li>
+<li><p><strong>user_token</strong> (<em>string</em>) – User Token returned from the /login API.</p></li>
+<li><p><strong>device_uuid</strong> (<em>string</em>) – Device UUID in which plant was measured</p></li>
+<li><p><strong>leaves_count</strong> (<em>string</em>) – Leaf count</p></li>
+<li><p><strong>plant_height</strong> (<em>string</em>) – Plant height in cm</p></li>
 </ul>
 </dd>
 </dl>
 <p><strong>Example response</strong>:</p>
 <blockquote>
 <div><div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
-  <span class="nt">&quot;leaf_count_results&quot;</span><span class="p">:</span> <span class="p">[</span>
-          <span class="p">{</span><span class="nt">&quot;value&quot;</span><span class="p">:</span><span class="mi">3</span><span class="p">,</span><span class="nt">&quot;time&quot;</span><span class="p">:</span><span class="s2">&quot;2019-04-08 13:18:58&quot;</span><span class="p">},</span>
-          <span class="p">{},</span>
-          <span class="p">{}</span>
-      <span class="p">],</span>
-  <span class="nt">&quot;plant_height_results&quot;</span><span class="p">:</span> <span class="p">[</span>
-          <span class="p">{</span><span class="nt">&quot;value&quot;</span><span class="p">:</span><span class="mf">2.5</span><span class="p">,</span><span class="nt">&quot;time&quot;</span><span class="p">:</span><span class="s2">&quot;2019-04-08 13:18:58&quot;</span><span class="p">},</span>
-          <span class="p">{},</span>
-          <span class="p">{}</span>
-      <span class="p">],</span>
+  <span class="nt">&quot;message&quot;</span><span class="p">:</span> <span class="s2">&quot;Measurements saved.&quot;</span><span class="p">,</span>
+  <span class="nt">&quot;response_code&quot;</span><span class="p">:</span> <span class="mi">200</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div></blockquote>
+</dd></dl>
+
+<dl class="post">
+<dt id="post--api-daily_horticulture_measurements-">
+<code class="sig-name descname">POST </code><code class="sig-name descname">/api/daily_horticulture_measurements/</code><a class="headerlink" href="#post--api-daily_horticulture_measurements-" title="Permalink to this definition">¶</a></dt>
+<dd><p>Save horitculture measurements for a device.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Request Headers</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><a class="reference external" href="https://tools.ietf.org/html/rfc7231#section-5.3.2">Accept</a> – application/json</p></li>
+</ul>
+</dd>
+<dt class="field-even">Request JSON Object</dt>
+<dd class="field-even"><ul class="simple">
+<li><p><strong>user_token</strong> (<em>string</em>) – User Token returned from the /login API.</p></li>
+<li><p><strong>device_uuid</strong> (<em>string</em>) – Device UUID</p></li>
+<li><p><strong>plant_height</strong> (<em>string</em>) – plant_height</p></li>
+<li><p><strong>leaf_count</strong> (<em>string</em>) – leaf_count</p></li>
+<li><p><strong>leaf_colors</strong> (<em>string</em>) – leaf_colors</p></li>
+<li><p><strong>leaf_withering</strong> (<em>string</em>) – leaf_withering</p></li>
+<li><p><strong>flavors</strong> (<em>string</em>) – flavors</p></li>
+<li><p><strong>root_colors</strong> (<em>string</em>) – root_colors</p></li>
+<li><p><strong>horticulture_notes</strong> (<em>string</em>) – horticulture_notes</p></li>
+<li><p><strong>submission_name</strong> (<em>string</em>) – submission_name</p></li>
+</ul>
+</dd>
+</dl>
+<p><strong>Example response</strong>:</p>
+<blockquote>
+<div><div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
   <span class="nt">&quot;response_code&quot;</span><span class="p">:</span> <span class="mi">200</span>
 <span class="p">}</span>
 </pre></div>
@@ -356,7 +243,7 @@
 <dl class="post">
 <dt id="post--api-get_horticulture_daily_logs-">
 <code class="sig-name descname">POST </code><code class="sig-name descname">/api/get_horticulture_daily_logs/</code><a class="headerlink" href="#post--api-get_horticulture_daily_logs-" title="Permalink to this definition">¶</a></dt>
-<dd><p>get the daily horticulture log.</p>
+<dd><p>Get horitculture measurements for a device.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Request Headers</dt>
 <dd class="field-odd"><ul class="simple">
@@ -365,6 +252,7 @@
 </dd>
 <dt class="field-even">Request JSON Object</dt>
 <dd class="field-even"><ul class="simple">
+<li><p><strong>user_token</strong> (<em>string</em>) – User Token returned from the /login API.</p></li>
 <li><p><strong>device_uuid</strong> (<em>string</em>) – Device UUID</p></li>
 </ul>
 </dd>
@@ -392,82 +280,162 @@
 <dl class="post">
 <dt id="post--api-save_user_profile_changes-">
 <code class="sig-name descname">POST </code><code class="sig-name descname">/api/save_user_profile_changes/</code><a class="headerlink" href="#post--api-save_user_profile_changes-" title="Permalink to this definition">¶</a></dt>
-<dd><p>TODO: Fill in Documentation</p>
-</dd></dl>
-
-<dl class="get">
-<dt id="get--api-get_current_device_status-">
-<code class="sig-name descname">GET </code><code class="sig-name descname">/api/get_current_device_status/</code><a class="headerlink" href="#get--api-get_current_device_status-" title="Permalink to this definition">¶</a></dt>
-<dd><p>Get device status</p>
+<dd><p>Update the users’ profile information.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Request Headers</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><a class="reference external" href="https://tools.ietf.org/html/rfc7231#section-5.3.2">Accept</a> – application/json</p></li>
+</ul>
+</dd>
+<dt class="field-even">Request JSON Object</dt>
+<dd class="field-even"><ul class="simple">
+<li><p><strong>user_token</strong> (<em>string</em>) – User Token returned from the /login API.</p></li>
+<li><p><strong>email_address</strong> (<em>string</em>) – Users email address</p></li>
+<li><p><strong>username</strong> (<em>string</em>) – Users username (and login name)</p></li>
+<li><p><strong>organization</strong> (<em>string</em>) – The organizaion the user is associated with</p></li>
+</ul>
+</dd>
+</dl>
+<p><strong>Example response</strong>:</p>
+<blockquote>
+<div><div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+  <span class="nt">&quot;profile_image&quot;</span><span class="p">:</span> <span class="s2">&quot;previously saved profile image&quot;</span><span class="p">,</span>
+  <span class="nt">&quot;username&quot;</span><span class="p">:</span> <span class="s2">&quot;saved name&quot;</span><span class="p">,</span>
+  <span class="nt">&quot;email_address&quot;</span><span class="p">:</span> <span class="s2">&quot;saved email address&quot;</span><span class="p">,</span>
+  <span class="nt">&quot;organization&quot;</span><span class="p">:</span> <span class="s2">&quot;saved organization&quot;</span><span class="p">,</span>
+  <span class="nt">&quot;response_code&quot;</span><span class="p">:</span> <span class="mi">200</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div></blockquote>
 </dd></dl>
 
 <dl class="post">
 <dt id="post--api-get_current_device_status-">
 <code class="sig-name descname">POST </code><code class="sig-name descname">/api/get_current_device_status/</code><a class="headerlink" href="#post--api-get_current_device_status-" title="Permalink to this definition">¶</a></dt>
-<dd><p>Get device status</p>
-</dd></dl>
-
-<dl class="get">
-<dt id="get--api-get_device_notifications-">
-<code class="sig-name descname">GET </code><code class="sig-name descname">/api/get_device_notifications/</code><a class="headerlink" href="#get--api-get_device_notifications-" title="Permalink to this definition">¶</a></dt>
-<dd><p>Get device notifications</p>
+<dd><p>Get the current status of a device.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Request Headers</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><a class="reference external" href="https://tools.ietf.org/html/rfc7231#section-5.3.2">Accept</a> – application/json</p></li>
+</ul>
+</dd>
+<dt class="field-even">Request JSON Object</dt>
+<dd class="field-even"><ul class="simple">
+<li><p><strong>user_token</strong> (<em>string</em>) – User Token returned from the /login API.</p></li>
+<li><p><strong>device_uuid</strong> (<em>string</em>) – UUID of device to apply recipe to</p></li>
+</ul>
+</dd>
+</dl>
+<p><strong>Example response</strong>:</p>
+<blockquote>
+<div><div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+  <span class="nt">&quot;progress&quot;</span><span class="p">:</span> <span class="mf">0.0</span><span class="p">,</span>
+  <span class="nt">&quot;age_in_days&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+  <span class="nt">&quot;wifi_status&quot;</span><span class="p">:</span> <span class="s2">&quot;N/A for this device&quot;</span><span class="p">,</span>
+  <span class="nt">&quot;current_temp&quot;</span><span class="p">:</span> <span class="s2">&quot;N/A for this device&quot;</span><span class="p">,</span>
+  <span class="nt">&quot;runtime&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+  <span class="nt">&quot;response_code&quot;</span><span class="p">:</span> <span class="mi">200</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div></blockquote>
 </dd></dl>
 
 <dl class="post">
 <dt id="post--api-get_device_notifications-">
 <code class="sig-name descname">POST </code><code class="sig-name descname">/api/get_device_notifications/</code><a class="headerlink" href="#post--api-get_device_notifications-" title="Permalink to this definition">¶</a></dt>
-<dd><p>Get device notifications</p>
+<dd><p>Get the list un-acknowledged notifications for this device.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Request Headers</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><a class="reference external" href="https://tools.ietf.org/html/rfc7231#section-5.3.2">Accept</a> – application/json</p></li>
+</ul>
+</dd>
+<dt class="field-even">Request JSON Object</dt>
+<dd class="field-even"><ul class="simple">
+<li><p><strong>user_token</strong> (<em>string</em>) – User Token returned from the /login API.</p></li>
+<li><p><strong>device_uuid</strong> (<em>string</em>) – UUID of device to apply recipe to</p></li>
+</ul>
+</dd>
+</dl>
+<p><strong>Example response</strong>:</p>
+<blockquote>
+<div><div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+  <span class="nt">&quot;results&quot;</span><span class="p">:</span> <span class="p">{</span>
+      <span class="nt">&quot;notifications&quot;</span><span class="p">:</span> <span class="p">[</span>
+              <span class="p">{</span>
+                  <span class="nt">&quot;ID&quot;</span><span class="p">:</span> <span class="s2">&quot;UUID&quot;</span><span class="p">,</span>
+                  <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;Done&quot;</span><span class="p">,</span>
+                  <span class="nt">&quot;message&quot;</span><span class="p">:</span> <span class="s2">&quot;Time to water your plant.&quot;</span><span class="p">,</span>
+                  <span class="nt">&quot;created&quot;</span><span class="p">:</span> <span class="s2">&quot;date created&quot;</span><span class="p">,</span>
+                  <span class="nt">&quot;acknowledged&quot;</span><span class="p">:</span> <span class="s2">&quot;date ackd&quot;</span><span class="p">,</span>
+                  <span class="nt">&quot;URL&quot;</span><span class="p">:</span> <span class="s2">&quot;URL to video notification&quot;</span><span class="p">,</span>
+              <span class="p">},</span>
+          <span class="p">]</span>
+      <span class="p">}</span>
+  <span class="s2">&quot;response_code&quot;</span><span class="p">:</span> <span class="mi">200</span> 
+<span class="p">}</span>
+</pre></div>
+</div>
+</div></blockquote>
 </dd></dl>
 
 <dl class="post">
 <dt id="post--api-get_current_recipe_info-">
 <code class="sig-name descname">POST </code><code class="sig-name descname">/api/get_current_recipe_info/</code><a class="headerlink" href="#post--api-get_current_recipe_info-" title="Permalink to this definition">¶</a></dt>
-<dd><p>Get recipe info</p>
+<dd><p>Get status of the current recipe running on device.</p>
 <blockquote>
 <div></div></blockquote>
 <dl class="field-list simple">
-<dt class="field-odd">Request JSON Object</dt>
+<dt class="field-odd">Request Headers</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>user_token</strong> (<em>string</em>) – User Token</p></li>
+<li><p><a class="reference external" href="https://tools.ietf.org/html/rfc7231#section-5.3.2">Accept</a> – application/json</p></li>
+</ul>
+</dd>
+<dt class="field-even">Request JSON Object</dt>
+<dd class="field-even"><ul class="simple">
+<li><p><strong>user_token</strong> (<em>string</em>) – User Token returned from the /login API.</p></li>
 <li><p><strong>selected_device_uuid</strong> (<em>string</em>) – UUID of device</p></li>
 </ul>
 </dd>
 </dl>
-</dd></dl>
-
-<dl class="get">
-<dt id="get--api-ack_device_notification-">
-<code class="sig-name descname">GET </code><code class="sig-name descname">/api/ack_device_notification/</code><a class="headerlink" href="#get--api-ack_device_notification-" title="Permalink to this definition">¶</a></dt>
-<dd><p>ACK a device notification</p>
+<p><strong>Example response</strong>:</p>
+<blockquote>
+<div><div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+  <span class="nt">&quot;expired&quot;</span><span class="p">:</span> <span class="s2">&quot;True&quot;</span><span class="p">,</span>
+  <span class="nt">&quot;runtime&quot;</span><span class="p">:</span> <span class="mi">4</span><span class="p">,</span>
+  <span class="nt">&quot;plant_type&quot;</span><span class="p">:</span> <span class="s2">&quot;Basil&quot;</span><span class="p">,</span>
+  <span class="nt">&quot;recipe_uuid&quot;</span><span class="p">:</span> <span class="s2">&quot;uuid&quot;</span><span class="p">,</span>
+  <span class="nt">&quot;response_code&quot;</span><span class="p">:</span> <span class="mi">200</span> 
+<span class="p">}</span>
+</pre></div>
+</div>
+</div></blockquote>
 </dd></dl>
 
 <dl class="post">
 <dt id="post--api-ack_device_notification-">
 <code class="sig-name descname">POST </code><code class="sig-name descname">/api/ack_device_notification/</code><a class="headerlink" href="#post--api-ack_device_notification-" title="Permalink to this definition">¶</a></dt>
-<dd><p>ACK a device notification</p>
-</dd></dl>
-
-<dl class="get">
-<dt id="get--api-get_device_peripherals-">
-<code class="sig-name descname">GET </code><code class="sig-name descname">/api/get_device_peripherals/</code><a class="headerlink" href="#get--api-get_device_peripherals-" title="Permalink to this definition">¶</a></dt>
-<dd><p>Get peripherals for device</p>
+<dd><p>Acknowledge a device notification.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Request JSON Object</dt>
+<dt class="field-odd">Request Headers</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>selected_peripherals</strong> (<em>string</em>) – Comma separated list of peripheral UUIDs</p></li>
+<li><p><a class="reference external" href="https://tools.ietf.org/html/rfc7231#section-5.3.2">Accept</a> – application/json</p></li>
+</ul>
+</dd>
+<dt class="field-even">Request JSON Object</dt>
+<dd class="field-even"><ul class="simple">
+<li><p><strong>user_token</strong> (<em>string</em>) – User Token returned from the /login API.</p></li>
+<li><p><strong>device_uuid</strong> (<em>string</em>) – UUID of device to apply recipe to</p></li>
+<li><p><strong>ID</strong> (<em>string</em>) – Notification ID to acknowledge</p></li>
 </ul>
 </dd>
 </dl>
-<p><strong>Example Response</strong>:</p>
+<p><strong>Example response</strong>:</p>
 <blockquote>
 <div><div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
-  <span class="nt">&quot;results&quot;</span><span class="p">:[{</span>
-    <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Name&quot;</span><span class="p">,</span>
-    <span class="nt">&quot;sensor_name&quot;</span><span class="p">:</span> <span class="s2">&quot;Sensor Name&quot;</span><span class="p">,</span>
-    <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;Sensor Type&quot;</span><span class="p">,</span>
-    <span class="nt">&quot;color&quot;</span><span class="p">:</span> <span class="s2">&quot;#FFAA00&quot;</span><span class="p">,</span>
-    <span class="nt">&quot;inputs&quot;</span><span class="p">:</span> <span class="s2">&quot;inputs?&quot;</span>
-  <span class="p">}]</span>
+  <span class="nt">&quot;response_code&quot;</span><span class="p">:</span> <span class="mi">200</span>
 <span class="p">}</span>
 </pre></div>
 </div>
@@ -477,10 +445,16 @@
 <dl class="post">
 <dt id="post--api-get_device_peripherals-">
 <code class="sig-name descname">POST </code><code class="sig-name descname">/api/get_device_peripherals/</code><a class="headerlink" href="#post--api-get_device_peripherals-" title="Permalink to this definition">¶</a></dt>
-<dd><p>Get peripherals for device</p>
+<dd><p>Get peripherals. Used for recipe editor.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Request JSON Object</dt>
+<dt class="field-odd">Request Headers</dt>
 <dd class="field-odd"><ul class="simple">
+<li><p><a class="reference external" href="https://tools.ietf.org/html/rfc7231#section-5.3.2">Accept</a> – application/json</p></li>
+</ul>
+</dd>
+<dt class="field-even">Request JSON Object</dt>
+<dd class="field-even"><ul class="simple">
+<li><p><strong>user_token</strong> (<em>string</em>) – User Token returned from the /login API.</p></li>
 <li><p><strong>selected_peripherals</strong> (<em>string</em>) – Comma separated list of peripheral UUIDs</p></li>
 </ul>
 </dd>
@@ -493,7 +467,7 @@
     <span class="nt">&quot;sensor_name&quot;</span><span class="p">:</span> <span class="s2">&quot;Sensor Name&quot;</span><span class="p">,</span>
     <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;Sensor Type&quot;</span><span class="p">,</span>
     <span class="nt">&quot;color&quot;</span><span class="p">:</span> <span class="s2">&quot;#FFAA00&quot;</span><span class="p">,</span>
-    <span class="nt">&quot;inputs&quot;</span><span class="p">:</span> <span class="s2">&quot;inputs?&quot;</span>
+    <span class="nt">&quot;inputs&quot;</span><span class="p">:</span> <span class="s2">&quot;inputs&quot;</span>
   <span class="p">}]</span>
 <span class="p">}</span>
 </pre></div>
@@ -501,199 +475,28 @@
 </div></blockquote>
 </dd></dl>
 
-<dl class="get">
-<dt id="get--api-submit_recipe_change-">
-<code class="sig-name descname">GET </code><code class="sig-name descname">/api/submit_recipe_change/</code><a class="headerlink" href="#get--api-submit_recipe_change-" title="Permalink to this definition">¶</a></dt>
-<dd><p>TODO: Fill in Documentation</p>
-</dd></dl>
-
 <dl class="post">
 <dt id="post--api-submit_recipe_change-">
 <code class="sig-name descname">POST </code><code class="sig-name descname">/api/submit_recipe_change/</code><a class="headerlink" href="#post--api-submit_recipe_change-" title="Permalink to this definition">¶</a></dt>
-<dd><p>TODO: Fill in Documentation</p>
-</dd></dl>
-
-<dl class="get">
-<dt id="get--api-verify_user_session-">
-<code class="sig-name descname">GET </code><code class="sig-name descname">/api/verify_user_session/</code><a class="headerlink" href="#get--api-verify_user_session-" title="Permalink to this definition">¶</a></dt>
-<dd><p>TODO: Fill in Documentation</p>
-</dd></dl>
-
-<dl class="post">
-<dt id="post--api-verify_user_session-">
-<code class="sig-name descname">POST </code><code class="sig-name descname">/api/verify_user_session/</code><a class="headerlink" href="#post--api-verify_user_session-" title="Permalink to this definition">¶</a></dt>
-<dd><p>TODO: Fill in Documentation</p>
-</dd></dl>
-
-<dl class="get">
-<dt id="get--api-get_recipe_by_uuid-">
-<code class="sig-name descname">GET </code><code class="sig-name descname">/api/get_recipe_by_uuid/</code><a class="headerlink" href="#get--api-get_recipe_by_uuid-" title="Permalink to this definition">¶</a></dt>
-<dd><p>TODO: Fill in Documentation</p>
-</dd></dl>
-
-<dl class="post">
-<dt id="post--api-get_recipe_by_uuid-">
-<code class="sig-name descname">POST </code><code class="sig-name descname">/api/get_recipe_by_uuid/</code><a class="headerlink" href="#post--api-get_recipe_by_uuid-" title="Permalink to this definition">¶</a></dt>
-<dd><p>TODO: Fill in Documentation</p>
-</dd></dl>
-
-<dl class="get">
-<dt id="get--api-get_current_recipe-">
-<code class="sig-name descname">GET </code><code class="sig-name descname">/api/get_current_recipe/</code><a class="headerlink" href="#get--api-get_current_recipe-" title="Permalink to this definition">¶</a></dt>
-<dd><p>Get device status</p>
-<blockquote>
-<div></div></blockquote>
+<dd><p>Convert the users recipe selections into a properly formatted recipe to be saved and sent to the specified device.  Not currently used.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Request JSON Object</dt>
+<dt class="field-odd">Request Headers</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>selected_device_uuid</strong> (<em>string</em>) – UUID of device</p></li>
+<li><p><a class="reference external" href="https://tools.ietf.org/html/rfc7231#section-5.3.2">Accept</a> – application/json</p></li>
+</ul>
+</dd>
+<dt class="field-even">Request JSON Object</dt>
+<dd class="field-even"><ul class="simple">
+<li><p><strong>user_token</strong> (<em>string</em>) – User’s Token.</p></li>
+<li><p><strong>device_uuid</strong> (<em>string</em>) – User’s device.</p></li>
+<li><p><strong>recipe_state</strong> (<em>string</em>) – JSON recipe options.</p></li>
 </ul>
 </dd>
 </dl>
-<p><strong>Example Response</strong>:</p>
-<blockquote>
-<div><div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span><span class="nt">&quot;results&quot;</span><span class="p">:</span> <span class="p">{</span>
-  <span class="nt">&quot;format&quot;</span><span class="p">:</span> <span class="s2">&quot;openag-phased-environment-v1&quot;</span><span class="p">,</span>
-  <span class="nt">&quot;version&quot;</span><span class="p">:</span> <span class="s2">&quot;0.1.2&quot;</span><span class="p">,</span>
-  <span class="nt">&quot;creation_timestamp_utc&quot;</span><span class="p">:</span>
-  <span class="s2">&quot;2018-07-19T16:54:24:44Z&quot;</span><span class="p">,</span>
-  <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Get Growing - Basil Recipe&quot;</span><span class="p">,</span>
-  <span class="nt">&quot;uuid&quot;</span><span class="p">:</span> <span class="s2">&quot;e6085be7-d496-43cc-8bd3-3a40a79e854e&quot;</span><span class="p">,</span>
-  <span class="nt">&quot;parent_recipe_uuid&quot;</span><span class="p">:</span> <span class="s2">&quot;37dc0177-076a-4903-8557-c7586e42e90e&quot;</span><span class="p">,</span>
-  <span class="nt">&quot;support_recipe_uuids&quot;</span><span class="p">:</span> <span class="kc">null</span><span class="p">,</span>
-  <span class="nt">&quot;description&quot;</span><span class="p">:</span> <span class="p">{</span>
-      <span class="nt">&quot;brief&quot;</span><span class="p">:</span> <span class="s2">&quot;Grows basil.&quot;</span><span class="p">,</span>
-      <span class="nt">&quot;verbose&quot;</span><span class="p">:</span> <span class="s2">&quot;Grows basil.&quot;</span>
-  <span class="p">},</span>
-  <span class="nt">&quot;authors&quot;</span><span class="p">:</span> <span class="p">[{</span><span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;OpenAgTest&quot;</span><span class="p">,</span> <span class="nt">&quot;uuid&quot;</span><span class="p">:</span> <span class="s2">&quot;1e91ef7d-e9c2-4b0d-8904-f262a9eda70d&quot;</span><span class="p">,</span> <span class="nt">&quot;email&quot;</span><span class="p">:</span> <span class="s2">&quot;rp492@cornell.edu&quot;</span><span class="p">}],</span>
-  <span class="nt">&quot;cultivars&quot;</span><span class="p">:</span> <span class="p">[{</span><span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Basil/Sweet Basil&quot;</span><span class="p">,</span> <span class="nt">&quot;uuid&quot;</span><span class="p">:</span> <span class="s2">&quot;02b0328f-ff19-44a8-a8b8-cd13cf6b80af&quot;</span><span class="p">}],</span>
-  <span class="nt">&quot;cultivation_methods&quot;</span><span class="p">:</span> <span class="p">[{</span><span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Shallow Water Culture&quot;</span><span class="p">,</span> <span class="nt">&quot;uuid&quot;</span><span class="p">:</span> <span class="s2">&quot;45fa509b-2008-4109-a39e-e5682c421925&quot;</span><span class="p">}],</span>
-  <span class="nt">&quot;environments&quot;</span><span class="p">:</span> <span class="p">{</span><span class="nt">&quot;standard_day&quot;</span><span class="p">:</span> <span class="p">{</span>
-                      <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Standard Day&quot;</span><span class="p">,</span>
-                      <span class="nt">&quot;spectrum_key&quot;</span><span class="p">:</span> <span class="s2">&quot;flat&quot;</span><span class="p">,</span>
-                      <span class="nt">&quot;light_spectrum_nm_percent&quot;</span><span class="p">:</span> <span class="p">{</span><span class="nt">&quot;380-399&quot;</span><span class="p">:</span> <span class="mf">2.03</span><span class="p">,</span> <span class="nt">&quot;400-499&quot;</span><span class="p">:</span> <span class="mf">20.3</span><span class="p">,</span> <span class="nt">&quot;500-599&quot;</span><span class="p">:</span> <span class="mf">23.27</span><span class="p">,</span> <span class="nt">&quot;600-700&quot;</span><span class="p">:</span> <span class="mf">31.09</span><span class="p">,</span> <span class="nt">&quot;701-780&quot;</span><span class="p">:</span> <span class="mf">23.31</span><span class="p">},</span>
-                      <span class="nt">&quot;light_ppfd_umol_m2_s&quot;</span><span class="p">:</span> <span class="mi">300</span><span class="p">,</span>
-                      <span class="nt">&quot;light_illumination_distance_cm&quot;</span><span class="p">:</span> <span class="mi">10</span><span class="p">,</span>
-                      <span class="nt">&quot;air_temperature_celcius&quot;</span><span class="p">:</span> <span class="mi">22</span>
-                  <span class="p">},</span>
-                  <span class="nt">&quot;standard_night&quot;</span><span class="p">:</span> <span class="p">{</span>
-                      <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Standard Night&quot;</span><span class="p">,</span>
-                      <span class="nt">&quot;spectrum_key&quot;</span><span class="p">:</span> <span class="s2">&quot;off&quot;</span><span class="p">,</span>
-                      <span class="nt">&quot;light_spectrum_nm_percent&quot;</span><span class="p">:</span> <span class="p">{</span><span class="nt">&quot;380-399&quot;</span><span class="p">:</span> <span class="mf">0.0</span><span class="p">,</span> <span class="nt">&quot;400-499&quot;</span><span class="p">:</span> <span class="mf">0.0</span><span class="p">,</span> <span class="nt">&quot;500-599&quot;</span><span class="p">:</span> <span class="mf">0.0</span><span class="p">,</span> <span class="nt">&quot;600-700&quot;</span><span class="p">:</span> <span class="mf">0.0</span><span class="p">,</span> <span class="nt">&quot;701-780&quot;</span><span class="p">:</span> <span class="mf">0.0</span><span class="p">},</span>
-                      <span class="nt">&quot;light_ppfd_umol_m2_s&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
-                      <span class="nt">&quot;light_illumination_distance_cm&quot;</span><span class="p">:</span> <span class="mi">10</span><span class="p">,</span>
-                      <span class="nt">&quot;air_temperature_celcius&quot;</span><span class="p">:</span> <span class="mi">22</span>
-                  <span class="p">},</span>
-                  <span class="nt">&quot;cold_day&quot;</span><span class="p">:</span> <span class="p">{</span><span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Cold Day&quot;</span><span class="p">,</span> <span class="nt">&quot;spectrum_key&quot;</span><span class="p">:</span> <span class="s2">&quot;flat&quot;</span><span class="p">,</span> <span class="nt">&quot;light_spectrum_nm_percent&quot;</span><span class="p">:</span> <span class="p">{</span><span class="nt">&quot;380-399&quot;</span><span class="p">:</span> <span class="mf">0.0</span><span class="p">,</span> <span class="nt">&quot;400-499&quot;</span><span class="p">:</span> <span class="mf">28.01</span><span class="p">,</span> <span class="nt">&quot;500-599&quot;</span><span class="p">:</span> <span class="mf">26.9</span><span class="p">,</span> <span class="nt">&quot;600-700&quot;</span><span class="p">:</span> <span class="mf">41.13</span><span class="p">,</span> <span class="nt">&quot;701-780&quot;</span><span class="p">:</span> <span class="mf">3.96</span><span class="p">},</span> <span class="nt">&quot;light_ppfd_umol_m2_s&quot;</span><span class="p">:</span> <span class="mi">300</span><span class="p">,</span> <span class="nt">&quot;light_illumination_distance_cm&quot;</span><span class="p">:</span> <span class="mi">10</span><span class="p">,</span> <span class="nt">&quot;air_temperature_celcius&quot;</span><span class="p">:</span> <span class="mi">10</span><span class="p">},</span>
-                  <span class="nt">&quot;frost_night&quot;</span><span class="p">:</span> <span class="p">{</span><span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Frost Night&quot;</span><span class="p">,</span> <span class="nt">&quot;spectrum_key&quot;</span><span class="p">:</span> <span class="s2">&quot;off&quot;</span><span class="p">,</span> <span class="nt">&quot;light_spectrum_nm_percent&quot;</span><span class="p">:</span> <span class="p">{</span><span class="nt">&quot;380-399&quot;</span><span class="p">:</span> <span class="mf">0.0</span><span class="p">,</span> <span class="nt">&quot;400-499&quot;</span><span class="p">:</span> <span class="mf">0.0</span><span class="p">,</span> <span class="nt">&quot;500-599&quot;</span><span class="p">:</span> <span class="mf">0.0</span><span class="p">,</span> <span class="nt">&quot;600-700&quot;</span><span class="p">:</span> <span class="mf">0.0</span><span class="p">,</span> <span class="nt">&quot;701-780&quot;</span><span class="p">:</span> <span class="mf">0.0</span><span class="p">},</span> <span class="nt">&quot;light_ppfd_umol_m2_s&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="nt">&quot;light_illumination_distance_cm&quot;</span><span class="p">:</span> <span class="mi">10</span><span class="p">,</span> <span class="nt">&quot;air_temperature_celcius&quot;</span><span class="p">:</span> <span class="mi">2</span><span class="p">}</span>
-              <span class="p">},</span>
-              <span class="nt">&quot;phases&quot;</span><span class="p">:</span> <span class="p">[{</span><span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Standard Growth&quot;</span><span class="p">,</span>
-                          <span class="nt">&quot;repeat&quot;</span><span class="p">:</span> <span class="mi">29</span><span class="p">,</span>
-                          <span class="nt">&quot;cycles&quot;</span><span class="p">:</span> <span class="p">[{</span><span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Day&quot;</span><span class="p">,</span> <span class="nt">&quot;environment&quot;</span><span class="p">:</span> <span class="s2">&quot;standard_day&quot;</span><span class="p">,</span> <span class="nt">&quot;duration_hours&quot;</span><span class="p">:</span> <span class="mi">18</span><span class="p">},</span>
-                                      <span class="p">{</span><span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Night&quot;</span><span class="p">,</span> <span class="nt">&quot;environment&quot;</span><span class="p">:</span> <span class="s2">&quot;standard_night&quot;</span><span class="p">,</span> <span class="nt">&quot;duration_hours&quot;</span><span class="p">:</span> <span class="mi">6</span><span class="p">}]</span>
-                          <span class="p">},</span>
-                          <span class="p">{</span><span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Frosty Growth&quot;</span><span class="p">,</span>
-                          <span class="nt">&quot;repeat&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
-                          <span class="nt">&quot;cycles&quot;</span><span class="p">:</span> <span class="p">[{</span><span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Day&quot;</span><span class="p">,</span> <span class="nt">&quot;environment&quot;</span><span class="p">:</span> <span class="s2">&quot;cold_day&quot;</span><span class="p">,</span> <span class="nt">&quot;duration_hours&quot;</span><span class="p">:</span> <span class="mi">18</span><span class="p">},</span>
-                                      <span class="p">{</span><span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Night&quot;</span><span class="p">,</span> <span class="nt">&quot;environment&quot;</span><span class="p">:</span> <span class="s2">&quot;frost_night&quot;</span><span class="p">,</span> <span class="nt">&quot;duration_hours&quot;</span><span class="p">:</span> <span class="mi">6</span><span class="p">}]</span>
-                          <span class="p">}]</span>
-              <span class="p">},</span>
-<span class="nt">&quot;response_code&quot;</span><span class="p">:</span> <span class="mi">200</span><span class="p">}</span>
-</pre></div>
-</div>
-</div></blockquote>
-</dd></dl>
-
-<dl class="post">
-<dt id="post--api-get_current_recipe-">
-<code class="sig-name descname">POST </code><code class="sig-name descname">/api/get_current_recipe/</code><a class="headerlink" href="#post--api-get_current_recipe-" title="Permalink to this definition">¶</a></dt>
-<dd><p>Get device status</p>
-<blockquote>
-<div></div></blockquote>
-<dl class="field-list simple">
-<dt class="field-odd">Request JSON Object</dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>selected_device_uuid</strong> (<em>string</em>) – UUID of device</p></li>
-</ul>
-</dd>
-</dl>
-<p><strong>Example Response</strong>:</p>
-<blockquote>
-<div><div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span><span class="nt">&quot;results&quot;</span><span class="p">:</span> <span class="p">{</span>
-  <span class="nt">&quot;format&quot;</span><span class="p">:</span> <span class="s2">&quot;openag-phased-environment-v1&quot;</span><span class="p">,</span>
-  <span class="nt">&quot;version&quot;</span><span class="p">:</span> <span class="s2">&quot;0.1.2&quot;</span><span class="p">,</span>
-  <span class="nt">&quot;creation_timestamp_utc&quot;</span><span class="p">:</span>
-  <span class="s2">&quot;2018-07-19T16:54:24:44Z&quot;</span><span class="p">,</span>
-  <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Get Growing - Basil Recipe&quot;</span><span class="p">,</span>
-  <span class="nt">&quot;uuid&quot;</span><span class="p">:</span> <span class="s2">&quot;e6085be7-d496-43cc-8bd3-3a40a79e854e&quot;</span><span class="p">,</span>
-  <span class="nt">&quot;parent_recipe_uuid&quot;</span><span class="p">:</span> <span class="s2">&quot;37dc0177-076a-4903-8557-c7586e42e90e&quot;</span><span class="p">,</span>
-  <span class="nt">&quot;support_recipe_uuids&quot;</span><span class="p">:</span> <span class="kc">null</span><span class="p">,</span>
-  <span class="nt">&quot;description&quot;</span><span class="p">:</span> <span class="p">{</span>
-      <span class="nt">&quot;brief&quot;</span><span class="p">:</span> <span class="s2">&quot;Grows basil.&quot;</span><span class="p">,</span>
-      <span class="nt">&quot;verbose&quot;</span><span class="p">:</span> <span class="s2">&quot;Grows basil.&quot;</span>
-  <span class="p">},</span>
-  <span class="nt">&quot;authors&quot;</span><span class="p">:</span> <span class="p">[{</span><span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;OpenAgTest&quot;</span><span class="p">,</span> <span class="nt">&quot;uuid&quot;</span><span class="p">:</span> <span class="s2">&quot;1e91ef7d-e9c2-4b0d-8904-f262a9eda70d&quot;</span><span class="p">,</span> <span class="nt">&quot;email&quot;</span><span class="p">:</span> <span class="s2">&quot;rp492@cornell.edu&quot;</span><span class="p">}],</span>
-  <span class="nt">&quot;cultivars&quot;</span><span class="p">:</span> <span class="p">[{</span><span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Basil/Sweet Basil&quot;</span><span class="p">,</span> <span class="nt">&quot;uuid&quot;</span><span class="p">:</span> <span class="s2">&quot;02b0328f-ff19-44a8-a8b8-cd13cf6b80af&quot;</span><span class="p">}],</span>
-  <span class="nt">&quot;cultivation_methods&quot;</span><span class="p">:</span> <span class="p">[{</span><span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Shallow Water Culture&quot;</span><span class="p">,</span> <span class="nt">&quot;uuid&quot;</span><span class="p">:</span> <span class="s2">&quot;45fa509b-2008-4109-a39e-e5682c421925&quot;</span><span class="p">}],</span>
-  <span class="nt">&quot;environments&quot;</span><span class="p">:</span> <span class="p">{</span><span class="nt">&quot;standard_day&quot;</span><span class="p">:</span> <span class="p">{</span>
-                      <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Standard Day&quot;</span><span class="p">,</span>
-                      <span class="nt">&quot;spectrum_key&quot;</span><span class="p">:</span> <span class="s2">&quot;flat&quot;</span><span class="p">,</span>
-                      <span class="nt">&quot;light_spectrum_nm_percent&quot;</span><span class="p">:</span> <span class="p">{</span><span class="nt">&quot;380-399&quot;</span><span class="p">:</span> <span class="mf">2.03</span><span class="p">,</span> <span class="nt">&quot;400-499&quot;</span><span class="p">:</span> <span class="mf">20.3</span><span class="p">,</span> <span class="nt">&quot;500-599&quot;</span><span class="p">:</span> <span class="mf">23.27</span><span class="p">,</span> <span class="nt">&quot;600-700&quot;</span><span class="p">:</span> <span class="mf">31.09</span><span class="p">,</span> <span class="nt">&quot;701-780&quot;</span><span class="p">:</span> <span class="mf">23.31</span><span class="p">},</span>
-                      <span class="nt">&quot;light_ppfd_umol_m2_s&quot;</span><span class="p">:</span> <span class="mi">300</span><span class="p">,</span>
-                      <span class="nt">&quot;light_illumination_distance_cm&quot;</span><span class="p">:</span> <span class="mi">10</span><span class="p">,</span>
-                      <span class="nt">&quot;air_temperature_celcius&quot;</span><span class="p">:</span> <span class="mi">22</span>
-                  <span class="p">},</span>
-                  <span class="nt">&quot;standard_night&quot;</span><span class="p">:</span> <span class="p">{</span>
-                      <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Standard Night&quot;</span><span class="p">,</span>
-                      <span class="nt">&quot;spectrum_key&quot;</span><span class="p">:</span> <span class="s2">&quot;off&quot;</span><span class="p">,</span>
-                      <span class="nt">&quot;light_spectrum_nm_percent&quot;</span><span class="p">:</span> <span class="p">{</span><span class="nt">&quot;380-399&quot;</span><span class="p">:</span> <span class="mf">0.0</span><span class="p">,</span> <span class="nt">&quot;400-499&quot;</span><span class="p">:</span> <span class="mf">0.0</span><span class="p">,</span> <span class="nt">&quot;500-599&quot;</span><span class="p">:</span> <span class="mf">0.0</span><span class="p">,</span> <span class="nt">&quot;600-700&quot;</span><span class="p">:</span> <span class="mf">0.0</span><span class="p">,</span> <span class="nt">&quot;701-780&quot;</span><span class="p">:</span> <span class="mf">0.0</span><span class="p">},</span>
-                      <span class="nt">&quot;light_ppfd_umol_m2_s&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
-                      <span class="nt">&quot;light_illumination_distance_cm&quot;</span><span class="p">:</span> <span class="mi">10</span><span class="p">,</span>
-                      <span class="nt">&quot;air_temperature_celcius&quot;</span><span class="p">:</span> <span class="mi">22</span>
-                  <span class="p">},</span>
-                  <span class="nt">&quot;cold_day&quot;</span><span class="p">:</span> <span class="p">{</span><span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Cold Day&quot;</span><span class="p">,</span> <span class="nt">&quot;spectrum_key&quot;</span><span class="p">:</span> <span class="s2">&quot;flat&quot;</span><span class="p">,</span> <span class="nt">&quot;light_spectrum_nm_percent&quot;</span><span class="p">:</span> <span class="p">{</span><span class="nt">&quot;380-399&quot;</span><span class="p">:</span> <span class="mf">0.0</span><span class="p">,</span> <span class="nt">&quot;400-499&quot;</span><span class="p">:</span> <span class="mf">28.01</span><span class="p">,</span> <span class="nt">&quot;500-599&quot;</span><span class="p">:</span> <span class="mf">26.9</span><span class="p">,</span> <span class="nt">&quot;600-700&quot;</span><span class="p">:</span> <span class="mf">41.13</span><span class="p">,</span> <span class="nt">&quot;701-780&quot;</span><span class="p">:</span> <span class="mf">3.96</span><span class="p">},</span> <span class="nt">&quot;light_ppfd_umol_m2_s&quot;</span><span class="p">:</span> <span class="mi">300</span><span class="p">,</span> <span class="nt">&quot;light_illumination_distance_cm&quot;</span><span class="p">:</span> <span class="mi">10</span><span class="p">,</span> <span class="nt">&quot;air_temperature_celcius&quot;</span><span class="p">:</span> <span class="mi">10</span><span class="p">},</span>
-                  <span class="nt">&quot;frost_night&quot;</span><span class="p">:</span> <span class="p">{</span><span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Frost Night&quot;</span><span class="p">,</span> <span class="nt">&quot;spectrum_key&quot;</span><span class="p">:</span> <span class="s2">&quot;off&quot;</span><span class="p">,</span> <span class="nt">&quot;light_spectrum_nm_percent&quot;</span><span class="p">:</span> <span class="p">{</span><span class="nt">&quot;380-399&quot;</span><span class="p">:</span> <span class="mf">0.0</span><span class="p">,</span> <span class="nt">&quot;400-499&quot;</span><span class="p">:</span> <span class="mf">0.0</span><span class="p">,</span> <span class="nt">&quot;500-599&quot;</span><span class="p">:</span> <span class="mf">0.0</span><span class="p">,</span> <span class="nt">&quot;600-700&quot;</span><span class="p">:</span> <span class="mf">0.0</span><span class="p">,</span> <span class="nt">&quot;701-780&quot;</span><span class="p">:</span> <span class="mf">0.0</span><span class="p">},</span> <span class="nt">&quot;light_ppfd_umol_m2_s&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="nt">&quot;light_illumination_distance_cm&quot;</span><span class="p">:</span> <span class="mi">10</span><span class="p">,</span> <span class="nt">&quot;air_temperature_celcius&quot;</span><span class="p">:</span> <span class="mi">2</span><span class="p">}</span>
-              <span class="p">},</span>
-              <span class="nt">&quot;phases&quot;</span><span class="p">:</span> <span class="p">[{</span><span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Standard Growth&quot;</span><span class="p">,</span>
-                          <span class="nt">&quot;repeat&quot;</span><span class="p">:</span> <span class="mi">29</span><span class="p">,</span>
-                          <span class="nt">&quot;cycles&quot;</span><span class="p">:</span> <span class="p">[{</span><span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Day&quot;</span><span class="p">,</span> <span class="nt">&quot;environment&quot;</span><span class="p">:</span> <span class="s2">&quot;standard_day&quot;</span><span class="p">,</span> <span class="nt">&quot;duration_hours&quot;</span><span class="p">:</span> <span class="mi">18</span><span class="p">},</span>
-                                      <span class="p">{</span><span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Night&quot;</span><span class="p">,</span> <span class="nt">&quot;environment&quot;</span><span class="p">:</span> <span class="s2">&quot;standard_night&quot;</span><span class="p">,</span> <span class="nt">&quot;duration_hours&quot;</span><span class="p">:</span> <span class="mi">6</span><span class="p">}]</span>
-                          <span class="p">},</span>
-                          <span class="p">{</span><span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Frosty Growth&quot;</span><span class="p">,</span>
-                          <span class="nt">&quot;repeat&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
-                          <span class="nt">&quot;cycles&quot;</span><span class="p">:</span> <span class="p">[{</span><span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Day&quot;</span><span class="p">,</span> <span class="nt">&quot;environment&quot;</span><span class="p">:</span> <span class="s2">&quot;cold_day&quot;</span><span class="p">,</span> <span class="nt">&quot;duration_hours&quot;</span><span class="p">:</span> <span class="mi">18</span><span class="p">},</span>
-                                      <span class="p">{</span><span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Night&quot;</span><span class="p">,</span> <span class="nt">&quot;environment&quot;</span><span class="p">:</span> <span class="s2">&quot;frost_night&quot;</span><span class="p">,</span> <span class="nt">&quot;duration_hours&quot;</span><span class="p">:</span> <span class="mi">6</span><span class="p">}]</span>
-                          <span class="p">}]</span>
-              <span class="p">},</span>
-<span class="nt">&quot;response_code&quot;</span><span class="p">:</span> <span class="mi">200</span><span class="p">}</span>
-</pre></div>
-</div>
-</div></blockquote>
-</dd></dl>
-
-<dl class="get">
-<dt id="get--api-get_current_stats-">
-<code class="sig-name descname">GET </code><code class="sig-name descname">/api/get_current_stats/</code><a class="headerlink" href="#get--api-get_current_stats-" title="Permalink to this definition">¶</a></dt>
-<dd><p>Get current device status
-.. :quickref: Sensor Data; Get the current sensor readings</p>
-<dl class="field-list simple">
-<dt class="field-odd">Request JSON Object</dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>selected_device_uuid</strong> (<em>string</em>) – UUID of device</p></li>
-</ul>
-</dd>
-</dl>
-<p><strong>Example Response</strong>:</p>
+<p><strong>Example response</strong>:</p>
 <blockquote>
 <div><div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
-  <span class="nt">&quot;results&quot;</span><span class="p">:</span> <span class="p">{</span>
-      <span class="nt">&quot;current_co2&quot;</span><span class="p">:</span> <span class="s2">&quot;23&quot;</span><span class="p">,</span>
-      <span class="nt">&quot;current_temp&quot;</span><span class="p">:</span> <span class="s2">&quot;27&quot;</span><span class="p">,</span>
-      <span class="nt">&quot;current_rh&quot;</span><span class="p">:</span> <span class="s2">&quot;50.1&quot;</span><span class="p">,</span>
-      <span class="nt">&quot;current_h20_ec&quot;</span><span class="p">:</span> <span class="s2">&quot;4.4&quot;</span><span class="p">,</span>
-      <span class="nt">&quot;current_h20_ph&quot;</span><span class="p">:</span> <span class="s2">&quot;7.1&quot;</span><span class="p">,</span>
-      <span class="nt">&quot;current_h20_temp&quot;</span><span class="p">:</span> <span class="s2">&quot;25.0&quot;</span>
-      <span class="p">},</span>
+  <span class="nt">&quot;message&quot;</span><span class="p">:</span> <span class="s2">&quot;yay&quot;</span><span class="p">,</span>
   <span class="nt">&quot;response_code&quot;</span><span class="p">:</span> <span class="mi">200</span>
 <span class="p">}</span>
 </pre></div>
@@ -702,13 +505,148 @@
 </dd></dl>
 
 <dl class="post">
+<dt id="post--api-verify_user_session-">
+<code class="sig-name descname">POST </code><code class="sig-name descname">/api/verify_user_session/</code><a class="headerlink" href="#post--api-verify_user_session-" title="Permalink to this definition">¶</a></dt>
+<dd><p>Verify the user’s session token is still valid.
+.. :quickref: Authentication; Verify user’s session</p>
+<dl class="field-list simple">
+<dt class="field-odd">Request Headers</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><a class="reference external" href="https://tools.ietf.org/html/rfc7231#section-5.3.2">Accept</a> – application/json</p></li>
+</ul>
+</dd>
+<dt class="field-even">Request JSON Object</dt>
+<dd class="field-even"><ul class="simple">
+<li><p><strong>user_token</strong> (<em>string</em>) – User Token returned from the /login API.</p></li>
+</ul>
+</dd>
+</dl>
+<p><strong>Example response</strong>:</p>
+<blockquote>
+<div><div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+  <span class="nt">&quot;message&quot;</span><span class="p">:</span> <span class="s2">&quot;Successful&quot;</span><span class="p">,</span>
+  <span class="nt">&quot;is_expired&quot;</span><span class="p">:</span> <span class="s2">&quot;True&quot;</span><span class="p">,</span>
+  <span class="nt">&quot;response_code&quot;</span><span class="p">:</span> <span class="mi">200</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div></blockquote>
+</dd></dl>
+
+<dl class="post">
+<dt id="post--api-get_recipe_by_uuid-">
+<code class="sig-name descname">POST </code><code class="sig-name descname">/api/get_recipe_by_uuid/</code><a class="headerlink" href="#post--api-get_recipe_by_uuid-" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return all the details about this recipe and a users devices.  Used to build an editor to modify this recipe.  Not currently used.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Request Headers</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><a class="reference external" href="https://tools.ietf.org/html/rfc7231#section-5.3.2">Accept</a> – application/json</p></li>
+</ul>
+</dd>
+<dt class="field-even">Request JSON Object</dt>
+<dd class="field-even"><ul class="simple">
+<li><p><strong>user_token</strong> (<em>string</em>) – User Token returned from the /login API.</p></li>
+<li><p><strong>recipe_uuid</strong> (<em>string</em>) – Recipe UUID to look up</p></li>
+</ul>
+</dd>
+</dl>
+<p><strong>Example response</strong>:</p>
+<blockquote>
+<div><div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+  <span class="nt">&quot;lots and lots of data&quot;</span><span class="p">:</span> <span class="s2">&quot;not described until we implement the new recipe editor&quot;</span><span class="p">,</span>
+  <span class="nt">&quot;response_code&quot;</span><span class="p">:</span> <span class="mi">200</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div></blockquote>
+</dd></dl>
+
+<dl class="post">
+<dt id="post--api-get_current_recipe-">
+<code class="sig-name descname">POST </code><code class="sig-name descname">/api/get_current_recipe/</code><a class="headerlink" href="#post--api-get_current_recipe-" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get current recipe running on device.</p>
+<blockquote>
+<div></div></blockquote>
+<dl class="field-list simple">
+<dt class="field-odd">Request Headers</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><a class="reference external" href="https://tools.ietf.org/html/rfc7231#section-5.3.2">Accept</a> – application/json</p></li>
+</ul>
+</dd>
+<dt class="field-even">Request JSON Object</dt>
+<dd class="field-even"><ul class="simple">
+<li><p><strong>user_token</strong> (<em>string</em>) – User Token returned from the /login API.</p></li>
+<li><p><strong>selected_device_uuid</strong> (<em>string</em>) – UUID of device</p></li>
+</ul>
+</dd>
+</dl>
+<p><strong>Example Response</strong>:</p>
+<blockquote>
+<div><div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span><span class="nt">&quot;results&quot;</span><span class="p">:</span> <span class="p">{</span>
+  <span class="nt">&quot;format&quot;</span><span class="p">:</span> <span class="s2">&quot;openag-phased-environment-v1&quot;</span><span class="p">,</span>
+  <span class="nt">&quot;version&quot;</span><span class="p">:</span> <span class="s2">&quot;0.1.2&quot;</span><span class="p">,</span>
+  <span class="nt">&quot;creation_timestamp_utc&quot;</span><span class="p">:</span>
+  <span class="s2">&quot;2018-07-19T16:54:24:44Z&quot;</span><span class="p">,</span>
+  <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Get Growing - Basil Recipe&quot;</span><span class="p">,</span>
+  <span class="nt">&quot;uuid&quot;</span><span class="p">:</span> <span class="s2">&quot;e6085be7-d496-43cc-8bd3-3a40a79e854e&quot;</span><span class="p">,</span>
+  <span class="nt">&quot;parent_recipe_uuid&quot;</span><span class="p">:</span> <span class="s2">&quot;37dc0177-076a-4903-8557-c7586e42e90e&quot;</span><span class="p">,</span>
+  <span class="nt">&quot;support_recipe_uuids&quot;</span><span class="p">:</span> <span class="kc">null</span><span class="p">,</span>
+  <span class="nt">&quot;description&quot;</span><span class="p">:</span> <span class="p">{</span>
+      <span class="nt">&quot;brief&quot;</span><span class="p">:</span> <span class="s2">&quot;Grows basil.&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;verbose&quot;</span><span class="p">:</span> <span class="s2">&quot;Grows basil.&quot;</span>
+  <span class="p">},</span>
+  <span class="nt">&quot;authors&quot;</span><span class="p">:</span> <span class="p">[{</span><span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;OpenAgTest&quot;</span><span class="p">,</span> <span class="nt">&quot;uuid&quot;</span><span class="p">:</span> <span class="s2">&quot;1e91ef7d-e9c2-4b0d-8904-f262a9eda70d&quot;</span><span class="p">,</span> <span class="nt">&quot;email&quot;</span><span class="p">:</span> <span class="s2">&quot;rp492@cornell.edu&quot;</span><span class="p">}],</span>
+  <span class="nt">&quot;cultivars&quot;</span><span class="p">:</span> <span class="p">[{</span><span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Basil/Sweet Basil&quot;</span><span class="p">,</span> <span class="nt">&quot;uuid&quot;</span><span class="p">:</span> <span class="s2">&quot;02b0328f-ff19-44a8-a8b8-cd13cf6b80af&quot;</span><span class="p">}],</span>
+  <span class="nt">&quot;cultivation_methods&quot;</span><span class="p">:</span> <span class="p">[{</span><span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Shallow Water Culture&quot;</span><span class="p">,</span> <span class="nt">&quot;uuid&quot;</span><span class="p">:</span> <span class="s2">&quot;45fa509b-2008-4109-a39e-e5682c421925&quot;</span><span class="p">}],</span>
+  <span class="nt">&quot;environments&quot;</span><span class="p">:</span> <span class="p">{</span><span class="nt">&quot;standard_day&quot;</span><span class="p">:</span> <span class="p">{</span>
+                      <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Standard Day&quot;</span><span class="p">,</span>
+                      <span class="nt">&quot;spectrum_key&quot;</span><span class="p">:</span> <span class="s2">&quot;flat&quot;</span><span class="p">,</span>
+                      <span class="nt">&quot;light_spectrum_nm_percent&quot;</span><span class="p">:</span> <span class="p">{</span><span class="nt">&quot;380-399&quot;</span><span class="p">:</span> <span class="mf">2.03</span><span class="p">,</span> <span class="nt">&quot;400-499&quot;</span><span class="p">:</span> <span class="mf">20.3</span><span class="p">,</span> <span class="nt">&quot;500-599&quot;</span><span class="p">:</span> <span class="mf">23.27</span><span class="p">,</span> <span class="nt">&quot;600-700&quot;</span><span class="p">:</span> <span class="mf">31.09</span><span class="p">,</span> <span class="nt">&quot;701-780&quot;</span><span class="p">:</span> <span class="mf">23.31</span><span class="p">},</span>
+                      <span class="nt">&quot;light_ppfd_umol_m2_s&quot;</span><span class="p">:</span> <span class="mi">300</span><span class="p">,</span>
+                      <span class="nt">&quot;light_illumination_distance_cm&quot;</span><span class="p">:</span> <span class="mi">10</span><span class="p">,</span>
+                      <span class="nt">&quot;air_temperature_celcius&quot;</span><span class="p">:</span> <span class="mi">22</span>
+                  <span class="p">},</span>
+                  <span class="nt">&quot;standard_night&quot;</span><span class="p">:</span> <span class="p">{</span>
+                      <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Standard Night&quot;</span><span class="p">,</span>
+                      <span class="nt">&quot;spectrum_key&quot;</span><span class="p">:</span> <span class="s2">&quot;off&quot;</span><span class="p">,</span>
+                      <span class="nt">&quot;light_spectrum_nm_percent&quot;</span><span class="p">:</span> <span class="p">{</span><span class="nt">&quot;380-399&quot;</span><span class="p">:</span> <span class="mf">0.0</span><span class="p">,</span> <span class="nt">&quot;400-499&quot;</span><span class="p">:</span> <span class="mf">0.0</span><span class="p">,</span> <span class="nt">&quot;500-599&quot;</span><span class="p">:</span> <span class="mf">0.0</span><span class="p">,</span> <span class="nt">&quot;600-700&quot;</span><span class="p">:</span> <span class="mf">0.0</span><span class="p">,</span> <span class="nt">&quot;701-780&quot;</span><span class="p">:</span> <span class="mf">0.0</span><span class="p">},</span>
+                      <span class="nt">&quot;light_ppfd_umol_m2_s&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+                      <span class="nt">&quot;light_illumination_distance_cm&quot;</span><span class="p">:</span> <span class="mi">10</span><span class="p">,</span>
+                      <span class="nt">&quot;air_temperature_celcius&quot;</span><span class="p">:</span> <span class="mi">22</span>
+                  <span class="p">},</span>
+                  <span class="nt">&quot;cold_day&quot;</span><span class="p">:</span> <span class="p">{</span><span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Cold Day&quot;</span><span class="p">,</span> <span class="nt">&quot;spectrum_key&quot;</span><span class="p">:</span> <span class="s2">&quot;flat&quot;</span><span class="p">,</span> <span class="nt">&quot;light_spectrum_nm_percent&quot;</span><span class="p">:</span> <span class="p">{</span><span class="nt">&quot;380-399&quot;</span><span class="p">:</span> <span class="mf">0.0</span><span class="p">,</span> <span class="nt">&quot;400-499&quot;</span><span class="p">:</span> <span class="mf">28.01</span><span class="p">,</span> <span class="nt">&quot;500-599&quot;</span><span class="p">:</span> <span class="mf">26.9</span><span class="p">,</span> <span class="nt">&quot;600-700&quot;</span><span class="p">:</span> <span class="mf">41.13</span><span class="p">,</span> <span class="nt">&quot;701-780&quot;</span><span class="p">:</span> <span class="mf">3.96</span><span class="p">},</span> <span class="nt">&quot;light_ppfd_umol_m2_s&quot;</span><span class="p">:</span> <span class="mi">300</span><span class="p">,</span> <span class="nt">&quot;light_illumination_distance_cm&quot;</span><span class="p">:</span> <span class="mi">10</span><span class="p">,</span> <span class="nt">&quot;air_temperature_celcius&quot;</span><span class="p">:</span> <span class="mi">10</span><span class="p">},</span>
+                  <span class="nt">&quot;frost_night&quot;</span><span class="p">:</span> <span class="p">{</span><span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Frost Night&quot;</span><span class="p">,</span> <span class="nt">&quot;spectrum_key&quot;</span><span class="p">:</span> <span class="s2">&quot;off&quot;</span><span class="p">,</span> <span class="nt">&quot;light_spectrum_nm_percent&quot;</span><span class="p">:</span> <span class="p">{</span><span class="nt">&quot;380-399&quot;</span><span class="p">:</span> <span class="mf">0.0</span><span class="p">,</span> <span class="nt">&quot;400-499&quot;</span><span class="p">:</span> <span class="mf">0.0</span><span class="p">,</span> <span class="nt">&quot;500-599&quot;</span><span class="p">:</span> <span class="mf">0.0</span><span class="p">,</span> <span class="nt">&quot;600-700&quot;</span><span class="p">:</span> <span class="mf">0.0</span><span class="p">,</span> <span class="nt">&quot;701-780&quot;</span><span class="p">:</span> <span class="mf">0.0</span><span class="p">},</span> <span class="nt">&quot;light_ppfd_umol_m2_s&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="nt">&quot;light_illumination_distance_cm&quot;</span><span class="p">:</span> <span class="mi">10</span><span class="p">,</span> <span class="nt">&quot;air_temperature_celcius&quot;</span><span class="p">:</span> <span class="mi">2</span><span class="p">}</span>
+              <span class="p">},</span>
+              <span class="nt">&quot;phases&quot;</span><span class="p">:</span> <span class="p">[{</span><span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Standard Growth&quot;</span><span class="p">,</span>
+                          <span class="nt">&quot;repeat&quot;</span><span class="p">:</span> <span class="mi">29</span><span class="p">,</span>
+                          <span class="nt">&quot;cycles&quot;</span><span class="p">:</span> <span class="p">[{</span><span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Day&quot;</span><span class="p">,</span> <span class="nt">&quot;environment&quot;</span><span class="p">:</span> <span class="s2">&quot;standard_day&quot;</span><span class="p">,</span> <span class="nt">&quot;duration_hours&quot;</span><span class="p">:</span> <span class="mi">18</span><span class="p">},</span>
+                                      <span class="p">{</span><span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Night&quot;</span><span class="p">,</span> <span class="nt">&quot;environment&quot;</span><span class="p">:</span> <span class="s2">&quot;standard_night&quot;</span><span class="p">,</span> <span class="nt">&quot;duration_hours&quot;</span><span class="p">:</span> <span class="mi">6</span><span class="p">}]</span>
+                          <span class="p">},</span>
+                          <span class="p">{</span><span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Frosty Growth&quot;</span><span class="p">,</span>
+                          <span class="nt">&quot;repeat&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+                          <span class="nt">&quot;cycles&quot;</span><span class="p">:</span> <span class="p">[{</span><span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Day&quot;</span><span class="p">,</span> <span class="nt">&quot;environment&quot;</span><span class="p">:</span> <span class="s2">&quot;cold_day&quot;</span><span class="p">,</span> <span class="nt">&quot;duration_hours&quot;</span><span class="p">:</span> <span class="mi">18</span><span class="p">},</span>
+                                      <span class="p">{</span><span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Night&quot;</span><span class="p">,</span> <span class="nt">&quot;environment&quot;</span><span class="p">:</span> <span class="s2">&quot;frost_night&quot;</span><span class="p">,</span> <span class="nt">&quot;duration_hours&quot;</span><span class="p">:</span> <span class="mi">6</span><span class="p">}]</span>
+                          <span class="p">}]</span>
+              <span class="p">},</span>
+<span class="nt">&quot;response_code&quot;</span><span class="p">:</span> <span class="mi">200</span><span class="p">}</span>
+</pre></div>
+</div>
+</div></blockquote>
+</dd></dl>
+
+<dl class="post">
 <dt id="post--api-get_current_stats-">
 <code class="sig-name descname">POST </code><code class="sig-name descname">/api/get_current_stats/</code><a class="headerlink" href="#post--api-get_current_stats-" title="Permalink to this definition">¶</a></dt>
-<dd><p>Get current device status
-.. :quickref: Sensor Data; Get the current sensor readings</p>
+<dd><p>Get the current sensor readings.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Request JSON Object</dt>
+<dt class="field-odd">Request Headers</dt>
 <dd class="field-odd"><ul class="simple">
+<li><p><a class="reference external" href="https://tools.ietf.org/html/rfc7231#section-5.3.2">Accept</a> – application/json</p></li>
+</ul>
+</dd>
+<dt class="field-even">Request JSON Object</dt>
+<dd class="field-even"><ul class="simple">
+<li><p><strong>user_token</strong> (<em>string</em>) – User Token returned from the /login API.</p></li>
 <li><p><strong>selected_device_uuid</strong> (<em>string</em>) – UUID of device</p></li>
 </ul>
 </dd>
@@ -736,20 +674,6 @@
 <code class="sig-name descname">POST </code><code class="sig-name descname">/api/get_device_images/</code><a class="headerlink" href="#post--api-get_device_images-" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns all images associated with device.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Form Parameters</dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>user_token</strong> – User Token</p></li>
-<li><p><strong>device_uuid</strong> – Device UUID</p></li>
-</ul>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="get">
-<dt id="get--api-get_temp_details-">
-<code class="sig-name descname">GET </code><code class="sig-name descname">/api/get_temp_details/</code><a class="headerlink" href="#get--api-get_temp_details-" title="Permalink to this definition">¶</a></dt>
-<dd><p>Get historical temperature (and humidity) data.</p>
-<dl class="field-list simple">
 <dt class="field-odd">Request Headers</dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><a class="reference external" href="https://tools.ietf.org/html/rfc7231#section-5.3.2">Accept</a> – application/json</p></li>
@@ -757,22 +681,16 @@
 </dd>
 <dt class="field-even">Request JSON Object</dt>
 <dd class="field-even"><ul class="simple">
-<li><p><strong>selected_device_uuid</strong> (<em>string</em>) – Device UUID to get the Temp/RH data for</p></li>
+<li><p><strong>user_token</strong> (<em>string</em>) – User Token returned from the /login API.</p></li>
+<li><p><strong>device_uuid</strong> (<em>string</em>) – Device UUID</p></li>
 </ul>
 </dd>
 </dl>
 <p><strong>Example response</strong>:</p>
 <blockquote>
 <div><div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
-  <span class="nt">&quot;results&quot;</span><span class="p">:</span> <span class="p">{</span>
-      <span class="nt">&quot;RH&quot;</span><span class="p">:</span> <span class="p">[</span>
-          <span class="p">{</span><span class="nt">&quot;value&quot;</span><span class="p">:</span> <span class="s2">&quot;28.0&quot;</span><span class="p">,</span> <span class="nt">&quot;time&quot;</span><span class="p">:</span> <span class="s2">&quot;2019-05-08T18:39:53Z&quot;</span><span class="p">},</span>
-          <span class="p">{</span><span class="nt">&quot;value&quot;</span><span class="p">:</span> <span class="s2">&quot;29.0&quot;</span><span class="p">,</span> <span class="nt">&quot;time&quot;</span><span class="p">:</span> <span class="s2">&quot;2019-05-08T18:29:52Z&quot;</span><span class="p">}],</span>
-      <span class="nt">&quot;temp&quot;</span><span class="p">:</span> <span class="p">[</span>
-          <span class="p">{</span><span class="nt">&quot;value&quot;</span><span class="p">:</span> <span class="s2">&quot;25.0&quot;</span><span class="p">,</span> <span class="nt">&quot;time&quot;</span><span class="p">:</span> <span class="s2">&quot;2019-05-08T18:29:52Z&quot;</span><span class="p">},</span>
-          <span class="p">{</span><span class="nt">&quot;value&quot;</span><span class="p">:</span> <span class="s2">&quot;24.0&quot;</span><span class="p">,</span> <span class="nt">&quot;time&quot;</span><span class="p">:</span> <span class="s2">&quot;2019-05-08T18:24:52Z&quot;</span><span class="p">}]</span>
-  <span class="p">},</span>
-  <span class="nt">&quot;response_code&quot;</span><span class="p">:</span> <span class="mi">200</span>
+  <span class="nt">&quot;image_urls&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;URL1&quot;</span><span class="p">,</span> <span class="s2">&quot;URL2&quot;</span><span class="p">],</span>
+  <span class="nt">&quot;response_code&quot;</span><span class="p">:</span> <span class="mi">200</span> 
 <span class="p">}</span>
 </pre></div>
 </div>
@@ -782,7 +700,7 @@
 <dl class="post">
 <dt id="post--api-get_temp_details-">
 <code class="sig-name descname">POST </code><code class="sig-name descname">/api/get_temp_details/</code><a class="headerlink" href="#post--api-get_temp_details-" title="Permalink to this definition">¶</a></dt>
-<dd><p>Get historical temperature (and humidity) data.</p>
+<dd><p>Get historical temperature (and humidity) time series data.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Request Headers</dt>
 <dd class="field-odd"><ul class="simple">
@@ -791,6 +709,7 @@
 </dd>
 <dt class="field-even">Request JSON Object</dt>
 <dd class="field-even"><ul class="simple">
+<li><p><strong>user_token</strong> (<em>string</em>) – User Token returned from the /login API.</p></li>
 <li><p><strong>selected_device_uuid</strong> (<em>string</em>) – Device UUID to get the Temp/RH data for</p></li>
 </ul>
 </dd>
@@ -813,61 +732,19 @@
 </div></blockquote>
 </dd></dl>
 
-<dl class="get">
-<dt id="get--api-get_user_devices-">
-<code class="sig-name descname">GET </code><code class="sig-name descname">/api/get_user_devices/</code><a class="headerlink" href="#get--api-get_user_devices-" title="Permalink to this definition">¶</a></dt>
-<dd><p>Get Devices associated with a user</p>
-<dl class="field-list simple">
-<dt class="field-odd">Request JSON Object</dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>user_token</strong> (<em>string</em>) – User Token</p></li>
-</ul>
-</dd>
-</dl>
-<p><strong>Example Response</strong>:</p>
-<blockquote>
-<div><div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
-    <span class="nt">&quot;results&quot;</span><span class="p">:</span> <span class="p">{</span>
-        <span class="nt">&quot;devices&quot;</span><span class="p">:</span> <span class="p">[</span>
-            <span class="p">{</span>
-                <span class="nt">&quot;device_uuid&quot;</span><span class="p">:</span> <span class="s2">&quot;EDU-9F2BEEEF-ac-de-48-00-11-22&quot;</span><span class="p">,</span>
-                <span class="nt">&quot;device_notes&quot;</span><span class="p">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
-                <span class="nt">&quot;device_type&quot;</span><span class="p">:</span> <span class="s2">&quot;EDU&quot;</span><span class="p">,</span>
-                <span class="nt">&quot;device_reg_no&quot;</span><span class="p">:</span> <span class="s2">&quot;9F2BEEEF&quot;</span><span class="p">,</span>
-                <span class="nt">&quot;registration_date&quot;</span><span class="p">:</span> <span class="s2">&quot;2019-04-29 20:09:10&quot;</span><span class="p">,</span>
-                <span class="nt">&quot;user_uuid&quot;</span><span class="p">:</span> <span class="s2">&quot;d2c7fe68-e857-4c4a-98b4-7e88154ddaa6&quot;</span><span class="p">,</span>
-                <span class="nt">&quot;permissions&quot;</span><span class="p">:</span> <span class="s2">&quot;control&quot;</span><span class="p">,</span>
-                <span class="nt">&quot;device_name&quot;</span><span class="p">:</span> <span class="s2">&quot;Steve&#39;s Mac&quot;</span><span class="p">,</span>
-                <span class="nt">&quot;peripherals&quot;</span><span class="p">:</span> <span class="s2">&quot;&quot;</span>
-            <span class="p">},</span>
-            <span class="p">{</span>
-                <span class="nt">&quot;device_uuid&quot;</span><span class="p">:</span> <span class="s2">&quot;EDU-F3D9051D-b8-27-eb-0a-43-ee&quot;</span><span class="p">,</span>
-                <span class="nt">&quot;device_notes&quot;</span><span class="p">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
-                <span class="nt">&quot;device_type&quot;</span><span class="p">:</span> <span class="s2">&quot;EDU&quot;</span><span class="p">,</span>
-                <span class="nt">&quot;device_reg_no&quot;</span><span class="p">:</span> <span class="s2">&quot;F3D9051D&quot;</span><span class="p">,</span>
-                <span class="nt">&quot;registration_date&quot;</span><span class="p">:</span> <span class="s2">&quot;2019-04-08 13:18:58&quot;</span><span class="p">,</span>
-                <span class="nt">&quot;user_uuid&quot;</span><span class="p">:</span> <span class="s2">&quot;d2c7fe68-e857-4c4a-98b4-7e88154ddaa6&quot;</span><span class="p">,</span>
-                <span class="nt">&quot;permissions&quot;</span><span class="p">:</span> <span class="s2">&quot;control&quot;</span><span class="p">,</span>
-                <span class="nt">&quot;device_name&quot;</span><span class="p">:</span> <span class="s2">&quot;Green-Frog-Bates&quot;</span><span class="p">,</span>
-                <span class="nt">&quot;peripherals&quot;</span><span class="p">:</span> <span class="s2">&quot;&quot;</span>
-            <span class="p">}],</span>
-        <span class="nt">&quot;user_uuid&quot;</span><span class="p">:</span> <span class="s2">&quot;d2c7fe68-e857-4c4a-98b4-7e88154ddaa6&quot;</span>
-    <span class="p">},</span>
-    <span class="nt">&quot;response_code&quot;</span><span class="p">:</span> <span class="mi">200</span>
-<span class="p">}</span>
-</pre></div>
-</div>
-</div></blockquote>
-</dd></dl>
-
 <dl class="post">
 <dt id="post--api-get_user_devices-">
 <code class="sig-name descname">POST </code><code class="sig-name descname">/api/get_user_devices/</code><a class="headerlink" href="#post--api-get_user_devices-" title="Permalink to this definition">¶</a></dt>
-<dd><p>Get Devices associated with a user</p>
+<dd><p>Get all devices associated with a user account.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Request JSON Object</dt>
+<dt class="field-odd">Request Headers</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>user_token</strong> (<em>string</em>) – User Token</p></li>
+<li><p><a class="reference external" href="https://tools.ietf.org/html/rfc7231#section-5.3.2">Accept</a> – multipart/form-data</p></li>
+</ul>
+</dd>
+<dt class="field-even">Request JSON Object</dt>
+<dd class="field-even"><ul class="simple">
+<li><p><strong>user_token</strong> (<em>string</em>) – User Token returned from the /login API.</p></li>
 </ul>
 </dd>
 </dl>
@@ -901,25 +778,6 @@
         <span class="nt">&quot;user_uuid&quot;</span><span class="p">:</span> <span class="s2">&quot;d2c7fe68-e857-4c4a-98b4-7e88154ddaa6&quot;</span>
     <span class="p">},</span>
     <span class="nt">&quot;response_code&quot;</span><span class="p">:</span> <span class="mi">200</span>
-<span class="p">}</span>
-</pre></div>
-</div>
-</div></blockquote>
-</dd></dl>
-
-<dl class="get">
-<dt id="get--api-get_device_types-">
-<code class="sig-name descname">GET </code><code class="sig-name descname">/api/get_device_types/</code><a class="headerlink" href="#get--api-get_device_types-" title="Permalink to this definition">¶</a></dt>
-<dd><p>Get a JSON list of device types</p>
-<p><strong>Example Response</strong>:</p>
-<blockquote>
-<div><div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
-  <span class="nt">&quot;results&quot;</span><span class="p">:</span> <span class="p">[{</span>
-      <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;EDU&quot;</span><span class="p">,</span>
-      <span class="nt">&quot;device_type_id&quot;</span><span class="p">:</span> <span class="s2">&quot;SOME UUID?&quot;</span><span class="p">,</span>
-      <span class="nt">&quot;peripherals&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;UUID?&quot;</span><span class="p">,</span> <span class="s2">&quot;UUID?&quot;</span><span class="p">,</span> <span class="s2">&quot;UUID?&quot;</span><span class="p">]</span>
-    <span class="p">}],</span>
-  <span class="nt">&quot;response_code&quot;</span><span class="p">:</span> <span class="mi">200</span>
 <span class="p">}</span>
 </pre></div>
 </div>
@@ -929,14 +787,26 @@
 <dl class="post">
 <dt id="post--api-get_device_types-">
 <code class="sig-name descname">POST </code><code class="sig-name descname">/api/get_device_types/</code><a class="headerlink" href="#post--api-get_device_types-" title="Permalink to this definition">¶</a></dt>
-<dd><p>Get a JSON list of device types</p>
+<dd><p>Get a list of all device types.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Request Headers</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><a class="reference external" href="https://tools.ietf.org/html/rfc7231#section-5.3.2">Accept</a> – application/json</p></li>
+</ul>
+</dd>
+<dt class="field-even">Request JSON Object</dt>
+<dd class="field-even"><ul class="simple">
+<li><p><strong>user_token</strong> (<em>string</em>) – User Token returned from the /login API.</p></li>
+</ul>
+</dd>
+</dl>
 <p><strong>Example Response</strong>:</p>
 <blockquote>
 <div><div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
   <span class="nt">&quot;results&quot;</span><span class="p">:</span> <span class="p">[{</span>
       <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;EDU&quot;</span><span class="p">,</span>
-      <span class="nt">&quot;device_type_id&quot;</span><span class="p">:</span> <span class="s2">&quot;SOME UUID?&quot;</span><span class="p">,</span>
-      <span class="nt">&quot;peripherals&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;UUID?&quot;</span><span class="p">,</span> <span class="s2">&quot;UUID?&quot;</span><span class="p">,</span> <span class="s2">&quot;UUID?&quot;</span><span class="p">]</span>
+      <span class="nt">&quot;device_type_id&quot;</span><span class="p">:</span> <span class="s2">&quot;Type-UUID&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;peripherals&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;P1-UUID&quot;</span><span class="p">,</span> <span class="s2">&quot;P2-UUID&quot;</span><span class="p">,</span> <span class="s2">&quot;P3-UUID&quot;</span><span class="p">]</span>
     <span class="p">}],</span>
   <span class="nt">&quot;response_code&quot;</span><span class="p">:</span> <span class="mi">200</span>
 <span class="p">}</span>
@@ -945,30 +815,10 @@
 </div></blockquote>
 </dd></dl>
 
-<dl class="get">
-<dt id="get--api-apply_to_device-">
-<code class="sig-name descname">GET </code><code class="sig-name descname">/api/apply_to_device/</code><a class="headerlink" href="#get--api-apply_to_device-" title="Permalink to this definition">¶</a></dt>
-<dd><p>Runs a recipe on a device.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Request Headers</dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><a class="reference external" href="https://tools.ietf.org/html/rfc7231#section-5.3.2">Accept</a> – application/json</p></li>
-</ul>
-</dd>
-<dt class="field-even">Request JSON Object</dt>
-<dd class="field-even"><ul class="simple">
-<li><p><strong>user_token</strong> (<em>string</em>) – User Token</p></li>
-<li><p><strong>device_uuid</strong> (<em>string</em>) – UUID of device to apply recipe to</p></li>
-<li><p><strong>recipe_uuid</strong> (<em>string</em>) – UUID of recipe to run</p></li>
-</ul>
-</dd>
-</dl>
-</dd></dl>
-
 <dl class="post">
 <dt id="post--api-apply_to_device-">
 <code class="sig-name descname">POST </code><code class="sig-name descname">/api/apply_to_device/</code><a class="headerlink" href="#post--api-apply_to_device-" title="Permalink to this definition">¶</a></dt>
-<dd><p>Runs a recipe on a device.</p>
+<dd><p>Run a recipe on a device.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Request Headers</dt>
 <dd class="field-odd"><ul class="simple">
@@ -977,37 +827,15 @@
 </dd>
 <dt class="field-even">Request JSON Object</dt>
 <dd class="field-even"><ul class="simple">
-<li><p><strong>user_token</strong> (<em>string</em>) – User Token</p></li>
+<li><p><strong>user_token</strong> (<em>string</em>) – User Token returned from the /login API.</p></li>
 <li><p><strong>device_uuid</strong> (<em>string</em>) – UUID of device to apply recipe to</p></li>
 <li><p><strong>recipe_uuid</strong> (<em>string</em>) – UUID of recipe to run</p></li>
-</ul>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="get">
-<dt id="get--api-get_co2_details-">
-<code class="sig-name descname">GET </code><code class="sig-name descname">/api/get_co2_details/</code><a class="headerlink" href="#get--api-get_co2_details-" title="Permalink to this definition">¶</a></dt>
-<dd><p>Get historical CO2 data.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Request Headers</dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><a class="reference external" href="https://tools.ietf.org/html/rfc7231#section-5.3.2">Accept</a> – application/json</p></li>
-</ul>
-</dd>
-<dt class="field-even">Request JSON Object</dt>
-<dd class="field-even"><ul class="simple">
-<li><p><strong>selected_device_uuid</strong> (<em>string</em>) – Device UUID to get the CO2 data for</p></li>
 </ul>
 </dd>
 </dl>
 <p><strong>Example response</strong>:</p>
 <blockquote>
 <div><div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
-  <span class="nt">&quot;results&quot;</span><span class="p">:</span> <span class="p">[</span>
-      <span class="p">{</span><span class="nt">&quot;value&quot;</span><span class="p">:</span> <span class="s2">&quot;33246.0&quot;</span><span class="p">,</span> <span class="nt">&quot;time&quot;</span><span class="p">:</span> <span class="s2">&quot;2019-05-08T16:44:39Z&quot;</span><span class="p">},</span>
-      <span class="p">{</span><span class="nt">&quot;value&quot;</span><span class="p">:</span> <span class="s2">&quot;33244.0&quot;</span><span class="p">,</span> <span class="nt">&quot;time&quot;</span><span class="p">:</span> <span class="s2">&quot;2019-05-08T16:39:39Z&quot;</span><span class="p">}</span>
-  <span class="p">],</span>
   <span class="nt">&quot;response_code&quot;</span><span class="p">:</span> <span class="mi">200</span>
 <span class="p">}</span>
 </pre></div>
@@ -1018,7 +846,7 @@
 <dl class="post">
 <dt id="post--api-get_co2_details-">
 <code class="sig-name descname">POST </code><code class="sig-name descname">/api/get_co2_details/</code><a class="headerlink" href="#post--api-get_co2_details-" title="Permalink to this definition">¶</a></dt>
-<dd><p>Get historical CO2 data.</p>
+<dd><p>Return a time series of historical co2 data.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Request Headers</dt>
 <dd class="field-odd"><ul class="simple">
@@ -1027,6 +855,7 @@
 </dd>
 <dt class="field-even">Request JSON Object</dt>
 <dd class="field-even"><ul class="simple">
+<li><p><strong>user_token</strong> (<em>string</em>) – User Token returned from the /login API.</p></li>
 <li><p><strong>selected_device_uuid</strong> (<em>string</em>) – Device UUID to get the CO2 data for</p></li>
 </ul>
 </dd>
@@ -1045,34 +874,10 @@
 </div></blockquote>
 </dd></dl>
 
-<dl class="get">
-<dt id="get--api-get_plant_types-">
-<code class="sig-name descname">GET </code><code class="sig-name descname">/api/get_plant_types/</code><a class="headerlink" href="#get--api-get_plant_types-" title="Permalink to this definition">¶</a></dt>
-<dd><p>Get plant types in datastore</p>
-<p><strong>Example Response</strong>:</p>
-<blockquote>
-<div><div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
-  <span class="nt">&quot;results&quot;</span><span class="p">:</span> <span class="p">[</span>
-                <span class="p">{</span>
-                  <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Basil&quot;</span><span class="p">,</span>
-                  <span class="nt">&quot;variants&quot;</span><span class="p">:</span> <span class="s2">&quot;Sweet Basil, Purple Basil&quot;</span>
-                <span class="p">},</span>
-                <span class="p">{</span>
-                  <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Lettuce&quot;</span><span class="p">,</span>
-                  <span class="nt">&quot;variants&quot;</span><span class="p">:</span> <span class="s2">&quot;Iceberg, Butterhead, Rocket, Mizuna, Romaine&quot;</span>
-                <span class="p">}</span>
-            <span class="p">],</span>
-  <span class="nt">&quot;response_code&quot;</span><span class="p">:</span> <span class="mi">200</span>
-<span class="p">}</span>
-</pre></div>
-</div>
-</div></blockquote>
-</dd></dl>
-
 <dl class="post">
 <dt id="post--api-get_plant_types-">
 <code class="sig-name descname">POST </code><code class="sig-name descname">/api/get_plant_types/</code><a class="headerlink" href="#post--api-get_plant_types-" title="Permalink to this definition">¶</a></dt>
-<dd><p>Get plant types in datastore</p>
+<dd><p>Get known plant types.  For the recipe editor.</p>
 <p><strong>Example Response</strong>:</p>
 <blockquote>
 <div><div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
@@ -1087,63 +892,6 @@
                 <span class="p">}</span>
             <span class="p">],</span>
   <span class="nt">&quot;response_code&quot;</span><span class="p">:</span> <span class="mi">200</span>
-<span class="p">}</span>
-</pre></div>
-</div>
-</div></blockquote>
-</dd></dl>
-
-<dl class="get">
-<dt id="get--api-get_all_recipes-">
-<code class="sig-name descname">GET </code><code class="sig-name descname">/api/get_all_recipes/</code><a class="headerlink" href="#get--api-get_all_recipes-" title="Permalink to this definition">¶</a></dt>
-<dd><p>Retrieve all recipes for a user</p>
-<dl class="field-list simple">
-<dt class="field-odd">Request Headers</dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><a class="reference external" href="https://tools.ietf.org/html/rfc7231#section-5.3.2">Accept</a> – application/json</p></li>
-</ul>
-</dd>
-<dt class="field-even">Request JSON Object</dt>
-<dd class="field-even"><ul class="simple">
-<li><p><strong>user_token</strong> (<em>string</em>) – User Token</p></li>
-</ul>
-</dd>
-</dl>
-<p><strong>Example response</strong>:</p>
-<blockquote>
-<div><div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
-    <span class="nt">&quot;results&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;recipe&quot;</span><span class="p">,</span> <span class="s2">&quot;recipe&quot;</span><span class="p">],</span>
-    <span class="nt">&quot;devices&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;device&quot;</span><span class="p">,</span> <span class="s2">&quot;device&quot;</span><span class="p">],</span>
-    <span class="nt">&quot;user_uuid&quot;</span><span class="p">:</span> <span class="s2">&quot;UUID-For-User&quot;</span><span class="p">,</span>
-    <span class="nt">&quot;response-code&quot;</span><span class="p">:</span> <span class="mi">200</span>
-<span class="p">}</span>
-</pre></div>
-</div>
-</div></blockquote>
-<p><strong>Example Recipe</strong>:</p>
-<blockquote>
-<div><div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
-  <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Get Growing - Basil Recipe&quot;</span><span class="p">,</span>
-  <span class="nt">&quot;description&quot;</span><span class="p">:</span> <span class="s2">&quot;Grows basil.&quot;</span><span class="p">,</span>
-  <span class="nt">&quot;recipe_uuid&quot;</span><span class="p">:</span> <span class="s2">&quot;e6085be7-d496-43cc-8bd3-3a40a79e854e&quot;</span><span class="p">,</span>
-  <span class="nt">&quot;recipe_json&quot;</span><span class="p">:</span> <span class="p">{</span><span class="nt">&quot;Recipe in&quot;</span><span class="p">:</span> <span class="s2">&quot;JSON format&quot;</span><span class="p">},</span>
-  <span class="nt">&quot;user_uuid&quot;</span><span class="p">:</span> <span class="s2">&quot;1e91ef7d-e9c2-4b0d-8904-f262a9eda70d&quot;</span><span class="p">,</span>
-  <span class="nt">&quot;image_url&quot;</span><span class="p">:</span> <span class="s2">&quot;http://via.placeholder.com/200x200&quot;</span><span class="p">,</span>
-  <span class="nt">&quot;saved&quot;</span><span class="p">:</span> <span class="kc">true</span>
-<span class="p">}</span>
-</pre></div>
-</div>
-</div></blockquote>
-<p><strong>Example Device</strong>:</p>
-<blockquote>
-<div><div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
-  <span class="nt">&quot;device_name&quot;</span><span class="p">:</span> <span class="s2">&quot;Green-Frog-Bates&quot;</span><span class="p">,</span>
-  <span class="nt">&quot;device_notes&quot;</span><span class="p">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
-  <span class="nt">&quot;device_reg_no&quot;</span><span class="p">:</span> <span class="s2">&quot;F3D9051D&quot;</span><span class="p">,</span>
-  <span class="nt">&quot;device_type&quot;</span><span class="p">:</span> <span class="s2">&quot;EDU&quot;</span><span class="p">,</span>
-  <span class="nt">&quot;device_uuid&quot;</span><span class="p">:</span> <span class="s2">&quot;EDU-F3D9051D-b8-27-eb-0a-43-ee&quot;</span><span class="p">,</span>
-  <span class="nt">&quot;registration_date&quot;</span><span class="p">:</span> <span class="s2">&quot;2019-04-08 13:18:58&quot;</span><span class="p">,</span>
-  <span class="nt">&quot;user_uuid&quot;</span><span class="p">:</span> <span class="s2">&quot;d2c7fe68-e857-4c4a-98b4-7e88154ddaa6&quot;</span>
 <span class="p">}</span>
 </pre></div>
 </div>
@@ -1153,7 +901,7 @@
 <dl class="post">
 <dt id="post--api-get_all_recipes-">
 <code class="sig-name descname">POST </code><code class="sig-name descname">/api/get_all_recipes/</code><a class="headerlink" href="#post--api-get_all_recipes-" title="Permalink to this definition">¶</a></dt>
-<dd><p>Retrieve all recipes for a user</p>
+<dd><p>Retrieve all recipes for a user account.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Request Headers</dt>
 <dd class="field-odd"><ul class="simple">
@@ -1162,7 +910,7 @@
 </dd>
 <dt class="field-even">Request JSON Object</dt>
 <dd class="field-even"><ul class="simple">
-<li><p><strong>user_token</strong> (<em>string</em>) – User Token</p></li>
+<li><p><strong>user_token</strong> (<em>string</em>) – User Token returned from the /login API.</p></li>
 </ul>
 </dd>
 </dl>
@@ -1207,32 +955,79 @@
 </div></blockquote>
 </dd></dl>
 
-<dl class="get">
-<dt id="get--api-submit_recipe-">
-<code class="sig-name descname">GET </code><code class="sig-name descname">/api/submit_recipe/</code><a class="headerlink" href="#get--api-submit_recipe-" title="Permalink to this definition">¶</a></dt>
-<dd><p>TODO: Fill in Documentation</p>
-</dd></dl>
-
 <dl class="post">
 <dt id="post--api-submit_recipe-">
 <code class="sig-name descname">POST </code><code class="sig-name descname">/api/submit_recipe/</code><a class="headerlink" href="#post--api-submit_recipe-" title="Permalink to this definition">¶</a></dt>
-<dd><p>TODO: Fill in Documentation</p>
+<dd><p>Convert the users recipe selections into a properly formatted recipe to be saved and sent to the specified device.  Not currently used.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Request Headers</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><a class="reference external" href="https://tools.ietf.org/html/rfc7231#section-5.3.2">Accept</a> – application/json</p></li>
+</ul>
+</dd>
+<dt class="field-even">Request JSON Object</dt>
+<dd class="field-even"><ul class="simple">
+<li><p><strong>user_token</strong> (<em>string</em>) – User’s Token.</p></li>
+<li><p><strong>device_uuid</strong> (<em>string</em>) – User’s device.</p></li>
+<li><p><strong>state</strong> (<em>string</em>) – JSON recipe options.</p></li>
+<li><p><strong>image_url</strong> (<em>string</em>) – URL for a picture of the plant this recipe grows.</p></li>
+</ul>
+</dd>
+</dl>
+<p><strong>Example response</strong>:</p>
+<blockquote>
+<div><div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+  <span class="nt">&quot;message&quot;</span><span class="p">:</span> <span class="s2">&quot;yay&quot;</span><span class="p">,</span>
+  <span class="nt">&quot;response_code&quot;</span><span class="p">:</span> <span class="mi">200</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div></blockquote>
 </dd></dl>
 
 <dl class="post">
 <dt id="post--api-upload_images-">
 <code class="sig-name descname">POST </code><code class="sig-name descname">/api/upload_images/</code><a class="headerlink" href="#post--api-upload_images-" title="Permalink to this definition">¶</a></dt>
-<dd><p>TODO: Fill in Documentation</p>
+<dd><p>Upload an image for use in the user profile and recipe.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Request Headers</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><a class="reference external" href="https://tools.ietf.org/html/rfc7231#section-5.3.2">Accept</a> – multipart/form-data</p></li>
+</ul>
+</dd>
+<dt class="field-even">Request JSON Object</dt>
+<dd class="field-even"><ul class="simple">
+<li><p><strong>file</strong> (<em>string</em>) – Form posted base64 encoded binary file</p></li>
+<li><p><strong>type</strong> (<em>string</em>) – ‘user’ or ‘recipe’</p></li>
+<li><p><strong>user_token</strong> (<em>string</em>) – User Token returned from the /login API.</p></li>
+</ul>
+</dd>
+</dl>
+<p><strong>Example response</strong>:</p>
+<blockquote>
+<div><div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+  <span class="nt">&quot;url&quot;</span><span class="p">:</span> <span class="s2">&quot;public URL of the uploaded image&quot;</span><span class="p">,</span>
+  <span class="nt">&quot;message&quot;</span><span class="p">:</span> <span class="s2">&quot;done&quot;</span><span class="p">,</span>
+  <span class="nt">&quot;response_code&quot;</span><span class="p">:</span> <span class="mi">200</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div></blockquote>
 </dd></dl>
 
 <dl class="post">
 <dt id="post--api-get_user_info-">
 <code class="sig-name descname">POST </code><code class="sig-name descname">/api/get_user_info/</code><a class="headerlink" href="#post--api-get_user_info-" title="Permalink to this definition">¶</a></dt>
-<dd><p>Get user info</p>
+<dd><p>Get user profile information.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Request JSON Object</dt>
+<dt class="field-odd">Request Headers</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>user_token</strong> (<em>string</em>) – User Token</p></li>
+<li><p><a class="reference external" href="https://tools.ietf.org/html/rfc7231#section-5.3.2">Accept</a> – application/json</p></li>
+</ul>
+</dd>
+<dt class="field-even">Request JSON Object</dt>
+<dd class="field-even"><ul class="simple">
+<li><p><strong>user_token</strong> (<em>string</em>) – User Token returned from the /login API.</p></li>
 </ul>
 </dd>
 </dl>
@@ -1250,40 +1045,113 @@
 </div></blockquote>
 </dd></dl>
 
-<dl class="get">
-<dt id="get--api-register-">
-<code class="sig-name descname">GET </code><code class="sig-name descname">/api/register/</code><a class="headerlink" href="#get--api-register-" title="Permalink to this definition">¶</a></dt>
-<dd><p>TODO: Fill in Documentation</p>
-</dd></dl>
-
 <dl class="post">
 <dt id="post--api-register-">
 <code class="sig-name descname">POST </code><code class="sig-name descname">/api/register/</code><a class="headerlink" href="#post--api-register-" title="Permalink to this definition">¶</a></dt>
-<dd><p>TODO: Fill in Documentation</p>
-</dd></dl>
-
-<dl class="get">
-<dt id="get--api-signup-">
-<code class="sig-name descname">GET </code><code class="sig-name descname">/api/signup/</code><a class="headerlink" href="#get--api-signup-" title="Permalink to this definition">¶</a></dt>
-<dd><p>TODO: Fill in Documentation</p>
+<dd><p>Register a Food Computer and associate it with a user account.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Request Headers</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><a class="reference external" href="https://tools.ietf.org/html/rfc7231#section-5.3.2">Accept</a> – application/json</p></li>
+</ul>
+</dd>
+<dt class="field-even">Request JSON Object</dt>
+<dd class="field-even"><ul class="simple">
+<li><p><strong>user_token</strong> (<em>string</em>) – User Token, to associate this device with</p></li>
+<li><p><strong>device_name</strong> (<em>string</em>) – User specified name for the device (‘mine!’)</p></li>
+<li><p><strong>device_reg_no</strong> (<em>string</em>) – Key from the device registration process</p></li>
+<li><p><strong>device_notes</strong> (<em>string</em>) – User specified notes about the device (‘blue’)</p></li>
+<li><p><strong>device_type</strong> (<em>string</em>) – PFC_EDU, FS, etc.</p></li>
+</ul>
+</dd>
+</dl>
+<p><strong>Example response</strong>:</p>
+<blockquote>
+<div><div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+  <span class="nt">&quot;response_code&quot;</span><span class="p">:</span> <span class="mi">200</span> 
+<span class="p">}</span>
+</pre></div>
+</div>
+</div></blockquote>
 </dd></dl>
 
 <dl class="post">
 <dt id="post--api-signup-">
 <code class="sig-name descname">POST </code><code class="sig-name descname">/api/signup/</code><a class="headerlink" href="#post--api-signup-" title="Permalink to this definition">¶</a></dt>
-<dd><p>TODO: Fill in Documentation</p>
-</dd></dl>
-
-<dl class="get">
-<dt id="get--login-">
-<code class="sig-name descname">GET </code><code class="sig-name descname">/login/</code><a class="headerlink" href="#get--login-" title="Permalink to this definition">¶</a></dt>
-<dd><p>TODO: Fill in Documentation</p>
+<dd><p>Create a user account.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Request Headers</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><a class="reference external" href="https://tools.ietf.org/html/rfc7231#section-5.3.2">Accept</a> – application/json</p></li>
+</ul>
+</dd>
+<dt class="field-even">Request JSON Object</dt>
+<dd class="field-even"><ul class="simple">
+<li><p><strong>username</strong> (<em>string</em>) – Users login name</p></li>
+<li><p><strong>email_address</strong> (<em>string</em>) – Users email address</p></li>
+<li><p><strong>password</strong> (<em>string</em>) – Users password</p></li>
+<li><p><strong>organization</strong> (<em>string</em>) – Users organization (self chosen)</p></li>
+</ul>
+</dd>
+</dl>
+<p><strong>Example response</strong>:</p>
+<blockquote>
+<div><div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+  <span class="nt">&quot;response_code&quot;</span><span class="p">:</span> <span class="mi">200</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div></blockquote>
 </dd></dl>
 
 <dl class="post">
 <dt id="post--login-">
 <code class="sig-name descname">POST </code><code class="sig-name descname">/login/</code><a class="headerlink" href="#post--login-" title="Permalink to this definition">¶</a></dt>
-<dd><p>TODO: Fill in Documentation</p>
+<dd><p>Log a user into this API, returns a session token.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Request Headers</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><a class="reference external" href="https://tools.ietf.org/html/rfc7231#section-5.3.2">Accept</a> – application/json</p></li>
+</ul>
+</dd>
+<dt class="field-even">Request JSON Object</dt>
+<dd class="field-even"><ul class="simple">
+<li><p><strong>username</strong> (<em>string</em>) – Users username (from the /api/signup API call)</p></li>
+<li><p><strong>password</strong> (<em>string</em>) – Users password (from the /api/signup API call)</p></li>
+</ul>
+</dd>
+</dl>
+<p><strong>Example response</strong>:</p>
+<blockquote>
+<div><div class="highlight-json notranslate"><div class="highlight"><pre><span></span>{
+  &quot;user_uuid&quot;: &quot;Users UUID from the registration process&quot;,
+  &quot;user_token&quot;: &quot;token string&quot;,
+  &quot;is_admin&quot;: False
+  &quot;message&quot;: &quot;Login Successful&quot;
+  &quot;response_code&quot;: 200
+}
+</pre></div>
+</div>
+</div></blockquote>
+</dd></dl>
+
+<dl class="get">
+<dt id="get--viewImage-(imageData)">
+<code class="sig-name descname">GET </code><code class="sig-name descname">/viewImage/</code><span class="sig-paren">(</span><em class="sig-param">imageData</em><span class="sig-paren">)</span><a class="headerlink" href="#get--viewImage-(imageData)" title="Permalink to this definition">¶</a></dt>
+<dd><p>Generate a small image page for tweeting.  Returns HTML.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Request Headers</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><a class="reference external" href="https://tools.ietf.org/html/rfc7231#section-5.3.2">Accept</a> – application/json</p></li>
+</ul>
+</dd>
+<dt class="field-even">Request JSON Object</dt>
+<dd class="field-even"><ul class="simple">
+<li><p><strong>i</strong> (<em>string</em>) – Image URL to show in the tweet.</p></li>
+<li><p><strong>t</strong> (<em>string</em>) – Text to display in the tweet.</p></li>
+</ul>
+</dd>
+</dl>
 </dd></dl>
 
 </div>

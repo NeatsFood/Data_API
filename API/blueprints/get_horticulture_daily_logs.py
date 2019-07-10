@@ -11,13 +11,14 @@ from .utils.response import success_response, error_response
 get_horticulture_daily_logs_bp = Blueprint('get_horticulture_daily_logs_bp',__name__)
 
 #------------------------------------------------------------------------------
-@get_horticulture_daily_logs_bp.route('/api/get_horticulture_daily_logs/', methods=['GET', 'POST'])
+@get_horticulture_daily_logs_bp.route('/api/get_horticulture_daily_logs/', methods=['POST'])
 def get_horticulture_daily_logs():
-    """get the daily horticulture log.
+    """Get horitculture measurements for a device.
 
-    .. :quickref: Horticulture logs; Get horitculture measurements for a device
+    .. :quickref: Horticulture; Get horitculture measurements
 
     :reqheader Accept: application/json
+    :<json string user_token: User Token returned from the /login API.
     :<json string device_uuid: Device UUID
 
     **Example response**:
@@ -40,10 +41,12 @@ def get_horticulture_daily_logs():
 
     """
     received_form_response = json.loads(request.data.decode('utf-8'))
+    user_token = received_form_response.get("user_token")
     device_uuid = received_form_response.get("device_uuid")
-
-    if device_uuid is None:
-        return error_response()
+    if user_token is None or device_uuid is None:
+        return error_response(
+            message="Access denied."
+        )
 
     query = datastore.get_client().query(kind='DailyHorticultureLog')
     query.add_filter('device_uuid', '=', device_uuid)
