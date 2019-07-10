@@ -1,4 +1,4 @@
-service: data_api_v4_0
+service: dataapiv40
 runtime: python
 env: flex
 api_version: 4.0.1
