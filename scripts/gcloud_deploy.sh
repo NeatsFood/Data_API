@@ -18,7 +18,6 @@ gcloud auth activate-service-account --key-file $GOOGLE_APPLICATION_CREDENTIALS
 #   ~/.config/gcloud/configurations/config_default
 gcloud config set project $GCLOUD_PROJECT
 gcloud config set compute/region $GCLOUD_REGION
-gcloud config set compute/zone $GCLOUD_ZONE
 gcloud config list
 
 # To handle the fact that app engine can't deal with git submodules, 
