@@ -26,7 +26,7 @@ cd $DIR/API
 rm -fr tmp
 mkdir tmp
 cp *.yaml $DIR/config/*.json tmp/
-cp -R *.py cloud_common images FCClass blueprints schema tmp/
+cp -R *.py templates cloud_common FCClass blueprints schema tmp/
 
 # Now make a combined (service + cloud_common submodule) reqs.
 # (app engine can't handle includes)
