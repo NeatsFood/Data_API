@@ -70,6 +70,7 @@ def submit_recipe_change():
     recipe_state = received_form_response.get("recipe_state", {})
     user_token = received_form_response.get("user_token", "")
     device_uuid = received_form_response.get("device_uuid", "")
+    testing = received_form_response.get("testing")
 
 #debugrob, this is similar to submit_recipe.py, do we need both?
     # Get user uuid associated with this sesssion token
@@ -213,6 +214,10 @@ def submit_recipe_change():
         current_recipe_uuid = str(uuid.uuid4())
 
     recipe_format["uuid"] = current_recipe_uuid
+
+    # if pytest is calling this, don't actually save a recipe
+    if testing:
+        return success_response(message="test worked")
 
     key = datastore.get_client().key('DeviceHistory')
     device_history_reg_task = gcds.Entity(key, 

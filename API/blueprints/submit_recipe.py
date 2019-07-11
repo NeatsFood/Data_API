@@ -72,6 +72,7 @@ def submit_recipe():
     user_token = received_form_response.get("user_token", "")
     device_uuid = received_form_response.get("device_uuid", "")
     image_url = received_form_response.get("image_url", "")
+    testing = received_form_response.get("testing")
 
     if device_uuid is None or user_token is None:
         return error_response(
@@ -205,6 +206,10 @@ def submit_recipe():
         ]
 
     }
+
+    # if pytest is calling this, don't actually save a recipe
+    if testing:
+        return success_response(message="test worked")
 
     current_recipe_uuid = str(uuid.uuid4())
     recipe_format["uuid"] = current_recipe_uuid
