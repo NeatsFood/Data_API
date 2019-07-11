@@ -17,5 +17,7 @@ make clean html
 #make clean markdown
 
 echo ""
-echo "After you are happy with how the HTML docs look, please use your browser to save them to a PDF file and check it into the top level docs directory."
-echo "Then update the top level README.md to reference the latest PDF."
+echo "Make sure you have all version numbers agreeing!"
+echo " - README.md"
+echo " - API/app.yaml"
+echo " - API/doc/source/conf.py"
