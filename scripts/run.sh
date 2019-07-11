@@ -24,3 +24,4 @@ export PYTHONPATH=$DIR/API
 export FLASK_APP=main.py
 
 python3 -m flask run
+#gunicorn -b :5000 main:app

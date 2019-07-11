@@ -1,4 +1,6 @@
+import os
 from flask import Flask
+from flask import send_file
 from flask_cors import CORS
 
 from blueprints import (
@@ -32,7 +34,10 @@ from blueprints import (
     view_image
 )
 
-app = Flask(__name__)
+app = Flask(__name__, 
+        static_url_path='', # project root, the current directory 
+        static_folder='doc/api-documentation/html') # doc root to serve
+
 app.register_blueprint(apply_to_device.apply_to_device_bp)
 app.register_blueprint(get_co2_details.get_co2_details_bp)
 app.register_blueprint(get_current_stats.get_current_stats_bp)
@@ -65,7 +70,15 @@ app.register_blueprint(ack_device_notification.ack_device_notification_bp)
 cors = CORS(app, resources={r"/api/*": {"origins": "*"}})
 CORS(app)
 
-# ------------------------------------------------------------------------------
+
+#------------------------------------------------------------------------------
+# Serve our API documentation when a browser hits our URL.
+@app.route('/')
+def api_docs():
+    return send_file(os.path.abspath('doc/api-documentation/html/index.html'))
+
+
+#------------------------------------------------------------------------------
 if __name__ == '__main__':
     # This is used when running locally. Gunicorn is used to run the
     # application on Google App Engine. See entrypoint in app.yaml.
