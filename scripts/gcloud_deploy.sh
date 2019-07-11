@@ -35,8 +35,8 @@ cat $DIR/config/requirements.txt >> tmp/requirements.txt
 cat $DIR/API/cloud_common/config/requirements.txt >> tmp/requirements.txt 
 
 cd tmp
-#gcloud app deploy
-gcloud app deploy --verbosity=debug
+gcloud app deploy
+#gcloud app deploy --verbosity=debug
 
 
 
