@@ -26,7 +26,7 @@ cd $DIR/API
 rm -fr tmp
 mkdir tmp
 cp *.yaml $DIR/config/*.json tmp/
-cp -R *.py templates cloud_common FCClass blueprints schema tmp/
+cp -R *.py templates cloud_common FCClass blueprints schema doc tmp/
 
 # Now make a combined (service + cloud_common submodule) reqs.
 # (app engine can't handle includes)
@@ -35,7 +35,8 @@ cat $DIR/config/requirements.txt >> tmp/requirements.txt
 cat $DIR/API/cloud_common/config/requirements.txt >> tmp/requirements.txt 
 
 cd tmp
-gcloud app deploy
+#gcloud app deploy
+gcloud app deploy --verbosity=debug
 
 
 
