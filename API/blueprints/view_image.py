@@ -1,5 +1,6 @@
 import base64
 import json, os
+from urllib.parse import unquote
 from flask import Blueprint, render_template, Request, Response
 
 from cloud_common.cc.google import storage
@@ -23,7 +24,9 @@ def viewimage(imageData):
     """
     imageDataString = base64.b64decode(imageData)
     imageObject = json.loads(imageDataString.decode('utf-8'))
-    filename = imageObject['i'].split('/')[-1]
+    imageString = imageObject['i']
+    imageString = unquote(imageString)
+    filename = imageString.split('/')[-1]
 
     # Find files with the filename - .png as a prefix
     file_prefix = filename.split('.')[0]
@@ -33,16 +36,20 @@ def viewimage(imageData):
     # Now look for the _medium version... 
     # if it exists then pass that to the view.
     found = False
+
     for blob in blob_list:
         if MEDIUM_FILE_SUFFIX in blob.name:
-            imageObject['i'] = imageObject['i'].replace(filename, blob.name)
+            imageString = imageString.replace(filename, blob.name)
             found = True
             break
+        if file_prefix in blob.name:
+            found = True
+
     if not found:
         return error_response(message='Invalid URL.')
 
     # file is in API/templates/
-    return render_template('viewImage.html', imageFile=imageObject['i'], 
+    return render_template('viewImage.html', imageFile=imageString,
             imageText=imageObject['t'])
 
 
