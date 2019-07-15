@@ -32,14 +32,14 @@ def viewimage(imageData):
 
     # Now look for the _medium version... 
     # if it exists then pass that to the view.
-    found = False
+    # found = False - For the moment, we don't care if it's found or not. Just use it if it is.
     for blob in blob_list:
         if MEDIUM_FILE_SUFFIX in blob.name:
             imageObject['i'] = imageObject['i'].replace(filename, blob.name)
-            found = True
+            # found = True
             break
-    if not found:
-        return error_response(message='Invalid URL.')
+    # if not found:
+    #    return error_response(message='Invalid URL.')
 
     # file is in API/templates/
     return render_template('viewImage.html', imageFile=imageObject['i'], 
