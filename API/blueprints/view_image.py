@@ -36,7 +36,7 @@ def viewimage(imageData):
     # Now look for the _medium version... 
     # if it exists then pass that to the view.
     found = False
-    print("Blobs:")
+
     for blob in blob_list:
         if MEDIUM_FILE_SUFFIX in blob.name:
             imageString = imageString.replace(filename, blob.name)
