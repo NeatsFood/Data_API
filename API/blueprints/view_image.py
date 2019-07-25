@@ -28,6 +28,8 @@ def viewimage(imageData):
     imageString = unquote(imageString)
     filename = imageString.split('/')[-1]
 
+    URL_PREFIX = "https://storage.googleapis.com/openag-v1-images/"
+
     # Find files with the filename - .png as a prefix
     file_prefix = filename.split('.')[0]
     bucket = storage.storage_client.get_bucket(env_vars.cs_bucket)
@@ -47,6 +49,9 @@ def viewimage(imageData):
 
     if not found:
         return error_response(message='Invalid URL.')
+
+    if imageString.find("http") != 0:
+        imageString = URL_PREFIX + imageString
 
     # file is in API/templates/
     return render_template('viewImage.html', imageFile=imageString,
