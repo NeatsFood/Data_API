@@ -112,11 +112,11 @@ def get_all_recipes():
         results_array.append({
             'name': recipe_json['name'],
             'description': recipe_json['description']['brief'],
-            'recipe_uuid': result["recipe_uuid"],
+            'recipe_uuid': result.get("recipe_uuid", ""),
             "recipe_json": recipe_json,
-            "user_uuid": result['user_uuid'],
-            "image_url": result["image_url"],
-            'saved': result['recipe_uuid'] in saved_recipes
+            "user_uuid": result.get('user_uuid', ""),
+            "image_url": result.get("image_url", ""),
+            'saved': result.get('recipe_uuid') in saved_recipes
         })
 
     return success_response(
