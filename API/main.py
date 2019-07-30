@@ -15,6 +15,7 @@ from blueprints import (
     get_all_recipes, 
     get_device_types, 
     submit_recipe,
+    delete_recipe,
     get_plant_types, 
     submit_recipe_change, 
     verify_user_session,
@@ -49,6 +50,7 @@ app.register_blueprint(user_authenticate.user_authenticate)
 app.register_blueprint(verify_user_session.verify_user_session_bp)
 app.register_blueprint(get_device_peripherals.get_device_peripherals_bp)
 app.register_blueprint(submit_recipe.submit_recipe_bp)
+app.register_blueprint(delete_recipe.delete_recipe_bp)
 app.register_blueprint(get_device_types.get_device_types_bp)
 app.register_blueprint(get_plant_types.get_plant_types_bp)
 app.register_blueprint(get_all_recipes.get_all_recipes_bp)

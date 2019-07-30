@@ -97,26 +97,23 @@ def get_all_recipes():
             devices_array.append(result_json)
 
 
+    # Get 'all' the common recipes, and the ones created/saved by this user.
     recipe_query = datastore.get_client().query(kind='Recipes')
+    query.add_filter('user_uuid', '=', user_uuid)
+    query.add_filter('user_uuid', '=', 'all')
     query_result = list(recipe_query.fetch())
     results = list(query_result)
 
-    user = datastore.get_one_from_DS(
-        kind='Users', key='user_uuid', value=user_uuid
-    )
-    saved_recipes = user.get('saved_recipes', [])
-
     results_array = []
     for result in results:
-        recipe_json = json.loads(result["recipe"])
+        recipe_dict = json.loads(result["recipe"])
         results_array.append({
-            'name': recipe_json['name'],
-            'description': recipe_json['description']['brief'],
-            'recipe_uuid': result["recipe_uuid"],
-            "recipe_json": recipe_json,
-            "user_uuid": result['user_uuid'],
-            "image_url": result["image_url"],
-            'saved': result['recipe_uuid'] in saved_recipes
+            'name': recipe_dict.get('name'),
+            'description': result.get('description', ''),
+            'recipe_uuid': result.get("recipe_uuid", ""),
+            "recipe_json": recipe_dict,
+            "user_uuid": result.get('user_uuid', ""),
+            "image_url": result.get("image_url", "")
         })
 
     return success_response(

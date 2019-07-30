@@ -7,12 +7,11 @@ from .utils.auth import get_user_uuid_from_token
 from .utils.response import success_response, error_response
 from .get_user_devices import get_devices_for_user
 
-
 get_recipe_by_uuid_bp = Blueprint('get_recipe_by_uuid_bp', __name__)
 
 @get_recipe_by_uuid_bp.route('/api/get_recipe_by_uuid/', methods=['POST'])
 def get_recipe_by_uuid():
-    """Return all the details about this recipe and a users devices.  Used to build an editor to modify this recipe.  Not currently used.
+    """Return the recipe. Used to build an editor to modify this recipe.  
 
     .. :quickref: Recipe; Recipe details 
 
@@ -24,8 +23,8 @@ def get_recipe_by_uuid():
 
         .. sourcecode:: json
 
-          {
-            "lots and lots of data": "not described until we implement the new recipe editor",
+            "recipe": "recipe JSON string",
+            "devices": "user devices",
             "response_code": 200
           }
     """
@@ -43,54 +42,18 @@ def get_recipe_by_uuid():
             message="Invalid User: Unauthorized"
         )
 
-    # Get all user devices
     devices = get_devices_for_user(user_uuid)
 
     # Get queried recipe
     recipes_query = datastore.get_client().query(kind='Recipes')
     recipes_query.add_filter("recipe_uuid","=",recipe_uuid)
     recipes_query_results = list(recipes_query.fetch())
-    results_array = []
-    for recipe in recipes_query_results:
-        recipe_details_json = json.loads(recipe["recipe"])
-        device_type = recipe['device_type']
+    if 0 < len(recipes_query_results):
+        return success_response(
+            recipe = recipes_query_results[0]["recipe"],
+            devices = devices 
+        )
 
-        # Get Peripherals needed for this device type
-        peripherals = []
-        device_type_query = datastore.get_client().query(kind='DeviceType')
-        device_type_results = list(device_type_query.fetch())
-        for device_type_result in device_type_results:
-            peripherals_string = device_type_result['peripherals']
-            peripherals_array = peripherals_string.split(",")
-            for peripheral in peripherals_array:
-
-                peripherals_query = datastore.get_client().query(kind='Peripherals')
-                peripherals_query.add_filter('uuid', '=', str(peripheral))
-                peripheraldetails = list(peripherals_query.fetch())
-
-                if len(peripheraldetails) > 0:
-                    peripheral_detail_json = {
-                        "name": peripheraldetails[0]["name"],
-                        "sensor_name": peripheraldetails[0]["sensor_name"],
-                        "type": peripheraldetails[0]["type"],
-                        "color": "#" + peripheraldetails[0]["color"],
-                        "inputs": peripheraldetails[0]["inputs"]
-                    }
-                    peripherals.append(peripheral_detail_json)
-
-        recipe_json = {
-            'name':recipe_details_json['name'],
-            'image_url':recipe['image_url'],
-            'description':recipe_details_json['description']['verbose'],
-            'device_type':device_type,
-            'plant_type':recipe_details_json['cultivars'][0]['name'],
-            'peripherals':peripherals,
-            'recipe_json':recipe_details_json
-        }
-
-        results_array.append(recipe_json)
-
-    return success_response(
-        results=results_array,
-        devices=devices
+    return error_response(
+        message="No recipe with that UUID"
     )

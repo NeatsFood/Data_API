@@ -8,11 +8,8 @@ import common
 #------------------------------------------------------------------------------
 # test submit_recipe blueprint
 def test_submit_recipe_works(client):
-    # must delay before submitting a recipe, since other tests also send and 
-    # google iot will only let us send one "configuration" to a device per sec.
-    time.sleep(1) 
     data = {"user_token": global_vars.user_token,
-            "device_uuid": global_vars.device_uuid,
+            "recipe": '{"name":"test"}',
             "testing": "True"}
     URL = '/api/submit_recipe/'
     rv = common.do_post(client, data, URL)
