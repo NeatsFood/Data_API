@@ -95,82 +95,70 @@
 <td><p>Get horitculture measurements</p></td>
 </tr>
 <tr class="row-even"><td><p>Recipe</p></td>
-<td><p><a class="reference external" href="#post--api-get_current_recipe_info-">POST /api/get_current_recipe_info/</a></p></td>
-<td><p>Status</p></td>
-</tr>
-<tr class="row-odd"><td></td>
 <td><p><a class="reference external" href="#post--api-get_device_peripherals-">POST /api/get_device_peripherals/</a></p></td>
 <td><p>Get peripherals</p></td>
-</tr>
-<tr class="row-even"><td></td>
-<td><p><a class="reference external" href="#post--api-submit_recipe_change-">POST /api/submit_recipe_change/</a></p></td>
-<td><p>Save recipe</p></td>
 </tr>
 <tr class="row-odd"><td></td>
 <td><p><a class="reference external" href="#post--api-get_recipe_by_uuid-">POST /api/get_recipe_by_uuid/</a></p></td>
 <td><p>Recipe details</p></td>
 </tr>
 <tr class="row-even"><td></td>
-<td><p><a class="reference external" href="#post--api-get_current_recipe-">POST /api/get_current_recipe/</a></p></td>
-<td><p>Get current recipe</p></td>
-</tr>
-<tr class="row-odd"><td></td>
 <td><p><a class="reference external" href="#post--api-apply_to_device-">POST /api/apply_to_device/</a></p></td>
 <td><p>Run recipe, run</p></td>
 </tr>
-<tr class="row-even"><td></td>
+<tr class="row-odd"><td></td>
 <td><p><a class="reference external" href="#post--api-get_all_recipes-">POST /api/get_all_recipes/</a></p></td>
 <td><p>Get all recipes</p></td>
 </tr>
-<tr class="row-odd"><td></td>
+<tr class="row-even"><td></td>
 <td><p><a class="reference external" href="#post--api-submit_recipe-">POST /api/submit_recipe/</a></p></td>
 <td><p>Save recipe</p></td>
 </tr>
-<tr class="row-even"><td></td>
+<tr class="row-odd"><td></td>
 <td><p><a class="reference external" href="#post--api-delete_recipe-">POST /api/delete_recipe/</a></p></td>
 <td><p>Delete recipe</p></td>
 </tr>
-<tr class="row-odd"><td><p>Sensor Data</p></td>
+<tr class="row-even"><td><p>Sensor Data</p></td>
 <td><p><a class="reference external" href="#post--api-get_current_stats-">POST /api/get_current_stats/</a></p></td>
 <td><p>Current readings</p></td>
 </tr>
-<tr class="row-even"><td></td>
+<tr class="row-odd"><td></td>
 <td><p><a class="reference external" href="#post--api-get_device_images-">POST /api/get_device_images/</a></p></td>
 <td><p>Image list</p></td>
 </tr>
-<tr class="row-odd"><td></td>
+<tr class="row-even"><td></td>
 <td><p><a class="reference external" href="#post--api-get_temp_details-">POST /api/get_temp_details/</a></p></td>
 <td><p>Temp/RH data</p></td>
 </tr>
-<tr class="row-even"><td></td>
+<tr class="row-odd"><td></td>
 <td><p><a class="reference external" href="#post--api-get_co2_details-">POST /api/get_co2_details/</a></p></td>
 <td><p>CO2 data</p></td>
 </tr>
-<tr class="row-odd"><td><p>User</p></td>
+<tr class="row-even"><td><p>User</p></td>
 <td><p><a class="reference external" href="#post--api-save_user_profile_changes-">POST /api/save_user_profile_changes/</a></p></td>
 <td><p>Update profile</p></td>
 </tr>
-<tr class="row-even"><td></td>
+<tr class="row-odd"><td></td>
 <td><p><a class="reference external" href="#post--api-get_user_devices-">POST /api/get_user_devices/</a></p></td>
 <td><p>Get user’s devices</p></td>
 </tr>
-<tr class="row-odd"><td></td>
+<tr class="row-even"><td></td>
 <td><p><a class="reference external" href="#post--api-get_user_info-">POST /api/get_user_info/</a></p></td>
 <td><p>User profile</p></td>
 </tr>
-<tr class="row-even"><td><p>Utility</p></td>
+<tr class="row-odd"><td><p>Utility</p></td>
 <td><p><a class="reference external" href="#post--api-get_device_types-">POST /api/get_device_types/</a></p></td>
 <td><p>Device types</p></td>
 </tr>
-<tr class="row-odd"><td></td>
+<tr class="row-even"><td></td>
 <td><p><a class="reference external" href="#post--api-get_plant_types-">POST /api/get_plant_types/</a></p></td>
 <td><p>Plant types</p></td>
 </tr>
-<tr class="row-even"><td></td>
+<tr class="row-odd"><td></td>
 <td><p><a class="reference external" href="#post--api-upload_images-">POST /api/upload_images/</a></p></td>
 <td><p>Upload an image</p></td>
 </tr>
-<tr class="row-odd"><td></td>
+<tr class="row-even"><td></td>
 <td><p><a class="reference external" href="#get--viewImage-(imageData)">GET /viewImage/(imageData)</a></p></td>
 <td><p>Generate tweet</p></td>
 </tr>
@@ -386,39 +374,6 @@
 </dd></dl>
 
 <dl class="post">
-<dt id="post--api-get_current_recipe_info-">
-<code class="sig-name descname">POST </code><code class="sig-name descname">/api/get_current_recipe_info/</code><a class="headerlink" href="#post--api-get_current_recipe_info-" title="Permalink to this definition">¶</a></dt>
-<dd><p>Get status of the current recipe running on device.</p>
-<blockquote>
-<div></div></blockquote>
-<dl class="field-list simple">
-<dt class="field-odd">Request Headers</dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><a class="reference external" href="https://tools.ietf.org/html/rfc7231#section-5.3.2">Accept</a> – application/json</p></li>
-</ul>
-</dd>
-<dt class="field-even">Request JSON Object</dt>
-<dd class="field-even"><ul class="simple">
-<li><p><strong>user_token</strong> (<em>string</em>) – User Token returned from the /login API.</p></li>
-<li><p><strong>selected_device_uuid</strong> (<em>string</em>) – UUID of device</p></li>
-</ul>
-</dd>
-</dl>
-<p><strong>Example response</strong>:</p>
-<blockquote>
-<div><div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
-  <span class="nt">&quot;expired&quot;</span><span class="p">:</span> <span class="s2">&quot;True&quot;</span><span class="p">,</span>
-  <span class="nt">&quot;runtime&quot;</span><span class="p">:</span> <span class="mi">4</span><span class="p">,</span>
-  <span class="nt">&quot;plant_type&quot;</span><span class="p">:</span> <span class="s2">&quot;Basil&quot;</span><span class="p">,</span>
-  <span class="nt">&quot;recipe_uuid&quot;</span><span class="p">:</span> <span class="s2">&quot;uuid&quot;</span><span class="p">,</span>
-  <span class="nt">&quot;response_code&quot;</span><span class="p">:</span> <span class="mi">200</span> 
-<span class="p">}</span>
-</pre></div>
-</div>
-</div></blockquote>
-</dd></dl>
-
-<dl class="post">
 <dt id="post--api-ack_device_notification-">
 <code class="sig-name descname">POST </code><code class="sig-name descname">/api/ack_device_notification/</code><a class="headerlink" href="#post--api-ack_device_notification-" title="Permalink to this definition">¶</a></dt>
 <dd><p>Acknowledge a device notification.</p>
@@ -480,35 +435,6 @@
 </dd></dl>
 
 <dl class="post">
-<dt id="post--api-submit_recipe_change-">
-<code class="sig-name descname">POST </code><code class="sig-name descname">/api/submit_recipe_change/</code><a class="headerlink" href="#post--api-submit_recipe_change-" title="Permalink to this definition">¶</a></dt>
-<dd><p>Convert the users recipe selections into a properly formatted recipe to be saved and sent to the specified device.  Not currently used.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Request Headers</dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><a class="reference external" href="https://tools.ietf.org/html/rfc7231#section-5.3.2">Accept</a> – application/json</p></li>
-</ul>
-</dd>
-<dt class="field-even">Request JSON Object</dt>
-<dd class="field-even"><ul class="simple">
-<li><p><strong>user_token</strong> (<em>string</em>) – User’s Token.</p></li>
-<li><p><strong>device_uuid</strong> (<em>string</em>) – User’s device.</p></li>
-<li><p><strong>recipe_state</strong> (<em>string</em>) – JSON recipe options.</p></li>
-</ul>
-</dd>
-</dl>
-<p><strong>Example response</strong>:</p>
-<blockquote>
-<div><div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
-  <span class="nt">&quot;message&quot;</span><span class="p">:</span> <span class="s2">&quot;yay&quot;</span><span class="p">,</span>
-  <span class="nt">&quot;response_code&quot;</span><span class="p">:</span> <span class="mi">200</span>
-<span class="p">}</span>
-</pre></div>
-</div>
-</div></blockquote>
-</dd></dl>
-
-<dl class="post">
 <dt id="post--api-verify_user_session-">
 <code class="sig-name descname">POST </code><code class="sig-name descname">/api/verify_user_session/</code><a class="headerlink" href="#post--api-verify_user_session-" title="Permalink to this definition">¶</a></dt>
 <dd><p>Verify the user’s session token is still valid.
@@ -560,79 +486,6 @@
   &quot;devices&quot;: &quot;user devices&quot;,
   &quot;response_code&quot;: 200
 }
-</pre></div>
-</div>
-</div></blockquote>
-</dd></dl>
-
-<dl class="post">
-<dt id="post--api-get_current_recipe-">
-<code class="sig-name descname">POST </code><code class="sig-name descname">/api/get_current_recipe/</code><a class="headerlink" href="#post--api-get_current_recipe-" title="Permalink to this definition">¶</a></dt>
-<dd><p>Get current recipe running on device.</p>
-<blockquote>
-<div></div></blockquote>
-<dl class="field-list simple">
-<dt class="field-odd">Request Headers</dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><a class="reference external" href="https://tools.ietf.org/html/rfc7231#section-5.3.2">Accept</a> – application/json</p></li>
-</ul>
-</dd>
-<dt class="field-even">Request JSON Object</dt>
-<dd class="field-even"><ul class="simple">
-<li><p><strong>user_token</strong> (<em>string</em>) – User Token returned from the /login API.</p></li>
-<li><p><strong>selected_device_uuid</strong> (<em>string</em>) – UUID of device</p></li>
-</ul>
-</dd>
-</dl>
-<p><strong>Example Response</strong>:</p>
-<blockquote>
-<div><div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span><span class="nt">&quot;results&quot;</span><span class="p">:</span> <span class="p">{</span>
-  <span class="nt">&quot;format&quot;</span><span class="p">:</span> <span class="s2">&quot;openag-phased-environment-v1&quot;</span><span class="p">,</span>
-  <span class="nt">&quot;version&quot;</span><span class="p">:</span> <span class="s2">&quot;0.1.2&quot;</span><span class="p">,</span>
-  <span class="nt">&quot;creation_timestamp_utc&quot;</span><span class="p">:</span>
-  <span class="s2">&quot;2018-07-19T16:54:24:44Z&quot;</span><span class="p">,</span>
-  <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Get Growing - Basil Recipe&quot;</span><span class="p">,</span>
-  <span class="nt">&quot;uuid&quot;</span><span class="p">:</span> <span class="s2">&quot;e6085be7-d496-43cc-8bd3-3a40a79e854e&quot;</span><span class="p">,</span>
-  <span class="nt">&quot;parent_recipe_uuid&quot;</span><span class="p">:</span> <span class="s2">&quot;37dc0177-076a-4903-8557-c7586e42e90e&quot;</span><span class="p">,</span>
-  <span class="nt">&quot;support_recipe_uuids&quot;</span><span class="p">:</span> <span class="kc">null</span><span class="p">,</span>
-  <span class="nt">&quot;description&quot;</span><span class="p">:</span> <span class="p">{</span>
-      <span class="nt">&quot;brief&quot;</span><span class="p">:</span> <span class="s2">&quot;Grows basil.&quot;</span><span class="p">,</span>
-      <span class="nt">&quot;verbose&quot;</span><span class="p">:</span> <span class="s2">&quot;Grows basil.&quot;</span>
-  <span class="p">},</span>
-  <span class="nt">&quot;authors&quot;</span><span class="p">:</span> <span class="p">[{</span><span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;OpenAgTest&quot;</span><span class="p">,</span> <span class="nt">&quot;uuid&quot;</span><span class="p">:</span> <span class="s2">&quot;1e91ef7d-e9c2-4b0d-8904-f262a9eda70d&quot;</span><span class="p">,</span> <span class="nt">&quot;email&quot;</span><span class="p">:</span> <span class="s2">&quot;rp492@cornell.edu&quot;</span><span class="p">}],</span>
-  <span class="nt">&quot;cultivars&quot;</span><span class="p">:</span> <span class="p">[{</span><span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Basil/Sweet Basil&quot;</span><span class="p">,</span> <span class="nt">&quot;uuid&quot;</span><span class="p">:</span> <span class="s2">&quot;02b0328f-ff19-44a8-a8b8-cd13cf6b80af&quot;</span><span class="p">}],</span>
-  <span class="nt">&quot;cultivation_methods&quot;</span><span class="p">:</span> <span class="p">[{</span><span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Shallow Water Culture&quot;</span><span class="p">,</span> <span class="nt">&quot;uuid&quot;</span><span class="p">:</span> <span class="s2">&quot;45fa509b-2008-4109-a39e-e5682c421925&quot;</span><span class="p">}],</span>
-  <span class="nt">&quot;environments&quot;</span><span class="p">:</span> <span class="p">{</span><span class="nt">&quot;standard_day&quot;</span><span class="p">:</span> <span class="p">{</span>
-                      <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Standard Day&quot;</span><span class="p">,</span>
-                      <span class="nt">&quot;spectrum_key&quot;</span><span class="p">:</span> <span class="s2">&quot;flat&quot;</span><span class="p">,</span>
-                      <span class="nt">&quot;light_spectrum_nm_percent&quot;</span><span class="p">:</span> <span class="p">{</span><span class="nt">&quot;380-399&quot;</span><span class="p">:</span> <span class="mf">2.03</span><span class="p">,</span> <span class="nt">&quot;400-499&quot;</span><span class="p">:</span> <span class="mf">20.3</span><span class="p">,</span> <span class="nt">&quot;500-599&quot;</span><span class="p">:</span> <span class="mf">23.27</span><span class="p">,</span> <span class="nt">&quot;600-700&quot;</span><span class="p">:</span> <span class="mf">31.09</span><span class="p">,</span> <span class="nt">&quot;701-780&quot;</span><span class="p">:</span> <span class="mf">23.31</span><span class="p">},</span>
-                      <span class="nt">&quot;light_ppfd_umol_m2_s&quot;</span><span class="p">:</span> <span class="mi">300</span><span class="p">,</span>
-                      <span class="nt">&quot;light_illumination_distance_cm&quot;</span><span class="p">:</span> <span class="mi">10</span><span class="p">,</span>
-                      <span class="nt">&quot;air_temperature_celcius&quot;</span><span class="p">:</span> <span class="mi">22</span>
-                  <span class="p">},</span>
-                  <span class="nt">&quot;standard_night&quot;</span><span class="p">:</span> <span class="p">{</span>
-                      <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Standard Night&quot;</span><span class="p">,</span>
-                      <span class="nt">&quot;spectrum_key&quot;</span><span class="p">:</span> <span class="s2">&quot;off&quot;</span><span class="p">,</span>
-                      <span class="nt">&quot;light_spectrum_nm_percent&quot;</span><span class="p">:</span> <span class="p">{</span><span class="nt">&quot;380-399&quot;</span><span class="p">:</span> <span class="mf">0.0</span><span class="p">,</span> <span class="nt">&quot;400-499&quot;</span><span class="p">:</span> <span class="mf">0.0</span><span class="p">,</span> <span class="nt">&quot;500-599&quot;</span><span class="p">:</span> <span class="mf">0.0</span><span class="p">,</span> <span class="nt">&quot;600-700&quot;</span><span class="p">:</span> <span class="mf">0.0</span><span class="p">,</span> <span class="nt">&quot;701-780&quot;</span><span class="p">:</span> <span class="mf">0.0</span><span class="p">},</span>
-                      <span class="nt">&quot;light_ppfd_umol_m2_s&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
-                      <span class="nt">&quot;light_illumination_distance_cm&quot;</span><span class="p">:</span> <span class="mi">10</span><span class="p">,</span>
-                      <span class="nt">&quot;air_temperature_celcius&quot;</span><span class="p">:</span> <span class="mi">22</span>
-                  <span class="p">},</span>
-                  <span class="nt">&quot;cold_day&quot;</span><span class="p">:</span> <span class="p">{</span><span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Cold Day&quot;</span><span class="p">,</span> <span class="nt">&quot;spectrum_key&quot;</span><span class="p">:</span> <span class="s2">&quot;flat&quot;</span><span class="p">,</span> <span class="nt">&quot;light_spectrum_nm_percent&quot;</span><span class="p">:</span> <span class="p">{</span><span class="nt">&quot;380-399&quot;</span><span class="p">:</span> <span class="mf">0.0</span><span class="p">,</span> <span class="nt">&quot;400-499&quot;</span><span class="p">:</span> <span class="mf">28.01</span><span class="p">,</span> <span class="nt">&quot;500-599&quot;</span><span class="p">:</span> <span class="mf">26.9</span><span class="p">,</span> <span class="nt">&quot;600-700&quot;</span><span class="p">:</span> <span class="mf">41.13</span><span class="p">,</span> <span class="nt">&quot;701-780&quot;</span><span class="p">:</span> <span class="mf">3.96</span><span class="p">},</span> <span class="nt">&quot;light_ppfd_umol_m2_s&quot;</span><span class="p">:</span> <span class="mi">300</span><span class="p">,</span> <span class="nt">&quot;light_illumination_distance_cm&quot;</span><span class="p">:</span> <span class="mi">10</span><span class="p">,</span> <span class="nt">&quot;air_temperature_celcius&quot;</span><span class="p">:</span> <span class="mi">10</span><span class="p">},</span>
-                  <span class="nt">&quot;frost_night&quot;</span><span class="p">:</span> <span class="p">{</span><span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Frost Night&quot;</span><span class="p">,</span> <span class="nt">&quot;spectrum_key&quot;</span><span class="p">:</span> <span class="s2">&quot;off&quot;</span><span class="p">,</span> <span class="nt">&quot;light_spectrum_nm_percent&quot;</span><span class="p">:</span> <span class="p">{</span><span class="nt">&quot;380-399&quot;</span><span class="p">:</span> <span class="mf">0.0</span><span class="p">,</span> <span class="nt">&quot;400-499&quot;</span><span class="p">:</span> <span class="mf">0.0</span><span class="p">,</span> <span class="nt">&quot;500-599&quot;</span><span class="p">:</span> <span class="mf">0.0</span><span class="p">,</span> <span class="nt">&quot;600-700&quot;</span><span class="p">:</span> <span class="mf">0.0</span><span class="p">,</span> <span class="nt">&quot;701-780&quot;</span><span class="p">:</span> <span class="mf">0.0</span><span class="p">},</span> <span class="nt">&quot;light_ppfd_umol_m2_s&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="nt">&quot;light_illumination_distance_cm&quot;</span><span class="p">:</span> <span class="mi">10</span><span class="p">,</span> <span class="nt">&quot;air_temperature_celcius&quot;</span><span class="p">:</span> <span class="mi">2</span><span class="p">}</span>
-              <span class="p">},</span>
-              <span class="nt">&quot;phases&quot;</span><span class="p">:</span> <span class="p">[{</span><span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Standard Growth&quot;</span><span class="p">,</span>
-                          <span class="nt">&quot;repeat&quot;</span><span class="p">:</span> <span class="mi">29</span><span class="p">,</span>
-                          <span class="nt">&quot;cycles&quot;</span><span class="p">:</span> <span class="p">[{</span><span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Day&quot;</span><span class="p">,</span> <span class="nt">&quot;environment&quot;</span><span class="p">:</span> <span class="s2">&quot;standard_day&quot;</span><span class="p">,</span> <span class="nt">&quot;duration_hours&quot;</span><span class="p">:</span> <span class="mi">18</span><span class="p">},</span>
-                                      <span class="p">{</span><span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Night&quot;</span><span class="p">,</span> <span class="nt">&quot;environment&quot;</span><span class="p">:</span> <span class="s2">&quot;standard_night&quot;</span><span class="p">,</span> <span class="nt">&quot;duration_hours&quot;</span><span class="p">:</span> <span class="mi">6</span><span class="p">}]</span>
-                          <span class="p">},</span>
-                          <span class="p">{</span><span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Frosty Growth&quot;</span><span class="p">,</span>
-                          <span class="nt">&quot;repeat&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
-                          <span class="nt">&quot;cycles&quot;</span><span class="p">:</span> <span class="p">[{</span><span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Day&quot;</span><span class="p">,</span> <span class="nt">&quot;environment&quot;</span><span class="p">:</span> <span class="s2">&quot;cold_day&quot;</span><span class="p">,</span> <span class="nt">&quot;duration_hours&quot;</span><span class="p">:</span> <span class="mi">18</span><span class="p">},</span>
-                                      <span class="p">{</span><span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Night&quot;</span><span class="p">,</span> <span class="nt">&quot;environment&quot;</span><span class="p">:</span> <span class="s2">&quot;frost_night&quot;</span><span class="p">,</span> <span class="nt">&quot;duration_hours&quot;</span><span class="p">:</span> <span class="mi">6</span><span class="p">}]</span>
-                          <span class="p">}]</span>
-              <span class="p">},</span>
-<span class="nt">&quot;response_code&quot;</span><span class="p">:</span> <span class="mi">200</span><span class="p">}</span>
 </pre></div>
 </div>
 </div></blockquote>
