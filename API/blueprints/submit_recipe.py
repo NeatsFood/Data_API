@@ -63,6 +63,8 @@ def submit_recipe():
         new_uuid = str(uuid.uuid4())
         recipe_dict["uuid"] = new_uuid
         recipe_dict["creation_timestamp_utc"] = current_ts
+        if 0 < len(recipe_dict["authors"]):
+            recipe_dict["authors"][0]["uuid"] = user_uuid
     recipe_json = json.dumps(recipe_dict)       # dict > json
 
     # put a new recipe into the collection
