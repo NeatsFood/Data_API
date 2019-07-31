@@ -1,8 +1,6 @@
 import json
-from flask import Blueprint
-from flask import Response
-from flask import request
-
+from flask import Blueprint, request
+from .utils.auth import requires_auth
 from cloud_common.cc.google import datastore
 from .utils.response import (success_response, error_response, pre_serialize_device)
 from .utils.common import is_expired
