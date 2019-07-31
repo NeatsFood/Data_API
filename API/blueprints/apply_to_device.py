@@ -75,25 +75,6 @@ def apply_to_device():
         commands_list = convert_UI_recipe_to_commands(recipe_uuid, recipe_dict)
         iot.send_recipe_to_device_via_IoT(device_uuid, commands_list)
 
-        # TODO: should get this from the new DeviceData.runs list.
-
-        # Save the current state of the recipe that was started.
-        key = datastore.get_client().key('DeviceHistory')
-        apply_to_device_task = gcds.Entity(key, 
-                exclude_from_indexes=['recipe_state'])
-        recipe_session_token = str(uuid.uuid4())
-        date_applied = datetime.now()
-        apply_to_device_task.update({
-            'recipe_session_token': recipe_session_token,
-            'device_uuid': device_uuid,
-            'recipe_uuid': recipe_uuid,
-            'date_applied': date_applied,
-            'date_expires': date_applied + timedelta(days=100),
-            'user_uuid': user_uuid,
-            'recipe_state':str(recipe_dict)
-        })
-        datastore.get_client().put(apply_to_device_task)
-
         return success_response()
     except(Exception) as e:
         print(f'Error in apply_to_device {e}')

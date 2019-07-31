@@ -53,17 +53,8 @@ def get_current_device_status():
     device_data = datastore.get_device_data_from_DS(device_uuid)
 
     # TODO: should get this from the new DeviceData.runs list.
-    query = datastore.get_client().query(kind='DeviceHistory',
-                                   order=['-date_applied'])
-    query.add_filter('device_uuid', '=', device_uuid)
-    query_result = list(query.fetch(1))
-    if len(query_result) == 0:
-        return success_response(
-            expired=True
-        )
-
-    current_recipe = query_result[0]
-    days, runtime = get_runtime_description(current_recipe['date_applied'])
+    #days, runtime = get_runtime_description(current_recipe['date_applied'])
+    days, runtime = 0, 0
 
     result_json = {
         "progress": 0.0,

@@ -93,20 +93,6 @@ def submit_recipe():
         recipe["date_created"] = current_ts
         datastore.get_client().put(recipe)
 
-
-    # TODO: remove this when the rest of the EDU UI doesn't use DeviceHistory for running recipe state.   It should be using DeviceData.runs
-    key = datastore.get_client().key('DeviceHistory')
-    apply_to_device_task = gcds.Entity(key, exclude_from_indexes=[])
-    date_applied = datetime.now()
-    apply_to_device_task.update({
-        # Used to track the recipe applied to the device and modifications made to it.
-        'recipe_uuid': recipe_dict.get("uuid"),
-        'date_applied': date_applied,
-        'date_expires': date_applied + timedelta(days=3000),
-        'user_uuid': user_uuid
-    })
-    datastore.get_client().put(apply_to_device_task)
-
     return success_response(
         message="Successfully saved.",
         modified=current_ts,

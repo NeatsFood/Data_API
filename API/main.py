@@ -5,7 +5,6 @@ from flask_cors import CORS
 
 from blueprints import (
     apply_to_device, 
-    get_current_recipe, 
     get_co2_details,
     get_current_stats, 
     get_temp_details, 
@@ -17,7 +16,6 @@ from blueprints import (
     submit_recipe,
     delete_recipe,
     get_plant_types, 
-    submit_recipe_change, 
     verify_user_session,
     user_authenticate, 
     upload_images, 
@@ -25,7 +23,6 @@ from blueprints import (
     get_device_peripherals,
     get_device_images,
     submit_horticulture_measurements,
-    get_current_recipe_info, 
     save_user_profile_changes, 
     get_current_device_status,
     daily_horticulture_measurements, 
@@ -45,7 +42,6 @@ app.register_blueprint(get_current_stats.get_current_stats_bp)
 app.register_blueprint(get_temp_details.get_temp_details_bp)
 app.register_blueprint(get_user_devices.get_user_devices_bp)
 app.register_blueprint(register_device.register_bp)
-app.register_blueprint(submit_recipe_change.submit_recipe_change_bp)
 app.register_blueprint(user_authenticate.user_authenticate)
 app.register_blueprint(verify_user_session.verify_user_session_bp)
 app.register_blueprint(get_device_peripherals.get_device_peripherals_bp)
@@ -55,11 +51,9 @@ app.register_blueprint(get_device_types.get_device_types_bp)
 app.register_blueprint(get_plant_types.get_plant_types_bp)
 app.register_blueprint(get_all_recipes.get_all_recipes_bp)
 app.register_blueprint(get_recipe_by_uuid.get_recipe_by_uuid_bp)
-app.register_blueprint(get_current_recipe_info.get_current_recipe_info_bp)
 app.register_blueprint(upload_images.upload_images_bp)
 app.register_blueprint(get_user_info.get_user_info_bp)
 app.register_blueprint(get_device_images.get_device_images_bp)
-app.register_blueprint(get_current_recipe.get_current_recipe_bp)
 app.register_blueprint(save_user_profile_changes.save_user_profile_bp)
 app.register_blueprint(get_current_device_status.get_current_device_status_bp)
 app.register_blueprint(submit_horticulture_measurements.submit_horticulture_measurements_bp)
