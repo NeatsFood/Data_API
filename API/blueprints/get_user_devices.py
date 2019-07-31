@@ -34,9 +34,7 @@ def get_user_devices():
                         "device_reg_no": "9F2BEEEF",
                         "registration_date": "2019-04-29 20:09:10",
                         "user_uuid": "d2c7fe68-e857-4c4a-98b4-7e88154ddaa6",
-                        "permissions": "control",
-                        "device_name": "Steve's Mac",
-                        "peripherals": ""
+                        "device_name": "Steve's Mac"
                     },
                     {
                         "device_uuid": "EDU-F3D9051D-b8-27-eb-0a-43-ee",
@@ -45,9 +43,7 @@ def get_user_devices():
                         "device_reg_no": "F3D9051D",
                         "registration_date": "2019-04-08 13:18:58",
                         "user_uuid": "d2c7fe68-e857-4c4a-98b4-7e88154ddaa6",
-                        "permissions": "control",
-                        "device_name": "Green-Frog-Bates",
-                        "peripherals": ""
+                        "device_name": "Green-Frog-Bates"
                     }],
                 "user_uuid": "d2c7fe68-e857-4c4a-98b4-7e88154ddaa6"
             },
@@ -88,6 +84,7 @@ def get_user_devices():
         results=response
     )
 
+
 def get_devices_for_user(user_uuid):
     query = datastore.get_client().query(kind='Devices')
     query.add_filter('user_uuid', '=', user_uuid)
@@ -95,8 +92,6 @@ def get_devices_for_user(user_uuid):
 
     devices = []
     for device in query_results:
-        device['permission'] = 'control'
-        device['peripherals'] = get_device_type_peripherals(device['device_type'])
         device_json = pre_serialize_device(device)
         print('    {}, {}, {}'.format(
             device_json['device_uuid'],
@@ -105,60 +100,6 @@ def get_devices_for_user(user_uuid):
         ))
         devices.append(device_json)
 
-    devices_from_access_codes = get_access_code_devices_for_user(user_uuid)
-    devices.extend(devices_from_access_codes)
-    return devices
-
-def get_access_code_devices_for_user(user_uuid):
-    """Returns a set of devices associated with the user's access codes"""
-    access_codes = get_acccess_codes(user_uuid)
-
-    devices = []
-    for code in access_codes:
-        code_entity = datastore.get_one_from_DS(
-            kind="UserAccessCodes", key='code', value=code
-        )
-
-        if is_expired(code_entity['expiration_date']):
-            continue
-
-        devices.extend(get_devices_from_code_entity(code_entity))
-
-    return devices
-
-def get_acccess_codes(user_uuid):
-    user = datastore.get_one_from_DS(
-        kind='Users', key='user_uuid', value=user_uuid
-    )
-
-    access_codes = user.get('access_codes', [])
-    return access_codes
-
-def get_devices_from_code_entity(code_entity):
-    devices = []
-
-    # In case the entity doesn't have the property 'code_permissions',
-    # set it to an empty array
-    permissions = json.loads(code_entity.get('code_permissions', '[]'))
-    for entry in permissions:
-        device = datastore.get_one_from_DS(
-            kind='Devices', key='device_uuid', value=entry['device_uuid']
-        )
-        if not device:
-            continue
-
-        device['permission'] = entry['permission']
-        devices.append(pre_serialize_device(device))
-
     return devices
 
 
-def get_device_type_peripherals(device_type):
-    peripherals = ""
-    device_type_query = datastore.get_client().query(kind="DeviceType")
-    device_type_query.add_filter("name","=",device_type)
-    device_type_results = list(device_type_query.fetch())
-    if len(device_type_results) > 0:
-        peripherals = device_type_results[0]["peripherals"]
-
-    return peripherals
