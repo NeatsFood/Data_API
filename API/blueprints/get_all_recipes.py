@@ -97,23 +97,36 @@ def get_all_recipes():
             devices_array.append(result_json)
 
 
-    # Get 'all' the common recipes, and the ones created/saved by this user.
+    # Get all the common AND shared AND user owned recipes.
     recipe_query = datastore.get_client().query(kind='Recipes')
-    query.add_filter('user_uuid', '=', user_uuid)
-    query.add_filter('user_uuid', '=', 'all')
+    query.add_filter('user_uuid', '=', user_uuid) # users' recipes
+    query.add_filter('user_uuid', '=', 'all')     # AND 'all' common recipes
+    query.add_filter('shared', '=', 'true')       # AND shared recipes
     query_result = list(recipe_query.fetch())
     results = list(query_result)
 
     results_array = []
     for result in results:
         recipe_dict = json.loads(result["recipe"])
+
+        # Get the username who owns this recipe
+        username = ''
+        query = datastore.get_client().query(kind='Users')
+        query.add_filter('user_uuid', '=', result['user_uuid'])
+        user_list = list(query.fetch(1))
+        if 1 == len(user_list):
+            user = user_list[0]
+            username = user.get('username', '')
+
         results_array.append({
             'name': recipe_dict.get('name'),
             'description': result.get('description', ''),
             'recipe_uuid': result.get("recipe_uuid", ""),
             "recipe_json": recipe_dict,
             "user_uuid": result.get('user_uuid', ""),
-            "image_url": result.get("image_url", "")
+            "image_url": result.get("image_url", ""),
+            "shared": result.get("shared", ""),
+            "username": username
         })
 
     return success_response(
