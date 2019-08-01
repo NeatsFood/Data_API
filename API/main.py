@@ -4,6 +4,7 @@ from flask import send_file
 from flask_cors import CORS
 
 from blueprints import (
+    get_all_values,
     apply_to_device, 
     get_co2_details,
     get_current_stats, 
@@ -36,6 +37,7 @@ app = Flask(__name__,
         static_url_path='', # project root, the current directory 
         static_folder='doc/api-documentation/html') # doc root to serve
 
+app.register_blueprint(get_all_values.get_all_values_bp)
 app.register_blueprint(apply_to_device.apply_to_device_bp)
 app.register_blueprint(get_co2_details.get_co2_details_bp)
 app.register_blueprint(get_current_stats.get_current_stats_bp)
