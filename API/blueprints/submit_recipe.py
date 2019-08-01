@@ -23,6 +23,7 @@ def submit_recipe():
     :reqheader Accept: application/json
     :<json string user_token: User's Token.
     :<json string recipe: JSON recipe.
+    :<json string shared: 'true' if this is a shared recipe.
 
     **Example response**:
 
@@ -36,6 +37,7 @@ def submit_recipe():
     received_form_response = json.loads(request.data.decode('utf-8'))
     user_token = received_form_response.get("user_token", "")
     recipe_json = received_form_response.get("recipe")
+    shared = received_form_response.get("shared", 'false')
     testing = received_form_response.get("testing")
 
     if user_token is None or recipe_json is None:
@@ -79,7 +81,8 @@ def submit_recipe():
             "date_created": current_ts,
             "device_type": "PFC_EDU",
             "format": recipe_dict.get("format"),
-            "version": recipe_dict.get("version")
+            "version": recipe_dict.get("version"),
+            "shared": shared 
         })
         datastore.get_client().put(recipe_reg_task)
     else: # recipe exists, so update it
@@ -91,6 +94,7 @@ def submit_recipe():
         recipe = recipes[0]
         recipe["recipe"] = recipe_json
         recipe["date_created"] = current_ts
+        recipe["shared"] = shared
         datastore.get_client().put(recipe)
 
     return success_response(
