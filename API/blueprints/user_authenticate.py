@@ -116,7 +116,7 @@ def login():
         message="Login Successful"
     )
 
-
+# TODO: Make a test for this route. Might need an Auth0 OAuth token
 @user_authenticate.route("/oauth_login/", methods=['POST'])
 @cross_origin(headers=['Content-Type','Authorization'])
 @requires_auth0_auth

@@ -1,4 +1,4 @@
-from API.cloud_common.cc.google import datastore
+from cloud_common.cc.google import datastore
 
 # For creating decorator functions
 from functools import wraps
@@ -74,7 +74,7 @@ def get_token_auth_header():
     token = parts[1]
     return token
 
-
+# TODO: Make all the APIs use this
 def requires_auth0_auth(f):
     """Decorator to require authentication
     Currently using old user_token version"""
