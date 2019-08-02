@@ -79,6 +79,14 @@
 <td><p>ACK a notification</p></td>
 </tr>
 <tr class="row-even"><td></td>
+<td><p><a class="reference external" href="#post--api-get_all_values_as_csv-">POST /api/get_all_values_as_csv/</a></p></td>
+<td><p>Get all values as CSV</p></td>
+</tr>
+<tr class="row-odd"><td></td>
+<td><p><a class="reference external" href="#post--api-get_all_values-">POST /api/get_all_values/</a></p></td>
+<td><p>Get all values</p></td>
+</tr>
+<tr class="row-even"><td></td>
 <td><p><a class="reference external" href="#post--api-register-">POST /api/register/</a></p></td>
 <td><p>Register device</p></td>
 </tr>
@@ -435,6 +443,36 @@
 </dd></dl>
 
 <dl class="post">
+<dt id="post--api-get_all_values_as_csv-">
+<code class="sig-name descname">POST </code><code class="sig-name descname">/api/get_all_values_as_csv/</code><a class="headerlink" href="#post--api-get_all_values_as_csv-" title="Permalink to this definition">¶</a></dt>
+<dd><p>Retrieve a CSV of all sensor and horticulture values for a device, suitable for downloading as a file.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Request Headers</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><a class="reference external" href="https://tools.ietf.org/html/rfc7231#section-5.3.2">Accept</a> – application/json</p></li>
+</ul>
+</dd>
+<dt class="field-even">Request JSON Object</dt>
+<dd class="field-even"><ul class="simple">
+<li><p><strong>user_token</strong> (<em>string</em>) – User Token returned from the /login API.</p></li>
+<li><p><strong>device_uuid</strong> (<em>string</em>) – Device to get data for.</p></li>
+<li><p><strong>start_ts</strong> (<em>string</em>) – UTC timestamp of stating date.</p></li>
+<li><p><strong>end_ts</strong> (<em>string</em>) – UTC timestamp of ending date.</p></li>
+</ul>
+</dd>
+</dl>
+<p><strong>Example response</strong>:</p>
+<blockquote>
+<div><div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+    <span class="nt">&quot;CSV&quot;</span><span class="p">:</span> <span class="s2">&quot;one giant string of: time, temp, RH, co2, leaf_count, plant_height&quot;</span>
+    <span class="s2">&quot;response-code&quot;</span><span class="p">:</span> <span class="mi">200</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div></blockquote>
+</dd></dl>
+
+<dl class="post">
 <dt id="post--api-verify_user_session-">
 <code class="sig-name descname">POST </code><code class="sig-name descname">/api/verify_user_session/</code><a class="headerlink" href="#post--api-verify_user_session-" title="Permalink to this definition">¶</a></dt>
 <dd><p>Verify the user’s session token is still valid.
@@ -617,9 +655,7 @@
                 <span class="nt">&quot;device_reg_no&quot;</span><span class="p">:</span> <span class="s2">&quot;9F2BEEEF&quot;</span><span class="p">,</span>
                 <span class="nt">&quot;registration_date&quot;</span><span class="p">:</span> <span class="s2">&quot;2019-04-29 20:09:10&quot;</span><span class="p">,</span>
                 <span class="nt">&quot;user_uuid&quot;</span><span class="p">:</span> <span class="s2">&quot;d2c7fe68-e857-4c4a-98b4-7e88154ddaa6&quot;</span><span class="p">,</span>
-                <span class="nt">&quot;permissions&quot;</span><span class="p">:</span> <span class="s2">&quot;control&quot;</span><span class="p">,</span>
-                <span class="nt">&quot;device_name&quot;</span><span class="p">:</span> <span class="s2">&quot;Steve&#39;s Mac&quot;</span><span class="p">,</span>
-                <span class="nt">&quot;peripherals&quot;</span><span class="p">:</span> <span class="s2">&quot;&quot;</span>
+                <span class="nt">&quot;device_name&quot;</span><span class="p">:</span> <span class="s2">&quot;Steve&#39;s Mac&quot;</span>
             <span class="p">},</span>
             <span class="p">{</span>
                 <span class="nt">&quot;device_uuid&quot;</span><span class="p">:</span> <span class="s2">&quot;EDU-F3D9051D-b8-27-eb-0a-43-ee&quot;</span><span class="p">,</span>
@@ -628,9 +664,7 @@
                 <span class="nt">&quot;device_reg_no&quot;</span><span class="p">:</span> <span class="s2">&quot;F3D9051D&quot;</span><span class="p">,</span>
                 <span class="nt">&quot;registration_date&quot;</span><span class="p">:</span> <span class="s2">&quot;2019-04-08 13:18:58&quot;</span><span class="p">,</span>
                 <span class="nt">&quot;user_uuid&quot;</span><span class="p">:</span> <span class="s2">&quot;d2c7fe68-e857-4c4a-98b4-7e88154ddaa6&quot;</span><span class="p">,</span>
-                <span class="nt">&quot;permissions&quot;</span><span class="p">:</span> <span class="s2">&quot;control&quot;</span><span class="p">,</span>
-                <span class="nt">&quot;device_name&quot;</span><span class="p">:</span> <span class="s2">&quot;Green-Frog-Bates&quot;</span><span class="p">,</span>
-                <span class="nt">&quot;peripherals&quot;</span><span class="p">:</span> <span class="s2">&quot;&quot;</span>
+                <span class="nt">&quot;device_name&quot;</span><span class="p">:</span> <span class="s2">&quot;Green-Frog-Bates&quot;</span>
             <span class="p">}],</span>
         <span class="nt">&quot;user_uuid&quot;</span><span class="p">:</span> <span class="s2">&quot;d2c7fe68-e857-4c4a-98b4-7e88154ddaa6&quot;</span>
     <span class="p">},</span>
@@ -813,6 +847,50 @@
 </dd></dl>
 
 <dl class="post">
+<dt id="post--api-get_all_values-">
+<code class="sig-name descname">POST </code><code class="sig-name descname">/api/get_all_values/</code><a class="headerlink" href="#post--api-get_all_values-" title="Permalink to this definition">¶</a></dt>
+<dd><p>Retrieve all sensor and horticulture values for a device.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Request Headers</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><a class="reference external" href="https://tools.ietf.org/html/rfc7231#section-5.3.2">Accept</a> – application/json</p></li>
+</ul>
+</dd>
+<dt class="field-even">Request JSON Object</dt>
+<dd class="field-even"><ul class="simple">
+<li><p><strong>user_token</strong> (<em>string</em>) – User Token returned from the /login API.</p></li>
+<li><p><strong>device_uuid</strong> (<em>string</em>) – Device to get data for.</p></li>
+<li><p><strong>start_ts</strong> (<em>string</em>) – UTC timestamp of stating date.</p></li>
+<li><p><strong>end_ts</strong> (<em>string</em>) – UTC timestamp of ending date.</p></li>
+</ul>
+</dd>
+</dl>
+<p><strong>Example response</strong>:</p>
+<blockquote>
+<div><div class="highlight-json notranslate"><div class="highlight"><pre><span></span>{
+    &quot;RH&quot;: [
+        {&quot;value&quot;: &quot;28.0&quot;, &quot;time&quot;: &quot;2019-05-08T18:39:53Z&quot;},
+        {&quot;value&quot;: &quot;29.0&quot;, &quot;time&quot;: &quot;2019-05-08T18:29:52Z&quot;}],
+    &quot;temp&quot;: [
+        {&quot;value&quot;: &quot;25.0&quot;, &quot;time&quot;: &quot;2019-05-08T18:29:52Z&quot;},
+        {&quot;value&quot;: &quot;24.0&quot;, &quot;time&quot;: &quot;2019-05-08T18:24:52Z&quot;}],
+    &quot;co2&quot;: [
+        {&quot;value&quot;: &quot;33246.0&quot;, &quot;time&quot;: &quot;2019-05-08T16:44:39Z&quot;},
+        {&quot;value&quot;: &quot;33244.0&quot;, &quot;time&quot;: &quot;2019-05-08T16:39:39Z&quot;}],
+    &quot;leaf_count&quot;: [
+        {&quot;value&quot;: 3, &quot;time&quot;: &quot;2019-04-08T13:18:58Z&quot;}],
+        {&quot;value&quot;: 8, &quot;time&quot;: &quot;2019-04-09T03:10:08Z&quot;}],
+    &quot;plant_height&quot;: [
+        {&quot;value&quot;: 2.5, &quot;time&quot;: &quot;2019-04-08T13:18:58Z&quot;}],
+        {&quot;value&quot;: 2.9, &quot;time&quot;: &quot;2019-04-09T03:08:08Z&quot;}],
+    &quot;response-code&quot;: 200
+}
+</pre></div>
+</div>
+</div></blockquote>
+</dd></dl>
+
+<dl class="post">
 <dt id="post--api-submit_recipe-">
 <code class="sig-name descname">POST </code><code class="sig-name descname">/api/submit_recipe/</code><a class="headerlink" href="#post--api-submit_recipe-" title="Permalink to this definition">¶</a></dt>
 <dd><p>Save a recipe created or modified in the editor.</p>
@@ -826,6 +904,7 @@
 <dd class="field-even"><ul class="simple">
 <li><p><strong>user_token</strong> (<em>string</em>) – User’s Token.</p></li>
 <li><p><strong>recipe</strong> (<em>string</em>) – JSON recipe.</p></li>
+<li><p><strong>shared</strong> (<em>string</em>) – ‘true’ if this is a shared recipe.</p></li>
 </ul>
 </dd>
 </dl>
