@@ -115,8 +115,8 @@ def requires_auth0_auth(f):
                                      "Unable to parse authentication"
                                      " token."}, 401)
 
-            user_info = get_user_info_auth0(token)
-            user_token = get_user_token_from_auth0_info(user_info)
+            g.user_info = get_user_info_auth0(token)
+            # user_token = get_user_token_from_auth0_info(user_info)
             g.current_user = payload
 
             return f(*args, **kwargs)
@@ -135,16 +135,10 @@ def requires_auth(f):
         user_token = received_form_response.get("user_token")
         if user_token is None:
             raise AuthError("Please Make Sure You have added values for all the fields", 401)
-            #return error_response(
-            #    message="Please make sure you have added values for all the fields"
-            #)
 
         user_uuid = get_user_uuid_from_token(user_token)
         if user_uuid is None:
             raise AuthError("Invalid User: Unauthorized")
-            #return error_response(
-            #    message="Invalid User: Unauthorized"
-            #)
 
         g.user_token = user_token
         g.user_uuid = user_uuid
