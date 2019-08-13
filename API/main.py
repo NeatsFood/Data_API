@@ -30,7 +30,8 @@ from blueprints import (
     get_horticulture_daily_logs,
     get_device_notifications, 
     ack_device_notification,
-    view_image
+    view_image,
+    get_runs
 )
 
 from blueprints.utils.auth import AuthError
@@ -67,6 +68,7 @@ app.register_blueprint(get_horticulture_daily_logs.get_horticulture_daily_logs_b
 app.register_blueprint(view_image.viewimage_bp)
 app.register_blueprint(get_device_notifications.get_device_notifications_bp)
 app.register_blueprint(ack_device_notification.ack_device_notification_bp)
+app.register_blueprint(get_runs.get_runs_bp)
 
 cors = CORS(app, resources={r"/api/*": {"origins": "*"}})
 CORS(app)

@@ -126,47 +126,51 @@
 <td><p><a class="reference external" href="#post--api-delete_recipe-">POST /api/delete_recipe/</a></p></td>
 <td><p>Delete recipe</p></td>
 </tr>
-<tr class="row-even"><td><p>Sensor Data</p></td>
+<tr class="row-even"><td></td>
+<td><p><a class="reference external" href="#post--api-get_runs-">POST /api/get_runs/</a></p></td>
+<td><p>Get all recipe run times</p></td>
+</tr>
+<tr class="row-odd"><td><p>Sensor Data</p></td>
 <td><p><a class="reference external" href="#post--api-get_current_stats-">POST /api/get_current_stats/</a></p></td>
 <td><p>Current readings</p></td>
 </tr>
-<tr class="row-odd"><td></td>
+<tr class="row-even"><td></td>
 <td><p><a class="reference external" href="#post--api-get_device_images-">POST /api/get_device_images/</a></p></td>
 <td><p>Image list</p></td>
 </tr>
-<tr class="row-even"><td></td>
+<tr class="row-odd"><td></td>
 <td><p><a class="reference external" href="#post--api-get_temp_details-">POST /api/get_temp_details/</a></p></td>
 <td><p>Temp/RH data</p></td>
 </tr>
-<tr class="row-odd"><td></td>
+<tr class="row-even"><td></td>
 <td><p><a class="reference external" href="#post--api-get_co2_details-">POST /api/get_co2_details/</a></p></td>
 <td><p>CO2 data</p></td>
 </tr>
-<tr class="row-even"><td><p>User</p></td>
+<tr class="row-odd"><td><p>User</p></td>
 <td><p><a class="reference external" href="#post--api-save_user_profile_changes-">POST /api/save_user_profile_changes/</a></p></td>
 <td><p>Update profile</p></td>
 </tr>
-<tr class="row-odd"><td></td>
+<tr class="row-even"><td></td>
 <td><p><a class="reference external" href="#post--api-get_user_devices-">POST /api/get_user_devices/</a></p></td>
 <td><p>Get user’s devices</p></td>
 </tr>
-<tr class="row-even"><td></td>
+<tr class="row-odd"><td></td>
 <td><p><a class="reference external" href="#post--api-get_user_info-">POST /api/get_user_info/</a></p></td>
 <td><p>User profile</p></td>
 </tr>
-<tr class="row-odd"><td><p>Utility</p></td>
+<tr class="row-even"><td><p>Utility</p></td>
 <td><p><a class="reference external" href="#post--api-get_device_types-">POST /api/get_device_types/</a></p></td>
 <td><p>Device types</p></td>
 </tr>
-<tr class="row-even"><td></td>
+<tr class="row-odd"><td></td>
 <td><p><a class="reference external" href="#post--api-get_plant_types-">POST /api/get_plant_types/</a></p></td>
 <td><p>Plant types</p></td>
 </tr>
-<tr class="row-odd"><td></td>
+<tr class="row-even"><td></td>
 <td><p><a class="reference external" href="#post--api-upload_images-">POST /api/upload_images/</a></p></td>
 <td><p>Upload an image</p></td>
 </tr>
-<tr class="row-even"><td></td>
+<tr class="row-odd"><td></td>
 <td><p><a class="reference external" href="#get--viewImage-(imageData)">GET /viewImage/(imageData)</a></p></td>
 <td><p>Generate tweet</p></td>
 </tr>
@@ -1031,6 +1035,38 @@
 <blockquote>
 <div><div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
   <span class="nt">&quot;response_code&quot;</span><span class="p">:</span> <span class="mi">200</span> 
+<span class="p">}</span>
+</pre></div>
+</div>
+</div></blockquote>
+</dd></dl>
+
+<dl class="post">
+<dt id="post--api-get_runs-">
+<code class="sig-name descname">POST </code><code class="sig-name descname">/api/get_runs/</code><a class="headerlink" href="#post--api-get_runs-" title="Permalink to this definition">¶</a></dt>
+<dd><p>Retrieve all recipe start, end times for a device.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Request Headers</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><a class="reference external" href="https://tools.ietf.org/html/rfc7231#section-5.3.2">Accept</a> – application/json</p></li>
+</ul>
+</dd>
+<dt class="field-even">Request JSON Object</dt>
+<dd class="field-even"><ul class="simple">
+<li><p><strong>user_token</strong> (<em>string</em>) – User Token returned from the /login API.</p></li>
+<li><p><strong>device_uuid</strong> (<em>string</em>) – Device UUID to get the runs from.</p></li>
+</ul>
+</dd>
+</dl>
+<p><strong>Example response</strong>:</p>
+<blockquote>
+<div><div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+    <span class="nt">&quot;runs&quot;</span><span class="p">:</span> <span class="p">[</span>
+        <span class="p">{</span><span class="nt">&quot;recipe_name&quot;</span><span class="p">:</span><span class="s2">&quot;Demo Rainbow&quot;</span><span class="p">,</span>
+         <span class="nt">&quot;start&quot;</span><span class="p">:</span><span class="s2">&quot;2019-08-09T16:52:46Z&quot;</span><span class="p">,</span>
+         <span class="nt">&quot;end&quot;</span><span class="p">:</span><span class="s2">&quot;2019-08-09T16:53:29Z&quot;</span><span class="p">}</span>
+    <span class="p">],</span>
+    <span class="nt">&quot;response-code&quot;</span><span class="p">:</span> <span class="mi">200</span>
 <span class="p">}</span>
 </pre></div>
 </div>
