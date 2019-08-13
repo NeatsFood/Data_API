@@ -70,7 +70,7 @@ def get_current_device_status():
         fmt2 = '%Y-%m-%dT%H:%M:%SZ'
 
         t1 = datetime.strptime(timenow, fmt1)
-        t2 = datetime.strptime(str(timestamp), fmt2)
+        t2 = datetime.strptime(str(timestamp)), fmt2)
 
         _,time_minutes,_ = convert_timedelta(t1-t2)
         if time_minutes > 5:
