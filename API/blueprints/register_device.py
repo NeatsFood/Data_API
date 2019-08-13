@@ -4,6 +4,9 @@ from flask import Blueprint
 from flask import Response
 from flask import request
 
+from googleapiclient import errors
+from google.cloud import datastore as gcds
+
 from cloud_common.cc.google import datastore
 from cloud_common.cc.google import iot
 from .utils.response import success_response, error_response
@@ -87,7 +90,7 @@ def register():
 
     # Add the device to the Devices datastore collection
     key = datastore.get_client().key('Devices')
-    device_reg_task = datastore.Entity(key, exclude_from_indexes=[])
+    device_reg_task = gcds.Entity(key, exclude_from_indexes=[])
 
     device_reg_task.update({
         'device_uuid': device_uuid,
