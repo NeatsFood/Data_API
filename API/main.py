@@ -33,6 +33,9 @@ from blueprints import (
     view_image
 )
 
+from blueprints.utils.auth import AuthError
+from blueprints.utils.response import error_response
+
 app = Flask(__name__, 
         static_url_path='', # project root, the current directory 
         static_folder='doc/api-documentation/html') # doc root to serve
@@ -68,6 +71,11 @@ app.register_blueprint(ack_device_notification.ack_device_notification_bp)
 cors = CORS(app, resources={r"/api/*": {"origins": "*"}})
 CORS(app)
 
+#------
+# Error handler for Authentication Errors
+@app.errorhandler(AuthError)
+def handle_auth_error(ex):
+    error_response(ex.error)
 
 #------------------------------------------------------------------------------
 # Serve our API documentation when a browser hits our URL.
