@@ -4,6 +4,7 @@ from datetime import datetime
 from flask import Blueprint
 from flask import request
 
+from cloud_common.cc import utils 
 from cloud_common.cc.google import datastore
 from .utils.response import success_response, error_response
 
@@ -65,12 +66,13 @@ def get_current_device_status():
     }
     if device_data is not None:
         timestamp = device_data.get("timestamp") # .decode()
+        timestamp = utils.bytes_to_string(timestamp)
         timenow = str(datetime.now())
         fmt1 = '%Y-%m-%d %H:%M:%S.%f'
         fmt2 = '%Y-%m-%dT%H:%M:%SZ'
 
         t1 = datetime.strptime(timenow, fmt1)
-        t2 = datetime.strptime(str(timestamp), fmt2)
+        t2 = datetime.strptime(timestamp, fmt2)
 
         _,time_minutes,_ = convert_timedelta(t1-t2)
         if time_minutes > 5:
