@@ -68,6 +68,53 @@ def signup():
         )
 
 
+def signup_user_oauth():
+    """Create a user account from oidc user info.
+
+    .. :quickref: Authentication; Create account
+
+    :reqheader Accept: application/json
+    :<json string username: Users login name
+    :<json string email_address: Users email address
+    :<json string password: Users password
+    :<json string organization: Users organization (self chosen)
+
+    **Example response**:
+
+        .. sourcecode:: json
+
+          {
+            "response_code": 200
+          }
+    """
+    print(g.user_info)
+    print(g.current_user)
+    username = g.user_info["sub"]
+    email_address = g.user_info["email"]
+    password = None # received_form_response.get("password")
+    organization = None #received_form_response.get("organization")
+    testing = False # received_form_response.get("testing")
+
+    if not (username and email_address):
+        return error_response(
+            message="Please make sure you have added values for all the fields"
+        )
+
+    if not is_email(email_address, check_dns=True):
+        return error_response(
+            message="Invalid email."
+        )
+
+    if testing:  # our pytest is hitting this API, so don't create the user
+        return success_response()
+
+    new_user = User(username=username, password=password,
+                     email_address=email_address,
+                     organization=organization)
+    user_uuid = new_user.insert_into_db(datastore.get_client())
+    return new_user
+
+
 @user_authenticate.route('/login/', methods=['POST'])
 def login():
     """Log a user into this API, returns a session token.
@@ -126,10 +173,9 @@ def oauth_login():
     query.add_filter('email_address', '=', g.user_info['email'])
     query_result = list(query.fetch(1))
     if not query_result:
-        return error_response(
-            message="Login failed. Please check your credentials."
-        )
-    user = query_result[0]
+        user = signup_user_oauth()
+    else:
+        user = query_result[0]
 
     user_uuid = user.get('user_uuid')
     is_admin = user.get('is_admin', False)
