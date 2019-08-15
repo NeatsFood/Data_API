@@ -66,13 +66,19 @@ def get_all_values():
     # Get 5 lists of dicts of all the data in the date range
     temp, RH, co2, leaf_count, plant_height = \
         database.get_all_historical_values(device_uuid, start_ts, end_ts)
+    
+    # TODO: Change datastore storage order so we don't need to revese these lists
+    if type(leaf_count) is list:
+      leaf_count.reverse()
+    if type(plant_height) is list:
+      plant_height.reverse()
 
     return success_response(
         temp=temp,
         RH=RH,
         co2=co2,
         leaf_count=leaf_count,
-        plant_height=plant_height
+        plant_height=plant_height,
     )
 
 
