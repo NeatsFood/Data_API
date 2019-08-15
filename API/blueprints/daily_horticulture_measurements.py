@@ -50,14 +50,16 @@ def save_horticulture_measurements():
     root_colors = received_form_json.get("root_colors", "")
     horticulture_notes = received_form_json.get("horticulture_notes", "")
     submission_name = received_form_json.get("submission_name", "")
-    #print(received_form_json)
+    print("received_form_json = {}".format(received_form_json))
     if device_uuid is None:
         return error_response(
             message="Access denied."
         )
+    
 
     # Add the user to the users kind of entity
     key = datastore.get_client().key('DailyHorticultureLog')
+
     # Indexes every other column except the description
     horticulture_task = gcds.Entity(key, exclude_from_indexes=[])
 
@@ -71,8 +73,10 @@ def save_horticulture_measurements():
         "root_colors": ",".join(x for x in root_colors),
         "horticulture_notes": str(horticulture_notes),
         "submission_name": str(submission_name),
-        "submitted_at": datetime.now(),
+        "submitted_at": datetime.utcnow().isoformat().split('.')[0] + "Z",
     })
+
+    print("Submitting horticulture task, horticulture_task = {}".format(horticulture_task))
 
     datastore.get_client().put(horticulture_task)
 
