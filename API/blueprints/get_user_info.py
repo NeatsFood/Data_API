@@ -8,6 +8,7 @@ from .utils.response import success_response, error_response
 
 get_user_info_bp = Blueprint('get_user_info_bp', __name__)
 
+
 @get_user_info_bp.route('/api/get_user_info/', methods=['POST'])
 def get_user_image():
     """Get user profile information.

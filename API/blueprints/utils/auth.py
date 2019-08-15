@@ -24,6 +24,7 @@ class AuthError(Exception):
         self.error = error
         self.status_code = status_code
 
+
 def get_user_uuid_from_token(user_token):
     """Verifies session and returns user uuid"""
 
