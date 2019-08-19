@@ -10,6 +10,8 @@ import json
 from jose import jwt
 
 from flask import request, g
+from openag_cache import cache
+
 
 # Auth0 Config TODO: MOVE SOMEWHERE ELSE
 ### Auth0 config
@@ -38,13 +40,13 @@ def get_user_uuid_from_token(user_token):
     return uuid
 
 
+@cache.cached(key_prefix='get_user_info_auth0')
 def get_user_info_auth0(token):
     url = "https://"+AUTH0_DOMAIN+"/userinfo"
     headers = {'Authorization': 'Bearer ' + token}
     req = Request(url, headers=headers)
     response = urlopen(req)
     ui = json.loads(response.read())
-    # print(ui)
     return ui
 
 
@@ -82,6 +84,7 @@ def requires_auth0_auth(f):
     @wraps(f)
     def decorated(*args, **kwargs):
         token = get_token_auth_header()
+        #TODO: Cache the jwks, since it shouldn't change very much
         jsonurl = urlopen("https://"+AUTH0_DOMAIN+"/.well-known/jwks.json")
         jwks = json.loads(jsonurl.read())
         unverified_header = jwt.get_unverified_header(token)
