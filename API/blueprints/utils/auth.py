@@ -77,6 +77,14 @@ def get_token_auth_header():
     token = parts[1]
     return token
 
+
+@cache.cached(timeout=0, key_prefix="get_jwks")  # Cache the jwks forever.
+def get_jwks():
+    jsonurl = urlopen("https://" + AUTH0_DOMAIN + "/.well-known/jwks.json")
+    jwks = json.loads(jsonurl.read())
+    return jwks
+
+
 # TODO: Make all the APIs use this
 def requires_auth0_auth(f):
     """Decorator to require authentication
@@ -84,9 +92,7 @@ def requires_auth0_auth(f):
     @wraps(f)
     def decorated(*args, **kwargs):
         token = get_token_auth_header()
-        #TODO: Cache the jwks, since it shouldn't change very much
-        jsonurl = urlopen("https://"+AUTH0_DOMAIN+"/.well-known/jwks.json")
-        jwks = json.loads(jsonurl.read())
+        jwks = get_jwks()
         unverified_header = jwt.get_unverified_header(token)
         rsa_key = {}
         for key in jwks["keys"]:
@@ -120,7 +126,6 @@ def requires_auth0_auth(f):
                                      " token."}, 401)
 
             g.user_info = get_user_info_auth0(token)
-            # user_token = get_user_token_from_auth0_info(user_info)
             g.current_user = payload
 
             return f(*args, **kwargs)
