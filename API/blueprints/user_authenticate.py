@@ -13,6 +13,9 @@ from blueprints.utils.auth import requires_auth0_auth
 from .utils.response import success_response, error_response
 from cloud_common.cc.google import datastore
 
+import random
+import string
+
 user_authenticate = Blueprint('user_authenticate', __name__)
 
 
@@ -66,6 +69,33 @@ def signup():
         return error_response(
             message="User creation failed."
         )
+
+
+def signup_user_oauth():
+    username = g.user_info["sub"]
+    email_address = g.user_info["email"]
+    password = ''.join([random.choice(string.ascii_letters + string.digits) for n in range(32)]) # received_form_response.get("password")
+    organization = None #received_form_response.get("organization")
+    testing = False # received_form_response.get("testing")
+
+    if not (username and email_address):
+        return error_response(
+            message="Please make sure you have added values for all the fields"
+        )
+
+    if not is_email(email_address, check_dns=True):
+        return error_response(
+            message="Invalid email."
+        )
+
+    if testing:  # our pytest is hitting this API, so don't create the user
+        return success_response()
+
+    new_user = User(username=username, password=password,
+                     email_address=email_address,
+                     organization=organization)
+    user_uuid = new_user.insert_into_db(datastore.get_client())
+    return new_user
 
 
 @user_authenticate.route('/login/', methods=['POST'])
@@ -126,13 +156,14 @@ def oauth_login():
     query.add_filter('email_address', '=', g.user_info['email'])
     query_result = list(query.fetch(1))
     if not query_result:
-        return error_response(
-            message="Login failed. Please check your credentials."
-        )
-    user = query_result[0]
+        user = signup_user_oauth()
+        user_uuid = user.user_uuid
+        is_admin = False  # TODO: This shouldn't come from here but from the tokens...
+    else:
+        user = query_result[0]
+        user_uuid = user.get('user_uuid')
+        is_admin = user.get('is_admin', False)
 
-    user_uuid = user.get('user_uuid')
-    is_admin = user.get('is_admin', False)
     if user_uuid is None:
         return error_response(
             message="Login failed. Please check your credentials."
