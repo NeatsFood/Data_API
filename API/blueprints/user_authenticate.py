@@ -154,7 +154,6 @@ def oauth_login():
     client = datastore.get_client()
     query = client.query(kind='Users')
     query.add_filter('email_address', '=', g.user_info['email'])
-    print("Looking up user " + g.user_info['email'])
     query_result = list(query.fetch(1))
     if not query_result:
         user = signup_user_oauth()
