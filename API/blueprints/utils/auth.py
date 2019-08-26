@@ -40,7 +40,7 @@ def get_user_uuid_from_token(user_token):
     return uuid
 
 
-@cache.cached(key_prefix='get_user_info_auth0')
+@cache.memoize(timeout=300)
 def get_user_info_auth0(token):
     url = "https://"+AUTH0_DOMAIN+"/userinfo"
     headers = {'Authorization': 'Bearer ' + token}
