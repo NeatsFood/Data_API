@@ -71,7 +71,7 @@ def save_horticulture_measurements():
         "root_colors": ",".join(x for x in root_colors),
         "horticulture_notes": str(horticulture_notes),
         "submission_name": str(submission_name),
-        "submitted_at": datetime.now(),
+        "submitted_at": datetime.utcnow().isoformat().split('.')[0] + "Z",
     })
 
     datastore.get_client().put(horticulture_task)
