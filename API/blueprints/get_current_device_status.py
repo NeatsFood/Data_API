@@ -64,6 +64,7 @@ def get_current_device_status():
         "current_temp": "N/A for this device",
         "runtime": 0,
     }
+    print('device_data', device_data)
     if device_data is not None:
         timestamp = device_data.get("timestamp")  # .decode()
         timestamp = utils.bytes_to_string(timestamp)
