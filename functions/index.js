@@ -6,26 +6,13 @@
 const functions = require('firebase-functions');
 const { BigQuery } = require('@google-cloud/bigquery');
 const { Storage } = require('@google-cloud/storage');
-const JSZip = require('jszip');
 const fse = require('fs-extra');
 const jsonexport = require('jsonexport');
-const createCsvWriter = require('csv-writer').createObjectCsvWriter;
+var zipdir = require('zip-dir');
 
 exports.helloWorld = functions.https.onRequest((request, response) => {
   response.send("Hello from Firebase!");
 });
-
-// exports.listFiles = functions.https.onRequest((request, response) => {
-//   fs.readdir(__dirname, (error, files) => {
-//     if (error) {
-//       console.error(error);
-//       response.sendStatus(500);
-//     } else {
-//       console.log('Files', files);
-//       response.sendStatus(200);
-//     }
-//   });
-// });
 
 exports.createRecipeRunDataZip = functions.https.onRequest(async (request, response) => {
   console.log('Creating recipe run data zip');
@@ -35,8 +22,13 @@ exports.createRecipeRunDataZip = functions.https.onRequest(async (request, respo
   const startTimestamp = '2019-08-06';
   const endTimestamp = '2019-08-20';
 
+  // Validate parameters
+  
+
   // Format directory name
-  const dirname = `/tmp/${deviceId}_${startTimestamp}_to_${endTimestamp}`;
+  const filename = `${deviceId}_${startTimestamp}_to_${endTimestamp}`;
+  const dirname = `/tmp/${filename}/${filename}`;
+  const zipDirname = `/tmp/${filename}`;
 
   // Initialize big query
   const bigquery = new BigQuery();
@@ -84,19 +76,43 @@ exports.createRecipeRunDataZip = functions.https.onRequest(async (request, respo
   const [job] = await bigquery.createQueryJob(options);
   const [rows] = await job.getQueryResults();
 
-  // Save data as csv
-  console.log('Saving data as csv');
-  await jsonexport(rows, { rowDelimiter: ',' }, (csv) => {
-    if (fse.pathExistsSync(dirname)) fse.removeSync(dirname);
+  // Export data as csv
+  let csvData;
+  console.log('Converting data to csv');
+  await jsonexport(rows, { rowDelimiter: ',' }, (error, csv) => {
+
+    // Verify json exported to csv
+    if (error) { 
+      return response.status(500).send('Unable to convert data to csv');
+    }
+
+    // Save csv data to file
+    if (fse.pathExistsSync(zipDirname)) fse.removeSync(zipDirname);
     fse.ensureDirSync(dirname);
     fse.writeFileSync(`${dirname}/data.csv`, csv);
   });
 
   // Create zip file
   console.log('Zipping file');
-  const zip = new JSZip();
-  const zipfile = zip.folder(dirname);
-  fse.writeFileSync(`${dirname}.zip`, zipfile);
+  await zipdir(zipDirname, { saveTo: `${zipDirname}.zip` }, (error, buffer) => {
+    if (error) {
+      response.status(500).send('Unable to zip file');
+    }
+  });
+
+  // Upload file to cloud storage
+  console.log('Uploading to cloud storage');
+  const storage = new Storage();
+  const bucketName = 'openag-recipe-run-data-zips'
+  await storage.bucket(bucketName).upload(`${zipDirname}.zip`, {
+    gzip: true,
+    metadata: {
+      cacheControl: 'public, max-age=31536000',
+    },
+  });
+
+  // Clean up created files
+  fse.removeSync(zipDirname);
 
   // Return success
   response.send("Successfully created recipe run data zip");

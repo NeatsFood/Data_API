@@ -20,7 +20,8 @@
     "firebase-functions": "^2.3.0",
     "fs-extra": "^8.1.0",
     "jsonexport": "^2.4.1",
-    "jszip": "^3.2.2"
+    "jszip": "^3.2.2",
+    "zip-dir": "^1.0.2"
   },
   "devDependencies": {
     "eslint": "^5.12.0",
