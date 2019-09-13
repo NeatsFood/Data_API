@@ -38,6 +38,7 @@ def get_current_stats():
           }
 
     """
+    print("Getting current stats")
     received_form_response = json.loads(request.data.decode('utf-8'))
     user_token = received_form_response.get("user_token")
     device_uuid = received_form_response.get("selected_device_uuid", None)
