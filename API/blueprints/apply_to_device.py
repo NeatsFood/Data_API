@@ -71,9 +71,13 @@ def apply_to_device():
         else:
             return error_response(message="Nope!")
 
-        # send the recipe to the device
-        commands_list = convert_UI_recipe_to_commands(recipe_uuid, recipe_dict)
-        iot.send_recipe_to_device_via_IoT(device_uuid, commands_list)
+        # DEPRECATED: send the recipe to the device via iot config
+        # commands_list = convert_UI_recipe_to_commands(recipe_uuid, recipe_dict)
+        # iot.send_recipe_to_device_via_IoT(device_uuid, commands_list)
+
+        # Send the recipe to the the device via iot commands
+        iot.send_start_recipe_command(device_uuid, recipe_uuid, recipe_dict)
+
 
         return success_response()
     except(Exception) as e:
