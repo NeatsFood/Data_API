@@ -13,11 +13,11 @@ from .utils.auth import get_user_uuid_from_token
 from .utils.common import convert_UI_recipe_to_commands
 
 
-apply_to_device_bp = Blueprint('apply_to_device_bp',__name__)
+apply_to_device_bp = Blueprint("apply_to_device_bp", __name__)
 
 # ------------------------------------------------------------------------------
 # Send a recipe to a device, and save the recipe state.
-@apply_to_device_bp.route('/api/apply_to_device/', methods=['POST'])
+@apply_to_device_bp.route("/api/apply_to_device/", methods=["POST"])
 def apply_to_device():
     """Run a recipe on a device.
 
@@ -37,48 +37,52 @@ def apply_to_device():
           }
 
     """
+
+    # Get request parameters
+    request_json = json.loads(request.data.decode("utf-8"))
+    device_uuid = request_json.get("device_uuid", None)
+    recipe_uuid = request_json.get("recipe_uuid", None)
+    user_token = request_json.get("user_token", None)
+
+    # Validate parameters
+    if device_uuid is None:
+        return Response(json.dumps({"message": "Device UUID is required"}), 400)
+    if recipe_uuid is None:
+        return Response(json.dumps({"message": "Recipe UUID is required"}), 400)
+    if user_token is None:
+        return Response(json.dumps({"message": "User token is required"}), 400)
+
+    # Get user from token
+    user_uuid = get_user_uuid_from_token(user_token)
+    if user_uuid is None:
+        return Response(json.dumps({"message": "User token is invalid"}), 400)
+
+    # Get recipe entry from datastore
+    recipe_dict = {}
+    query = datastore.get_client().query(kind="Recipes")
+    query.add_filter("recipe_uuid", "=", recipe_uuid)
+    results = list(query.fetch())
+
+    # Verify recipe entry exists
+    if len(results) < 0:
+        return Response(json.dumps({"message": "Recipe uuid is invalid"}), 400)
+
+    # Get recipe versions
+    # NOTE: Versioning should not be done like this...
+    device_software_version = datastore.get_device_software_version(device_uuid)
+    versioned_recipe = results[0].get(f"recipe_v{device_software_version}")
+    unversioned_recipe = results[0].get("recipe")
+
+    # Get recipe dict
+    if versioned_recipe is not None:
+        recipe_dict = json.loads(versioned_recipe)
+    else:
+        recipe_dict = json.loads(unversioned_recipe)
+
+    # Send recipe to device
     try:
-        received_form_response = json.loads(request.data.decode('utf-8'))
-
-        device_uuid = received_form_response.get("device_uuid", None)
-        recipe_uuid = received_form_response.get("recipe_uuid", None)
-        user_token = received_form_response.get("user_token", None)
-
-        # Using the session token get the user_uuid associated with it
-        user_uuid = get_user_uuid_from_token(user_token)
-        if user_uuid is None or device_uuid is None or recipe_uuid is None:
-            return error_response(message="Missing fields")
-
-        # handle device SW version to recipe version here. can be None
-        version = ''  # default of no version for older brains
-        sw_ver = datastore.get_device_software_version(device_uuid)
-        if sw_ver is not None and len(sw_ver) > 0:
-            version = f'_v{sw_ver}'  # appended to recipe json property name
-
-        recipe_dict = {}
-        query = datastore.get_client().query(kind='Recipes')
-        query.add_filter("recipe_uuid", "=", recipe_uuid)
-        results = list(query.fetch())
-        if len(results) > 0:
-            # base recipe (unversioned or for all clients)
-            recipe_dict = json.loads(results[0]['recipe'])
-
-            # see if there is a client version specific json property
-            recipe_property = f'recipe{version}'
-            versioned_recipe_str = results[0].get(recipe_property, None)
-            if versioned_recipe_str is not None:
-                recipe_dict = json.loads(versioned_recipe_str)
-        else:
-            return error_response(message="Nope!")
-
-        # send the recipe to the device
-        commands_list = convert_UI_recipe_to_commands(recipe_uuid, recipe_dict)
-        iot.send_recipe_to_device_via_IoT(device_uuid, commands_list)
-
-        return success_response()
-    except(Exception) as e:
-        print(f'Error in apply_to_device {e}')
-        return error_response(message='Fail')
-
-
-
+        iot.send_start_recipe_command(device_uuid, recipe_uuid, recipe_dict)
+        return Response(json.dumps({"message": "Sent recipe to device"}), 200)
+    except iot.SendCommandError as e:
+        print(f"Unable to send recipe to device: {e.message}")
+        return Response(json.dumps({"message": e.message}), 503)
