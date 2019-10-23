@@ -54,6 +54,8 @@ def get_current_stats():
     result_json["current_h20_ec"] = database.get_current_EC_value(device_uuid)
     result_json["current_h20_ph"] = database.get_current_pH_value(device_uuid)
     result_json["current_h20_temp"] = database.get_current_h2o_temp_value(device_uuid)
+    result_json["current_light_intensity"] = database.get_current_light_intensity_value(device_uuid)
+    result_json["current_light_spectrum"] = database.get_current_light_spectrum_value(device_uuid)
 
     return success_response(
         results=result_json
