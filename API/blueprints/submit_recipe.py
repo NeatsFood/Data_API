@@ -40,6 +40,8 @@ def submit_recipe():
     shared = received_form_response.get("shared", 'false')
     testing = received_form_response.get("testing")
 
+    print(f'recipe_json: {recipe_json}')
+
     if user_token is None or recipe_json is None:
         return error_response(
             message="Please make sure you have added values for all the fields"
@@ -82,7 +84,8 @@ def submit_recipe():
             "device_type": "PFC_EDU",
             "format": recipe_dict.get("format"),
             "version": recipe_dict.get("version"),
-            "shared": shared 
+            "shared": shared,
+            "image_url": recipe_dict.get("image_url"),
         })
         datastore.get_client().put(recipe_reg_task)
     else: # recipe exists, so update it
