@@ -48,13 +48,13 @@ def get_current_stats():
         )
 
     result_json = {}
-    result_json["current_co2"] = database.get_current_CO2_value(device_uuid)
-    result_json["current_temp"] = database.get_current_temp_value(device_uuid)
-    result_json["current_rh"] = database.get_current_RH_value(device_uuid)
-    result_json["current_h20_ec"] = database.get_current_EC_value(device_uuid)
-    result_json["current_h20_ph"] = database.get_current_pH_value(device_uuid)
-    result_json["current_h20_temp"] = database.get_current_h2o_temp_value(device_uuid)
-    result_json["current_light_intensity"] = database.get_current_light_intensity_value(device_uuid)
+    result_json["current_co2"] = database.get_current_CO2_value_and_timestamp(device_uuid)
+    result_json["current_temp"] = database.get_current_temp_value_and_timestamp(device_uuid)
+    result_json["current_rh"] = database.get_current_RH_value_and_timestamp(device_uuid)
+    result_json["current_h20_ec"] = database.get_current_EC_value_and_timestamp(device_uuid)
+    result_json["current_h20_ph"] = database.get_current_pH_value_and_timestamp(device_uuid)
+    result_json["current_h20_temp"] = database.get_current_h2o_temp_value_and_timestamp(device_uuid)
+    result_json["current_light_intensity"] = database.get_current_light_intensity_value_and_timestamp(device_uuid)
     result_json["current_light_spectrum"] = database.get_current_light_spectrum_value(device_uuid)
 
     # Get horticulture measurements
