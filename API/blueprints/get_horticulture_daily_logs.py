@@ -57,11 +57,13 @@ def get_horticulture_daily_logs():
         )
     leaf_count_results = []
     plant_height_results = []
+    horticulture_notes_results = []
     for result in query_result:
-
         leaf_count_results.append({"value":result["leaf_count"],"time":str(result["submitted_at"])})
         plant_height_results.append({"value": result["plant_height"], "time": str(result["submitted_at"])})
+        horticulture_notes_results.append({"value": result["horticulture_notes"], "time": str(result["submitted_at"])})
     return success_response(
         leaf_count_results=leaf_count_results,
-        plant_height_results=plant_height_results
+        plant_height_results=plant_height_results,
+        horticulture_notes_results=horticulture_notes_results,
     )

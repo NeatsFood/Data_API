@@ -44,11 +44,13 @@ def submit_horticulture_measurements():
 
     leaves_count = received_form_response.get("leaves_count")
     plant_height = received_form_response.get("plant_height")
-    if leaves_count is None or plant_height is None:
+    horticulture_notes = received_form_response.get("horticulture_notes")
+    if leaves_count == None and plant_height == None and horticulture_notes == None:
         return error_response()
 
     # Add the user to the users kind of entity
     key = datastore.get_client().key('HorticultureMeasurements')
+
     # Indexes every other column except the description
     horitculture_reg_task = gcds.Entity(key, exclude_from_indexes=[])
 
@@ -56,7 +58,8 @@ def submit_horticulture_measurements():
         'device_uuid': device_uuid,
         'measurement': json.dumps({
             "leaves_count":leaves_count,
-            "plant_height":plant_height
+            "plant_height":plant_height,
+            "horticulture_notes":horticulture_notes,
         }),
         "modified_at":datetime.now()
     })

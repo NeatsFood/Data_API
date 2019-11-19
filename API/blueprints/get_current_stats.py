@@ -61,6 +61,7 @@ def get_current_stats():
     horticulture_log = database.get_current_horticulture_log(device_uuid)
     result_json["current_plant_height"] = horticulture_log.get("plant_height")
     result_json["current_leaf_count"] = horticulture_log.get("leaf_count")
+    result_json["horticulture_notes"] = horticulture_log.get("horticulture_notes")
     result_json["horticulture_log_updated"] = horticulture_log.get("submitted_at")
 
     return success_response(
