@@ -64,7 +64,7 @@ def get_all_values():
         )
 
     # Get 5 lists of dicts of all the data in the date range
-    temp, RH, co2, leaf_count, plant_height = \
+    temp, RH, co2, leaf_count, plant_height, horticulture_notes = \
         database.get_all_historical_values(device_uuid, start_ts, end_ts)
 
     return success_response(
@@ -72,7 +72,8 @@ def get_all_values():
         RH=RH,
         co2=co2,
         leaf_count=leaf_count,
-        plant_height=plant_height
+        plant_height=plant_height,
+        horticulture_notes=horticulture_notes,
     )
 
 
