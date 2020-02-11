@@ -68,15 +68,15 @@ def get_current_device_status():
     if device_data is not None:
         timestamp = device_data.get("timestamp")  # .decode()
         timestamp = utils.bytes_to_string(timestamp)
-        timenow = str(datetime.now())
+        timenow = str(datetime.utcnow())
         fmt1 = "%Y-%m-%d %H:%M:%S.%f"
         fmt2 = "%Y-%m-%dT%H:%M:%SZ"
 
         t1 = datetime.strptime(timenow, fmt1)
         t2 = datetime.strptime(timestamp, fmt2)
 
-        _, time_minutes, _ = convert_timedelta(t1 - t2)
-        if time_minutes > 5:
+        time_hours, time_minutes, _ = convert_timedelta(t1 - t2)
+        if (time_hours * 60) + time_minutes > 5:
             wifi_status = "Disconnected"
         else:
             wifi_status = "Connected"

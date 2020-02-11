@@ -10,7 +10,8 @@ from blueprints import (
     get_co2_details,
     get_current_stats, 
     get_temp_details, 
-    get_user_devices, 
+    get_user_devices,
+    get_user_cluster,
     get_recipe_by_uuid,
     register_device, 
     get_all_recipes, 
@@ -54,6 +55,7 @@ app.register_blueprint(get_co2_details.get_co2_details_bp)
 app.register_blueprint(get_current_stats.get_current_stats_bp)
 app.register_blueprint(get_temp_details.get_temp_details_bp)
 app.register_blueprint(get_user_devices.get_user_devices_bp)
+app.register_blueprint(get_user_cluster.get_user_cluster_bp)
 app.register_blueprint(register_device.register_bp)
 app.register_blueprint(user_authenticate.user_authenticate)
 app.register_blueprint(verify_user_session.verify_user_session_bp)
